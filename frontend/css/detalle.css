@@ -1,0 +1,55 @@
+.bg-image{
+	height: 100vh;
+	background-size: cover;
+	background-repeat: no-repeat;
+    background-position: center;
+}
+.mask{
+	background-color: rgba(0, 0, 0, 0.8);
+	height: 100vh;
+	
+}
+.navbar{
+	transition: all 0.5s;
+	padding: 10px 25px;
+}
+.navbar-scrolled{
+	background-color: darkred;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+}
+
+.navbar-scrolled {
+	padding-top: 5px;
+	padding-bottom: 5px;
+  }
+
+.boton-catalogo{
+	background-color: gainsboro;
+	border-radius: 10px;
+	text-align: center;
+	padding: 10px 20px;
+	margin-top: 1rem;
+	border: none;
+}
+.txt-boton-catalogo{	
+	text-decoration: none;
+	color: black;
+	font-size: 18px;
+}
+.txt-boton-catalogo i{
+	font-size: 22px;
+	vertical-align: middle;
+	color: gray;
+}
+
+.boton-catalogo:hover{
+	background-color: lightcoral;
+	box-shadow: 0 0 20px rgb(230, 130, 105);
+}
+
+.boton-catalogo:hover .txt-boton-catalogo,.boton-catalogo:hover .txt-boton-catalogo i{
+	color: bisque;
+	text-shadow: 0 0 30px #fff;
+}
+
+

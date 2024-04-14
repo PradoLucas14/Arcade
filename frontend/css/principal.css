@@ -1,0 +1,28 @@
+.navbar{
+	transition: all 0.5s;
+	padding: 10px 25px;
+}
+.navbar-scrolled{
+	background-color: darkred;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+}
+
+.navbar-scrolled {
+	padding-top: 5px;
+	padding-bottom: 5px;
+  }
+
+.navbar{
+	transition: all 0.5s;
+	padding: 10px 25px;
+}
+
+
+
+/*Lo del body esta solo para que se vea la navbar y el scrolleo*/
+body{
+	height: 110vh;
+	background-color: black;
+}
+
+
