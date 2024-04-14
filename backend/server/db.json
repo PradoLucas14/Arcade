@@ -1,3 +1,40 @@
 {
-    
-}
+	"juegos": [
+	  {
+		"id": "1",
+		"titulo": "The Legend of Zelda: Breath of the Wild",
+		"desarrollador": "Nintendo",
+		"anio": 2017,
+		"plataforma": "Switch",
+		"genero": "Accion / Aventura",
+		"descripcion": "En este juego de aventuras de mundo abierto, los jugadores controlan a Link, quien despierta de un largo sueño para encontrarse en un Hyrule devastado. Deben explorar el vasto mundo, derrotar enemigos y resolver puzles para salvar el reino de Ganon.",
+		"imagen1": "https://zelda.nintendo.com/breath-of-the-wild/assets/media/header/Main-Day.jpg",
+		"imagen2": "https://example.com/zelda_breath_of_the_wild.jpg",
+		"imagen3": "https://example.com/zelda_breath_of_the_wild.jpg"
+	  },
+	  {
+		"id": "2",
+		"titulo": "Need for Speed: Rivals",
+		"desarrollador": "Electronics Arts",
+		"anio": 2013,
+		"plataforma": "Multiplataforma",
+		"genero": "Carrera",
+		"descripcion": "El modo de jugabilidad es similar al de Need for Speed: Hot Pursuit (2010) ofreciendo la opción de escoger dos bandos: corredor u oficial de la ley. Ambos bandos ofrecerán distintos modos de juego así como recompensas, desafíos, entre otros. Todos los eventos, desafíos, etc; residen en un mundo abierto lleno de saltos, rampas y cámaras de velocidad llamado Redview County que tiene mucho que ver en tanto a la grandeza, atajos y lugares desconocidos como en Need for Speed: Most Wanted (2012) y la orografía de montañas, acantilados y colinas sumamente empinadas como las de Need for Speed: Hot Pursuit (2010).",
+		"imagen1": "https://img2-levelup.buscafs.com/154803.jpg",
+		"imagen2": "https://example.com/zelda_breath_of_the_wild.jpg",
+		"imagen3": "https://example.com/zelda_breath_of_the_wild.jpg"
+	  },
+	  {
+		"id": "ea11",
+		"titulo": "The Elder Scrolls V: Skyrim",
+		"desarrollador" : "Bethesda",
+		"anio": 2013,
+		"plataforma": "Multiplataforma",
+		"genero": "Rol",
+		"descripcion": "La historia se centra en los esfuerzos del personaje, Dovahkiin (Sangre de dragón), para derrotar a Alduin, un dragón o «dovah» que, según la profecía, destruirá el mundo. La trama está fechada doscientos años después de los sucesos de Oblivion y tiene lugar en la provincia ficticia de Skyrim. En el transcurso de la partida, el jugador completa misiones y hace evolucionar a su personaje gracias a la mejora de sus habilidades. A diferencia de los títulos anteriores de la franquicia, el usuario no selecciona una clase de personaje al inicio de la partida, lo que resuelve el problema que el equipo de desarrolladores veía desde pasadas entregas: la necesidad de forzar un estilo rígido de juego. Skyrim continúa con la tradición de mundo abierto al permitir que el jugador viaje a cualquier parte del mapa y posponga u omita parcial o totalmente la historia principal.",
+		"imagen1": "https://s1.elespanol.com/2017/12/31/videojuegos/consolas-playstation-xbox_273734215_59048762_1706x960.jpg",
+		"imagen2": "https://example.com/zelda_breath_of_the_wild.jpg",
+		"imagen3": "https://example.com/zelda_breath_of_the_wild.jpg"
+	  }
+	]
+  }
