@@ -1,3 +1,49 @@
 {
-    
+  "juegos": [
+    {
+      "id": 1,
+      "titulo": "The Legend of Zelda: Breath of the Wild",
+      "desarrollador": "Nintendo",
+      "anio": "2018",
+      "plataforma": "Switch",
+      "publicado": "true",
+      "tamanio": "39GB",
+      "precio": "60000",
+      "genero": "Accion / Aventura",
+      "descripcion": "En este juego de aventuras de mundo abierto",
+      "imagen1": "https://example.com/zelda_breath_of_the_wild.jpg",
+      "imagen2": "https://example.com/zelda_breath_of_the_wild.jpg",
+      "imagen3": "https://example.com/zelda_breath_of_the_wild.jpg"
+    },
+    {
+      "titulo": "Tony Hawk",
+      "desarrollador": "EA sports",
+      "anio": "2003",
+      "plataforma": "PlayStation 2",
+      "genero": "Deporte",
+      "tamanio": "20GB",
+      "precio": "30000",
+      "descripcion": "simulador de skeate",
+      "publicado": "false",
+      "imagen1": "jjjjj",
+      "imagen2": "jjjjj",
+      "imagen3": "lllll",
+      "id": 2
+    },
+    {
+      "titulo": "FIFA2022",
+      "desarrollador": "EA sports",
+      "anio": "2021",
+      "plataforma": "XBOX",
+      "genero": "Deporte",
+      "tamanio": "40GB",
+      "precio": "60000",
+      "descripcion": "simulador de futbol profesional",
+      "publicado": "true",
+      "imagen1": "jjjjj",
+      "imagen2": "jjjjj",
+      "imagen3": "lllll",
+      "id": 3
+    }
+  ]
 }
