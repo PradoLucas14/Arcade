@@ -11,18 +11,21 @@ fetch('http://localhost:3000/usuarios', {
     event.preventDefault();
   })
   iniciarSesion.addEventListener('click', () => {
+    const inputLogin = document.querySelector('#user');
+    const contraseñaLogin = document.querySelector('#password');
     data.forEach(element => {
       const nombreUsuarioIngresado = document.querySelector('#user');
       const contraseñaIngresada = document.querySelector('#password');
       if (element.nombre === nombreUsuarioIngresado.value && element.contraseña === contraseñaIngresada.value) {
         if (nombreuruario === nombreUsuarioIngresado.value && contrasenausuario === contraseñaIngresada.value) {
           window.location.href = '../pages/adminstrador.html';
+
+          inputLogin.value = '';
+          contraseñaLogin.value = '';
         }
       }
       else {
         alert('El usuario o contraseña ingresados no existen');
-        const inputLogin = document.querySelector('#user');
-        const contraseñaLogin = document.querySelector('#password');
         inputLogin.value = '';
         contraseñaLogin.value = '';
       }
