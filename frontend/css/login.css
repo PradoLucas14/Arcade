@@ -1,0 +1,138 @@
+.body-login {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+}
+
+@media (min-width:768px) {
+  .body-login {
+    font-size: 16px;
+  }
+
+}
+
+.container {
+  position: relative;
+  height: 100vh;
+}
+
+.box {
+  position: absolute;
+  border: none;
+  border-radius: 10px;
+  box-sizing: border-box;
+  display: flex;
+  text-align: center;
+  padding: 10% 3%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #101217;
+}
+
+@media (min-width:768px) {
+  .box {
+    padding: 5% 5%;
+  }
+
+}
+
+.image-wrapper {
+  position: absolute;
+  margin-top: 0;
+  margin-left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.image-wrapper>.image {
+  background-image: url("https://image-cdn.essentiallysports.com/wp-content/uploads/video-games-1-2.jpg?width=900");
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.image-wrapper>.overlay {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: .75;
+}
+
+.content {
+  color: white;
+  padding-bottom: 24px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.btn,
+.btn:hover {
+  background-color: none;
+  border: 2px solid white;
+  color: white;
+  border-radius: 8px;
+  width: 200px;
+}
+
+.input {
+  width: 100%;
+  background-color: #212121;
+  border: none;
+  border-radius: 4px;
+}
+
+.check {
+  width: 20px;
+  height: 20px;
+  margin-top: 12px;
+  border: none;
+  background-color: #212121;
+}
+
+
+.label {
+  text-transform: uppercase;
+}
+
+.links:hover {
+  color: gray;
+  text-decoration: underline;
+}
+
+.modal-content {
+  margin-top: 10%;
+}
+
+.campo {
+  display: flex;
+  justify-content: end;
+  padding-bottom: 10%;
+  padding: 12px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.codigos-4 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#codigo1,
+#codigo2,
+#codigo3,
+#codigo4 {
+  width: 12%;
+  margin: 12px;
+}
