@@ -1,43 +1,45 @@
-const apiUrl = 'http://localhost:3000/juegos';
-const urlParams = new URLSearchParams(window.location.search);
-const gameId = urlParams.get('id');
+//? Cargado de datos en banner
+//Metodo get
+const apiUrlDestacado = 'http://localhost:3000/destacado';
+function getDestacado() {
+    try {
+        fetch(apiUrlDestacado, {
+        method: 'GET',
+        }).then(response => response.json()).then(data => {
+            const juegoDestacado = document.getElementById("destacado-imagen");
+            const tituloDestacado = document.getElementById("gameTitulo");
+            idDestacadoGlobal =  data[0].id;
+            tituloDestacado.innerHTML = `${data[0].titulo.toUpperCase()}
+            `;
+            juegoDestacado.setAttribute("src",`${data[0].imagen1}`);
+            console.log(`Fondo establecido: ${juegoDestacado.style.backgroundImage}`);
+            
+        
+        })
 
-function cargarDetalle() {
-    fetch(`${apiUrl}/${gameId}`)
-    .then(response => response.json())
-    .then(game => {
-		console.log(game)
-        const gameBanner = document.getElementById('gameBanner');
-		const gameDetail = document.getElementById('gameDetalle');
-        const gameTitulo = document.getElementById('gameTitulo');
-        const gameEspec = document.getElementById('gameEspect');
-		const body = document.getElementById('body-detalle');
-		document.getElementById('pageTitulo').textContent = game.titulo;
-		gameTitulo.innerHTML = `
-		${game.titulo.toUpperCase()}
-        `;
-		gameBanner.innerHTML = `
-            <p class="fs-5">Desarrolladora: ${game.desarrollador} <br> Año: ${game.anio}</p>
-        `;
-		gameDetail.innerHTML = `
-			<p>${game.descripcion}</p>
-        `;
-		body.style.backgroundImage = `url(${game.imagen1})`;
-        console.log(`Fondo establecido: ${body.style.backgroundImage}`);
-        gameEspec.innerHTML = `
-            <p class="my-2"><strong>Desarrolladora:</strong> ${game.desarrollador}</p>
-            <p class="my-2"><strong>Año:</strong> ${game.anio}</p>
-            <p class="my-2"><strong>Genero:</strong> ${game.genero}</p>
-            <p class="my-2"><strong>Plataforma:</strong> ${game.plataforma}</p>
-            <button onclick="volverCatalogo()" class="btn text-center boton-catalogo">
-                <p class="txt-boton-catalogo my-1"><i class='fas fa-angle-left'></i>   Al Catálogo</p>
-            </button>
-        `;
-    });
+    } catch (error) {
+        console.error("Error al obtener los juegos:", error);
+    }
 }
 
-// Cargar detalle al inicio
-cargarDetalle();
+window.onload = function() {
+    getDestacado();
+};
+
+function volverCatalogo() {
+	window.location.href = "./pages/auxiliar-catalogo.html";
+}
+
+function paginaDestacado() {
+	window.location.href = `./pages/detalle.html?id=${idDestacadoGlobal}`;
+}
+
+function paginaError() {
+	window.location.href = "./pages/error.html";
+}
+
+
+//? Navbar y links
 
 const navElement = document.querySelector('.navbar');
 window.addEventListener('scroll', () =>{
@@ -49,11 +51,123 @@ window.addEventListener('scroll', () =>{
     }
 });
 
+// ? Generación categorías
+const apiUrlJuegos = 'http://localhost:3000/juegos';
+function sliderMaker(categoria,clases) {
+    try {
+        fetch(apiUrlJuegos, {
+        method: 'GET',
+        }).then(response => response.json()).then(juegos => {
+            const sliderContenedor = document.getElementById(`${clases}-slider`);
+            juegos.forEach(juego => {                
+                const juegoCard = `
+                    <div class="jueguito ${clases}-jueguito">
+                        <a class="link-juego" href= "./pages/detalle.html?id=${juego.id}"
+                            ><img
+                                src=${juego.imagen2}
+                                alt=${juego.titulo}
+                        /></a>
+                    </div>`;
+                if(juego.genero === categoria && juego.publicado === "true"){
+                    sliderContenedor.innerHTML += juegoCard;
+                    console.log("Se agregó una tarjeta")
+                }
+                else{ 
+                    console.log(`No hay nada que agregar: ${juego.publicado} y ${juego.genero}`);
+                    console.log(juego.genero === clases && juego.publicado === true);
+                }
+        })
+        colocarIndicadores(clases);
+        activarHover(clases);
+        flechasFuncionamiento(clases);
+    })
+    }
+    catch (error) {
+        console.error("Error al obtener los juegos:", error);
+    };
+} 
 
-function volverCatalogo() {
-	window.location.href = "./catalogo.html";
+sliderMaker("Deporte","sport");
+sliderMaker("Aventura","adventure");
+
+
+// ? Funcionamiento para categorias
+
+
+//? ------ Paginación ----- 
+function colocarIndicadores(clases) {   
+    const fila = document.querySelector(`.${clases}-carousel `);
+    const paginas = Math.ceil(document.querySelectorAll(`.${clases}-jueguito`).length/5);
+    if(paginas == 1){
+        flechaDerecha.style.display="none";
+        flechaIzquierda.style.display="none";
+    }
+    else{
+        console.log(paginas);
+        for (let i = 0; i<paginas; i++){
+            const indicador = document.createElement('button');
+            document.querySelector(`.indicadores-${clases}`).appendChild(indicador);
+            if(i == 0){
+                indicador.classList.add('activo');
+            }
+            indicador.addEventListener('click', (event) => {
+                fila.scrollLeft = i * fila.offsetWidth;
+                document.querySelector(`.indicadores-${clases} .activo`).classList.remove('activo');
+                event.target.classList.add('activo');
+            })
+        }
+}}
+
+
+
+// ? Event listener para la flecha derecha
+
+function flechasFuncionamiento (clases){
+    const fila = document.querySelector(`.${clases}-carousel`);
+    const flechaIzquierda = document.getElementById(`flecha-izquierda-${clases}`);
+    const flechaDerecha = document.getElementById(`flecha-derecha-${clases}`);
+    
+    flechaDerecha.addEventListener('click',()=>{
+        fila.scrollLeft += fila.offsetWidth;
+        
+        const indicadorActivo= document.querySelector(`.indicadores-${clases} .activo`);
+        if(indicadorActivo.nextSibling) //pregunta si tengo un elemento a la derecha para cambiarlo
+        {
+            indicadorActivo.nextSibling.classList.add('activo');
+            indicadorActivo.classList.remove('activo');
+        }
+    })
+    
+    flechaIzquierda.addEventListener('click',()=>{
+        fila.scrollLeft -= fila.offsetWidth;
+        const indicadorActivo= document.querySelector(`.indicadores-${clases} .activo`);
+        if(indicadorActivo.previousSibling) //pregunta si tengo un elemento a la derecha para cambiarlo
+        {
+            indicadorActivo.previousSibling.classList.add('activo');
+            indicadorActivo.classList.remove('activo');
+        }
+    })
+}
+    
+//? ------ Hover ----- 
+
+function activarHover(clases){    
+    const fila = document.querySelector(`.${clases}-carousel`);
+    const jueguitos = document.querySelectorAll(`.${clases}-jueguito`); 
+    jueguitos.forEach((jueguito) => {
+        jueguito.addEventListener('mouseenter', (e) => {
+            const elemento = e.currentTarget;
+            setTimeout(() => {
+                jueguitos.forEach(jueguito => jueguito.classList.remove('hover'));
+                elemento.classList.add('hover');
+            }, 300);
+        });
+    });
+
+    fila.addEventListener('mouseleave', () => {
+        jueguitos.forEach(jueguito => jueguito.classList.remove('hover'));
+    });
 }
 
-function paginaError() {
-	window.location.href = "./peliculas.html";
-}
+
+
