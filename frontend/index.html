@@ -6,9 +6,19 @@
         <meta name="author" content="Grupo-1" />
         <meta name="description" content="Blog de turismo de Tucuman" />
         <meta name="keywords" content="Videojuegos" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+            rel="stylesheet"
+        />
         <link
             rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
         />
 
         <title>Rolling Game</title>
@@ -26,7 +36,9 @@
     <body>
         <header>
             <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a class="navbar-brand" href="./index.html"
+                    >RG<span class="sr-only"> (inicio)</span></a
+                >
                 <button
                     class="navbar-toggler"
                     type="button"
@@ -45,14 +57,17 @@
                                 class="nav-link"
                                 href="./pages/auxiliar-catalogo.html"
                                 >Catalogo
-                                <span class="sr-only">(current)</span></a
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./pages/login.html"
+                                >Login</a
                             >
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Features</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Pricing</a>
+                            <a class="nav-link" href="./pages/adminstrador.html"
+                                >Administrar</a
+                            >
                         </li>
                         <li class="nav-item">
                             <a class="nav-link disabled" href="#">Disabled</a>
@@ -61,6 +76,181 @@
                 </div>
             </nav>
         </header>
+
+        <!-- banner -->
+        <main>
+            <div>
+                <section class="rg-home-image">
+                    <div class="top"></div>
+                    <div id="gameBanner">
+                        <img id="destacado-imagen" src="#" alt="" />
+                    </div>
+                    <div class="bottom"></div>
+                    <div class="text-banner d-flex align-items-center">
+                        <div class="container text-center">
+                            <div>
+                                <h1
+                                    id="gameTitulo"
+                                    class="display-1 text-light mb-4"
+                                ></h1>
+                                <div class="justify-content-center mt-2 d-flex">
+                                    <button
+                                        onclick="paginaError()"
+                                        type="button"
+                                        class="btn btn-danger m-1"
+                                    >
+                                        <i class="bi bi-cart-fill"></i> Agregar
+                                        al carrito
+                                    </button>
+                                    <button
+                                        onclick="paginaDestacado()"
+                                        type="button"
+                                        class="btn btn-outline-light m-1"
+                                    >
+                                        <i class="bi bi-info-circle"></i> Más
+                                        info
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- slider -->
+            <div class="juegos-destacados sport-contenedor contenedor">
+                <div class="contenedor-titulo-controles">
+                    <h4 class="display-4">Deportes</h4>
+                    <div class="indicadores indicadores-sport">
+                        <!-- <button></button>
+                        <button></button> se agregan con js -->
+                    </div>
+                </div>
+
+                <div class="contenedor-principal">
+                    <button
+                        role="button"
+                        id="flecha-izquierda-sport"
+                        class="flecha-izquierda"
+                    >
+                        <i class="bi bi-caret-left-fill"></i>
+                    </button>
+                    <div class="contenedor-carousel sport-carousel">
+                        <div class="slider-one" id="sport-slider"></div>
+                    </div>
+                    <button
+                        role="button"
+                        id="flecha-derecha-sport"
+                        class="flecha-derecha"
+                    >
+                        <i class="bi bi-caret-right-fill"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="juegos-destacados sport-contenedor contenedor">
+                <div class="contenedor-titulo-controles">
+                    <h4 class="display-4">Aventura</h4>
+                    <div class="indicadores indicadores-adventure"></div>
+                </div>
+
+                <div class="contenedor-principal">
+                    <button
+                        role="button"
+                        id="flecha-izquierda-adventure"
+                        class="flecha-izquierda"
+                    >
+                        <i class="bi bi-caret-left-fill"></i>
+                    </button>
+                    <div class="contenedor-carousel adventure-carousel">
+                        <div class="slider-one" id="adventure-slider"></div>
+                    </div>
+                    <button
+                        role="button"
+                        id="flecha-derecha-adventure"
+                        class="flecha-derecha"
+                    >
+                        <i class="bi bi-caret-right-fill"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- slider -->
+        </main>
+        <footer class="footer text-center w-100">
+            <div class="container text-light text-center">
+                <div class="content-footer w-100 align-items-start">
+                    <div class="container-about row">
+                        <div class="paginas col">
+                            <a href="../pages/error.html" class="text-light"
+                                >Acerca de</a
+                            >
+                        </div>
+                        <div class="paginas col">
+                            <a href="../pages/login.html" class="text-light"
+                                >Iniciar Sesion</a
+                            >
+                        </div>
+                        <div class="paginas col">
+                            <a href="../pages/error.html" class="text-light"
+                                >Contacto</a
+                            >
+                        </div>
+                        <a
+                            href="../pages/auxiliar-catalogo.html"
+                            class="col text-light"
+                            >Catalogo</a
+                        >
+                    </div>
+                    <hr />
+                    <div class="container-redes">
+                        <div class="container-redes-sociales">
+                            <a
+                                class="links"
+                                href="https://www.facebook.com/RollingCodeSchool/"
+                                ><i
+                                    class="fa-brands fa-square-facebook fa-bounce icon"
+                                ></i
+                                >RollingCode
+                            </a>
+                            <a class="links" href="../pages/error 404.html"
+                                ><i
+                                    class="fa-brands fa-instagram fa-bounce icon"
+                                ></i
+                                >@rollingcodeschool</a
+                            >
+                            <a
+                                class="links"
+                                href="https://twitter.com/rollingcodeok?lang=es"
+                                ><i
+                                    class="fa-brands fa-square-x-twitter fa-bounce icon"
+                                ></i
+                                >@rollingcodeok</a
+                            >
+                        </div>
+                        <script
+                            src="https://kit.fontawesome.com/204623838c.js"
+                            crossorigin="anonymous"
+                        ></script>
+                    </div>
+                </div>
+                <p class="m-0 text-light">
+                    <small
+                        >By
+                        <a href="../pages/error.html" class="text-light"
+                            >Games SA</a
+                        >
+                        -
+                        <a
+                            href="https://rollingcodeschool.com/"
+                            class="text-light"
+                            >Rolling Code</a
+                        ></small
+                    >
+                </p>
+                <p class="m-0 text-light">
+                    <small>&copy; Todos los derechos reservados</small>
+                </p>
+            </div>
+        </footer>
         <script
             src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -76,6 +266,7 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"
         ></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="./app.js"></script>
     </body>
 </html>
