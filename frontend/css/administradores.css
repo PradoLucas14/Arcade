@@ -45,3 +45,6 @@ body{
 .destacar:hover{
     background-color:#cfb20f ;
 }
+.destacado {
+    background-color: yellow; /* Puedes cambiar el color según tus preferencias */
+}

@@ -45,5 +45,26 @@
       "imagen3": "lllll",
       "id": 3
     }
+  ],
+  "usuarios": [
+    {
+      "id": "1",
+      "nombre": "administracion@gmail.com",
+      "contraseña": "caritafeliz"
+    }
+  ],
+  "destacados": [
+    {
+      "id": 1,
+      "titulo": "The Legend of Zelda: Breath of the Wild",
+      "desarrolladora": "Nintendo",
+      "imagen2": "https://example.com/zelda_breath_of_the_wild.jpg"
+    },
+    {
+      "id": 2,
+      "titulo": "Tony Hawk",
+      "desarrolladora": "EA sports",
+      "imagen2": "jjjjj"
+    }
   ]
 }
