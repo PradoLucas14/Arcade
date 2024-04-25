@@ -2,6 +2,7 @@ body{
 	background-color: #212121;
 	color: white;
 }
+
 .bg-image{
 	height: 100vh;
 	background-size: cover;
@@ -13,19 +14,37 @@ body{
 	height: 100vh;
 	
 }
+*{
+    font-family: "Poppins", sans-serif;
+}
+
+
+
 .navbar{
 	transition: all 0.5s;
 	padding: 10px 25px;
 }
 .navbar-scrolled{
-	background-color: darkred;
+	background-color: rgb(139, 37, 37,0.9);
 	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
 }
+
+
+.titulo-pagina{
+	color: red;
+	font-weight: bold;
+}
+
 
 .navbar-scrolled {
 	padding-top: 5px;
 	padding-bottom: 5px;
   }
+
+.navbar{
+	transition: all 0.5s;
+	padding: 10px 25px;
+}
 
 .boton-catalogo{
 	background-color: rgb(221, 70, 70);
@@ -34,6 +53,7 @@ body{
 	padding: 10px 20px;
 	margin-top: 1rem;
 	border: none;
+	width: 70%;
 }
 .txt-boton-catalogo{	
 	text-decoration: none;

@@ -14,7 +14,10 @@
 }
 
 
-
+.titulo-pagina{
+	color: red;
+	font-weight: bold;
+}
 
 
 .navbar-scrolled {
@@ -349,3 +352,4 @@ body{
 		font-size: 0.6rem;
 	}
 }
+

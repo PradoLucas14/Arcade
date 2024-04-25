@@ -33,6 +33,17 @@ fetch('http://localhost:3000/usuarios', {
   })
 });
 
+
+const navElement = document.querySelector('.navbar');
+window.addEventListener('scroll', () =>{
+    if(window.scrollY>50){
+        navElement.classList.add('navbar-scrolled')
+    }
+    else{
+        navElement.classList.remove('navbar-scrolled')
+    }
+});
+
 const passRec1 = document.querySelector('#part1');
 const passRec2 = document.querySelector('#part2');
 const passRec3 = document.querySelector('#part3');
