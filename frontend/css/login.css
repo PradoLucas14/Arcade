@@ -3,6 +3,39 @@
   font-size: 14px;
 }
 
+*{
+  font-family: "Poppins", sans-serif;
+}
+
+
+
+.navbar{
+transition: all 0.5s;
+padding: 10px 25px;
+}
+.navbar-scrolled{
+background-color: rgb(139, 37, 37,0.9);
+box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+}
+
+
+.titulo-pagina{
+color: red;
+font-weight: bold;
+}
+
+
+.navbar-scrolled {
+padding-top: 5px;
+padding-bottom: 5px;
+}
+
+.navbar{
+transition: all 0.5s;
+padding: 10px 25px;
+}
+
+
 @media (min-width:768px) {
   .body-login {
     font-size: 16px;
@@ -10,7 +43,7 @@
 
 }
 
-.container {
+.container-main {
   position: relative;
   height: 100vh;
 }
@@ -135,4 +168,63 @@ a {
 #codigo4 {
   width: 12%;
   margin: 12px;
+}
+
+
+/*Footer*/
+
+.footer {
+  position: absolute;
+  background-color: rgb(20, 20, 20);
+}
+
+.paginas {
+  border: none;
+  border-right: 1px solid wheat;
+}
+
+.container-redes h2 {
+  font-size: 1rem;
+}
+
+.container-about p {
+  color: #fff;
+  font-family: "Poppins";
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.container-redes {
+  color: #fff;
+  font-size: 0.9rem;
+  font-family: "Poppins";
+}
+
+.container-redes-sociales {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: row;
+}
+
+.links {
+  color: #fff;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  line-height: 50px;
+  text-decoration: none;
+  justify-content: center;
+  margin-right: 24px;
+}
+
+.container-redes-sociales .icon {
+  font-size: 1.6rem;
+  margin-right: 8px;
+}
+
+
+@media (min-width:768px) {
+  .container-about {
+    width: 100%;
+  }
 }

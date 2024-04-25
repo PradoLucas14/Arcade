@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="author" content="Grupo-1" />
-        <meta name="description" content="Blog de turismo de Tucuman" />
+        <meta name="author" content="Grupo-3" />
+        <meta name="description" content="Pagina de compras de videojuegos" />
         <meta name="keywords" content="Videojuegos" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -37,7 +37,7 @@
         <header>
             <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
                 <a class="navbar-brand" href="./index.html"
-                    >RG<span class="sr-only"> (inicio)</span></a
+                    >AR<span class="titulo-pagina">CADE</span></a
                 >
                 <button
                     class="navbar-toggler"
@@ -56,7 +56,7 @@
                             <a
                                 class="nav-link"
                                 href="./pages/auxiliar-catalogo.html"
-                                >Catalogo
+                                >Inicio
                             </a>
                         </li>
                         <li class="nav-item">
@@ -65,12 +65,14 @@
                             >
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="./pages/login.html"
+                                >Registro</a
+                            >
+                        </li>
+                        <li class="nav-item administar-show administrar-noShow">
                             <a class="nav-link" href="./pages/adminstrador.html"
                                 >Administrar</a
                             >
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Disabled</a>
                         </li>
                     </ul>
                 </div>
@@ -91,8 +93,9 @@
                             <div>
                                 <h1
                                     id="gameTitulo"
-                                    class="display-1 text-light mb-4"
+                                    class="display-1 text-light mb-2"
                                 ></h1>
+                                <div id="categoriaDestacado"></div>
                                 <div class="justify-content-center mt-2 d-flex">
                                     <button
                                         onclick="paginaError()"

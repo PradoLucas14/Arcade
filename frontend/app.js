@@ -8,9 +8,11 @@ function getDestacado() {
         }).then(response => response.json()).then(data => {
             const juegoDestacado = document.getElementById("destacado-imagen");
             const tituloDestacado = document.getElementById("gameTitulo");
+            const descripcionDestacado = document.getElementById("categoriaDestacado");
             idDestacadoGlobal =  data[0].id;
             tituloDestacado.innerHTML = `${data[0].titulo.toUpperCase()}
             `;
+            descripcionDestacado.innerHTML = `<p class="fs-5 "> <span>Desarrolladora:</span> ${data[0].desarrollador}<br><br> <span>Genero:</span> ${data[0].genero}<br><br><span>Año:</span> ${data[0].anio }</p>`;
             juegoDestacado.setAttribute("src",`${data[0].imagen1}`);
             console.log(`Fondo establecido: ${juegoDestacado.style.backgroundImage}`);
             
