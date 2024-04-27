@@ -213,7 +213,9 @@
 		{
 			"id": "1",
 			"nombre": "administracion@gmail.com",
-			"contraseña": "caritafeliz"
+			"contraseña": "caritafeliz",
+			"logeado": true,
+			"admin": true
 		}
 	],
 	"destacado": [
