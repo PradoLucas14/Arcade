@@ -56,7 +56,7 @@
 			"imagen1": "jjjjj",
 			"imagen2": "https://s.13.cl/sites/default/files/styles/manualcrop_850x475/public/esports/articulo/field-imagen/2020-05/tony-hawk-pro-skater-1-2-ps4-xbox-pc.jpg.jpeg?itok=whbuGsWS",
 			"imagen3": "lllll",
-			"id": 4
+			"id": "4"
 		},
 		{
 			"titulo": "FC24",
@@ -71,7 +71,7 @@
 			"imagen1": "jjjjj",
 			"imagen2": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTm3iY5VpR6MYKE8sXnB_D6R-KCjrhVWXGSLwmXewtlvEcy8N9XhgrEEzDMZmjfxfqZIM0&usqp=CAU",
 			"imagen3": "lllll",
-			"id": 5
+			"id": "5"
 		},
 		{
 			"titulo": "Forza Horizon 5",
@@ -86,7 +86,7 @@
 			"imagen1": "jjjjj",
 			"imagen2": "https://cdn.akamai.steamstatic.com/steam/apps/1613284/capsule_616x353.jpg?t=1703992150",
 			"imagen3": "lllll",
-			"id": 9
+			"id": "9"
 		},
 		{
 			"titulo": "Golf It!",
@@ -101,7 +101,7 @@
 			"imagen1": "jjjjj",
 			"imagen2": "https://cdn.akamai.steamstatic.com/steam/apps/571740/header.jpg?t=1707842297",
 			"imagen3": "lllll",
-			"id": 8
+			"id": "8"
 		},
 		{
 			"titulo": "NBA 2k24",
@@ -116,7 +116,7 @@
 			"imagen1": "jjjjj",
 			"imagen2": "https://www.rionegro.com.ar/wp-content/uploads/2023/07/nba-2k24-3076852.jpg",
 			"imagen3": "lllll",
-			"id": 6
+			"id": "6"
 		},
 		{
 			"titulo": "DIRT 3",
@@ -131,7 +131,7 @@
 			"imagen1": "jjjjj",
 			"imagen2": "https://store-images.s-microsoft.com/image/apps.19691.63364677329280742.1477c0d6-a405-4195-abb5-d54b754e4de4.60d21816-c671-4fe2-bbc0-26706b2dfd0e?q=90&w=480&h=270",
 			"imagen3": "lllll",
-			"id": 7
+			"id": "7"
 		},
 		{
 			"id": "12",
@@ -218,18 +218,18 @@
 	],
 	"destacado": [
 		{
-			"id": "1",
-			"titulo": "The Legend of Zelda: Breath of the Wild",
-			"desarrollador": "Nintendo",
-			"anio": 2017,
-			"plataforma": "Switch",
+			"id": "2",
+			"titulo": "Need for Speed: Rivals",
+			"desarrollador": "Electronics Arts",
+			"anio": 2013,
 			"publicado": "true",
-			"tamanio": "39GB",
-			"precio": "60000",
-			"genero": "Aventura",
-			"descripcion": "En este juego de aventuras de mundo abierto, los jugadores controlan a Link, quien despierta de un largo sueño para encontrarse en un Hyrule devastado. Deben explorar el vasto mundo, derrotar enemigos y resolver puzles para salvar el reino de Ganon.",
-			"imagen1": "https://zelda.nintendo.com/breath-of-the-wild/assets/media/header/Main-Day.jpg",
-			"imagen2": "https://s.13.cl/sites/default/files/esports/articulo/field-imagen/2022-01/portadazelda.jpg",
+			"plataforma": "Multiplataforma",
+			"genero": "Deporte",
+			"tamanio": "20GB",
+			"precio": "30000",
+			"descripcion": "El modo de jugabilidad es similar al de Need for Speed: Hot Pursuit (2010) ofreciendo la opción de escoger dos bandos: corredor u oficial de la ley. Ambos bandos ofrecerán distintos modos de juego así como recompensas, desafíos, entre otros. Todos los eventos, desafíos, etc; residen en un mundo abierto lleno de saltos, rampas y cámaras de velocidad llamado Redview County que tiene mucho que ver en tanto a la grandeza, atajos y lugares desconocidos como en Need for Speed: Most Wanted (2012) y la orografía de montañas, acantilados y colinas sumamente empinadas como las de Need for Speed: Hot Pursuit (2010).",
+			"imagen1": "https://img2-levelup.buscafs.com/154803.jpg",
+			"imagen2": "https://cdn.akamai.steamstatic.com/steam/apps/1262600/header.jpg?t=1625518950",
 			"imagen3": "https://example.com/zelda_breath_of_the_wild.jpg"
 		}
 	]
