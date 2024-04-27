@@ -1,0 +1,230 @@
+.body-login {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+}
+
+*{
+  font-family: "Poppins", sans-serif;
+}
+
+
+
+.navbar{
+transition: all 0.5s;
+padding: 10px 25px;
+}
+.navbar-scrolled{
+background-color: rgb(139, 37, 37,0.9);
+box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+}
+
+
+.titulo-pagina{
+color: red;
+font-weight: bold;
+}
+
+
+.navbar-scrolled {
+padding-top: 5px;
+padding-bottom: 5px;
+}
+
+.navbar{
+transition: all 0.5s;
+padding: 10px 25px;
+}
+
+
+@media (min-width:768px) {
+  .body-login {
+    font-size: 16px;
+  }
+
+}
+
+.container-main {
+  position: relative;
+  height: 100vh;
+}
+
+.box {
+  position: absolute;
+  border: none;
+  border-radius: 10px;
+  box-sizing: border-box;
+  display: flex;
+  text-align: center;
+  padding: 10% 3%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #101217;
+}
+
+@media (min-width:768px) {
+  .box {
+    padding: 5% 5%;
+  }
+
+}
+
+.image-wrapper {
+  position: absolute;
+  margin-top: 0;
+  margin-left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.image-wrapper>.image {
+  background-image: url("https://image-cdn.essentiallysports.com/wp-content/uploads/video-games-1-2.jpg?width=900");
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.image-wrapper>.overlay {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: .75;
+}
+
+.content {
+  color: white;
+  padding-bottom: 24px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.btn,
+.btn:hover {
+  background-color: none;
+  border: 2px solid white;
+  color: white;
+  border-radius: 8px;
+  width: 200px;
+}
+
+.input {
+  width: 100%;
+  background-color: #212121;
+  border: none;
+  border-radius: 4px;
+}
+
+.check {
+  width: 20px;
+  height: 20px;
+  margin-top: 12px;
+  border: none;
+  background-color: #212121;
+}
+
+
+.label {
+  text-transform: uppercase;
+}
+
+.links:hover {
+  color: gray;
+  text-decoration: underline;
+}
+
+.modal-content {
+  margin-top: 10%;
+}
+
+.campo {
+  display: flex;
+  justify-content: end;
+  padding-bottom: 10%;
+  padding: 12px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.codigos-4 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#codigo1,
+#codigo2,
+#codigo3,
+#codigo4 {
+  width: 12%;
+  margin: 12px;
+}
+
+
+/*Footer*/
+
+.footer {
+  position: absolute;
+  background-color: rgb(20, 20, 20);
+}
+
+.paginas {
+  border: none;
+  border-right: 1px solid wheat;
+}
+
+.container-redes h2 {
+  font-size: 1rem;
+}
+
+.container-about p {
+  color: #fff;
+  font-family: "Poppins";
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.container-redes {
+  color: #fff;
+  font-size: 0.9rem;
+  font-family: "Poppins";
+}
+
+.container-redes-sociales {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: row;
+}
+
+.links {
+  color: #fff;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  line-height: 50px;
+  text-decoration: none;
+  justify-content: center;
+  margin-right: 24px;
+}
+
+.container-redes-sociales .icon {
+  font-size: 1.6rem;
+  margin-right: 8px;
+}
+
+
+@media (min-width:768px) {
+  .container-about {
+    width: 100%;
+  }
+}
