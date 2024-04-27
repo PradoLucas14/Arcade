@@ -6,10 +6,10 @@
       "desarrollador": "Nintendo",
       "anio": "2018",
       "plataforma": "Switch",
-      "publicado": false,
+      "publicado": "true",
       "tamanio": "39GB",
       "precio": "60000",
-      "genero": "Accion / Aventura",
+      "genero": "Aventura",
       "descripcion": "En este juego de aventuras de mundo abierto",
       "imagen1": "https://example.com/zelda_breath_of_the_wild.jpg",
       "imagen2": "https://example.com/zelda_breath_of_the_wild.jpg",
@@ -59,12 +59,6 @@
       "titulo": "The Legend of Zelda: Breath of the Wild",
       "desarrolladora": "Nintendo",
       "imagen2": "https://example.com/zelda_breath_of_the_wild.jpg"
-    },
-    {
-      "id": 2,
-      "titulo": "Tony Hawk",
-      "desarrolladora": "EA sports",
-      "imagen2": "jjjjj"
     }
   ]
 }

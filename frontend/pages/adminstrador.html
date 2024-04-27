@@ -107,7 +107,7 @@
             <div class="modal-body">
               <!-- Formulario -->
               <form id="formularioJuego">
-                <label for="titulo">Título:</label>
+                <label for="titulo" class="text-dark">Título:</label>
                 <input id="titulo" type="text" class="form-control"><br>
                 
                 <label for="desarrollador">Desarrollador:</label>
@@ -121,16 +121,17 @@
                 
                 <label for="genero">Género:</label>
                 <select id="genero" class="form-control">
-                    <option value="Aventura">Aventura</option>
-                    <option value="Acción">Acción</option>
-                    <option value="Estrategia">Estrategia</option>
-                    <option value="RPG">RPG</option>
+                  <option value="Aventura">Aventura</option>
+                  <option value="Acción">Acción</option>
+                  <option value="Estrategia">Estrategia</option>
+                  <option value="RPG">RPG</option>
+                  <option value="Deporte">Deporte</option>
                 </select><br> 
                 
-                <label for="genero">Tamaño:</label>
-                <input id="tamanio" type="text" class="form-control"><br>
+                <label for="tamanio">Tamaño:</label>
+                <input id="tamanio" name="tamanio" type="text" class="form-control"><br>
 
-                <label for="genero">Precio:</label>
+                <label for="precio">Precio:</label>
                 <input id="precio" type="number" class="form-control"><br>
 
                 <label for="descripcion">Descripción:</label>
@@ -138,8 +139,8 @@
                 
                 <label for="">Publicado en la pagina:</label>
                 <select id="publicado" class="form-control">
-                    <option value="true">Si</option>
-                    <option value="false">No</option>
+                    <option value= true >Si</option>
+                    <option value= false >No</option>
                 </select><br>
 
                 <label for="imagen1">URL Imagen 1:</label>
@@ -183,10 +184,28 @@
             <input id="editPlataforma" type="text" class="form-control"><br>
   
             <label for="editGenero">Género:</label>
-            <input id="editGenero" type="text" class="form-control"><br>
+            <select id="editGenero" class="form-control">
+                <option value="Aventura">Aventura</option>
+                <option value="Acción">Acción</option>
+                <option value="Estrategia">Estrategia</option>
+                <option value="RPG">RPG</option>
+                <option value="Deporte">Deporte</option>
+            </select><br> 
+
+            <label for="editTamanio">Tamaño:</label>
+            <input id="editTamanio" type="text" class="form-control"><br>
+  
+            <label for="editPrecio">Precio:</label>
+            <input id="editPrecio" type="number" class="form-control"><br>
   
             <label for="editDescripcion">Descripción:</label>
             <input id="editDescripcion" type="text" class="form-control"><br>
+
+            <label for="">Publicado en la pagina:</label>
+                <select id="editPublicado" class="form-control">
+                    <option value= true >Si</option>
+                    <option value= false >No</option>
+                </select><br>
   
             <label for="editImagen1">URL Imagen 1:</label>
             <input id="editImagen1" type="text" class="form-control"><br>
@@ -196,12 +215,6 @@
   
             <label for="editImagen3">URL Imagen 3:</label>
             <input id="editImagen3" type="text" class="form-control"><br>
-  
-            <label for="editTamanio">Tamaño:</label>
-            <input id="editTamanio" type="text" class="form-control"><br>
-  
-            <label for="editPrecio">Precio:</label>
-            <input id="editPrecio" type="number" class="form-control"><br>
   
             <button type="button" id="btnGuardarEdicion" class="btn btn-primary">Guardar Cambios</button>
           </form>
