@@ -12,7 +12,7 @@ function getDestacado() {
             idDestacadoGlobal =  data[0].id;
             tituloDestacado.innerHTML = `${data[0].titulo.toUpperCase()}
             `;
-            descripcionDestacado.innerHTML = `<p class="fs-5 "> <span>Desarrolladora:</span> ${data[0].desarrollador}<br><br> <span>Genero:</span> ${data[0].genero}<br><br><span>Año:</span> ${data[0].anio }</p>`;
+            descripcionDestacado.innerHTML = `<p class="datos-destacado"> <span>Desarrolladora:</span> ${data[0].desarrollador}<br><br> <span>Genero:</span> ${data[0].genero}<br><br><span>Año:</span> ${data[0].anio }</p>`;
             juegoDestacado.setAttribute("src",`${data[0].imagen1}`);
             console.log(`Fondo establecido: ${juegoDestacado.style.backgroundImage}`);
             
@@ -53,6 +53,87 @@ window.addEventListener('scroll', () =>{
     }
 });
 
+//? Administrador, login, registro y cerrar sesión 
+
+const linkNoLog = document.querySelectorAll('.sin-loguear');
+const linkLog = document.querySelectorAll('.logueado');
+const linkAdmin = document.querySelectorAll('.administrar-navbar');
+
+
+//revisar usuarios y si hay alguno logueado
+
+fetch('http://localhost:3000/usuarios', {
+  method: 'GET',
+}).then(response => response.json()).then(data => {
+        const usuarioLogueado = data.find(usuario => usuario.logueado);
+        if(usuarioLogueado){
+            if(usuarioLogueado.admin){
+            console.log("esta logueado el admin");
+            linkAdmin.forEach(link =>{
+                link.style.display="block";
+            })
+            linkNoLog.forEach(link =>{
+                link.style.display="none";
+            })
+            linkLog.forEach(link =>{
+                link.style.display="block";
+            })
+        }else{
+            linkNoLog.forEach(link =>{
+                link.style.display="none";
+            })
+            console.log("esta logueado un random");
+            linkLog.forEach(link =>{
+                link.style.display="block";
+            })
+            linkAdmin.forEach(link =>{
+                link.style.display="none";
+            })
+        }
+        }
+        else{
+            console.log("no esta logueado nadie");
+            linkLog.forEach(link =>{
+                link.style.display="none";
+            })
+            linkAdmin.forEach(link =>{
+                link.style.display="none";
+            })
+            linkNoLog.forEach(link =>{
+                link.style.display="block";
+            })
+        }
+    }
+);
+
+//Cerrar sesion de usuario
+const linkSesion = document.getElementById('cerrar-sesion');
+
+async function cerrarSesion(event){
+     try {
+        event.preventDefault();
+        const response = await axios.get("http://localhost:3000/usuarios");
+        const usuarios = response.data;
+        const usuarioLogueado = usuarios.find(usuario => usuario.logueado);
+        if (usuarioLogueado) {
+            usuarioLogueado.logueado = false;
+
+            // Actualizar el estado del usuario en el servidor
+            await axios.patch(`http://localhost:3000/usuarios/${usuarioLogueado.id}`, { logueado: false });
+
+            console.log("Usuario deslogueado:", usuarioLogueado.nombre);
+            console.log("Estado de logueo actual:", usuarioLogueado.logueado);
+        } else {
+            console.log("No hay ningún usuario logueado.");
+        }
+    } catch (error) {
+        console.error("Error al cerrar sesión:", error);
+    }
+};
+
+linkSesion.addEventListener("click",cerrarSesion);
+
+
 // ? Generación categorías
 const apiUrlJuegos = 'http://localhost:3000/juegos';
 function sliderMaker(categoria,clases) {
@@ -70,13 +151,11 @@ function sliderMaker(categoria,clases) {
                                 alt=${juego.titulo}
                         /></a>
                     </div>`;
-                if(juego.genero === categoria && juego.publicado === "true"){
+                if(juego.genero === categoria && juego.publicado === true){
                     sliderContenedor.innerHTML += juegoCard;
-                    console.log("Se agregó una tarjeta")
                 }
                 else{ 
-                    console.log(`No hay nada que agregar: ${juego.publicado} y ${juego.genero}`);
-                    console.log(juego.genero === clases && juego.publicado === true);
+                   
                 }
         })
         colocarIndicadores(clases);
@@ -91,6 +170,7 @@ function sliderMaker(categoria,clases) {
 
 sliderMaker("Deporte","sport");
 sliderMaker("Aventura","adventure");
+sliderMaker("Acción","action");
 
 
 // ? Funcionamiento para categorias
@@ -100,12 +180,13 @@ sliderMaker("Aventura","adventure");
 function colocarIndicadores(clases) {   
     const fila = document.querySelector(`.${clases}-carousel `);
     const paginas = Math.ceil(document.querySelectorAll(`.${clases}-jueguito`).length/5);
+    const flechaIzquierda = document.getElementById(`flecha-izquierda-${clases}`);
+    const flechaDerecha = document.getElementById(`flecha-derecha-${clases}`);
     if(paginas == 1){
         flechaDerecha.style.display="none";
         flechaIzquierda.style.display="none";
     }
     else{
-        console.log(paginas);
         for (let i = 0; i<paginas; i++){
             const indicador = document.createElement('button');
             document.querySelector(`.indicadores-${clases}`).appendChild(indicador);

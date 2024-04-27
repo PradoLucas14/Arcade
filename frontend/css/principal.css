@@ -19,6 +19,10 @@
 	font-weight: bold;
 }
 
+.navbar-brand{
+	font-size: 1.6rem;
+}
+
 
 .navbar-scrolled {
 	padding-top: 5px;
@@ -30,6 +34,13 @@
 	padding: 10px 25px;
 }
 
+.logueado{
+	display: none;
+}
+
+.administrar-navbar{
+	display: none;
+}
 
 
 /*Lo del body esta solo para que se vea la navbar y el scrolleo*/
@@ -79,7 +90,15 @@ body{
 }
 
 #gameBanner{
-	filter: brightness(0.8);
+	filter: brightness(0.65);
+}
+
+.datos-destacado{
+	color: white;
+	font-size: 1.2rem;
+}
+.datos-destacado span{
+	font-weight: 600;
 }
 	
 /* Banner */
@@ -172,6 +191,7 @@ body{
 
 /*carrousel*/
 
+
 .juegos-destacados .contenedor-carousel{
 	width: 100%;
 	padding: 15px 0 ;
@@ -262,9 +282,18 @@ body{
 /* Media query */
 
 @media screen and (max-width: 800px){
+	.nav-link{
+		font-size: 0.8rem !important;
+		padding: 5px 3.5px !important;
+		transition: 0.3s ease all;
+	}
+	.navbar-brand{
+		font-size: 1.5rem;
+		transition: 0.3s ease all;
+	}
 	#gameTitulo{
 		font-size: 3rem;
-		transition: 0.2s ease all;
+		transition: 0.5s ease all;
 	}
 	.text-banner .btn{
 		font-size: 1rem;
@@ -296,6 +325,10 @@ body{
 	.juegos-destacados .flecha-izquierda {
 		display: none;
 	}
+	.datos-destacado{
+		font-size: 1rem;
+		transition: 0.3s ease all;
+	}
 }
 
 @media screen and (max-width: 650px){
@@ -309,9 +342,14 @@ body{
 		transition: 0.5s ease all;
 		font-size: 0.75rem;
 	}
+	.datos-destacado{
+		font-size: 0.8rem;
+		transition: 0.3s ease all;
+	}
 }
 
 @media screen and (max-width: 575px){
+
 	.navbar-expand-sm{
 		background-color: rgb(139, 37, 37,0.9);
 		box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
