@@ -1,6 +1,50 @@
+body{
+    background-color: black;
+    color: red;
+}
 .admin{
     display: flex;
     align-items: center;
     justify-content: space-around;
     padding-top: 50px;
+}
+.table-bordered-custom {
+    border-color: black;
+    border-width: 2px;
+}
+.table-bordered-custom th,
+.table-bordered-custom td {
+    border-color: black;
+    border-width: 2px;
+}
+.encabezado th{
+    background-color: #DE0202;
+    color: #fff;
+}
+.fila td{
+    background-color:rgb(184, 184, 184);
+}
+.editar{
+    background-color: green;
+    transition: 0.2s;
+}
+.editar:hover{
+    background-color: #044A04;
+}
+.eliminar{
+    background-color: #DE0202;
+    transition: 0.2s;
+}
+.eliminar:hover{
+    background-color: #961414;
+}
+.destacar{
+    background-color: #FFD900;
+    transform: 0.2s;
+}
+.destacar:hover{
+    background-color:#cfb20f ;
+}
+.destacado {
+    background-color: yellow; /* Puedes cambiar el color según tus preferencias */
 }
