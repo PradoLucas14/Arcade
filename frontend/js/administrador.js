@@ -1,23 +1,24 @@
 //METODO POST
 
-async function createJuego(){
-    const titulo = document.getElementById("titulo").value
-    const desarrollador = document.getElementById("desarrollador").value
-    const anio = document.getElementById("anio").value
-    const plataforma = document.getElementById("plataforma").value
-    const genero = document.getElementById("genero").value
-    const tamanio = document.getElementById("tamanio").value
-    const precio = document.getElementById("precio").value
-    const descripcion = document.getElementById("descripcion").value
-    const publicado = document.getElementById("publicado").value
-    const imagen1 = document.getElementById("imagen1").value
-    const imagen2 = document.getElementById("imagen2").value
-    const imagen3 = document.getElementById("imagen3").value
+async function createJuego() {
+    const titulo = document.getElementById("titulo").value;
+    const desarrollador = document.getElementById("desarrollador").value;
+    const anio = document.getElementById("anio").value;
+    const plataforma = document.getElementById("plataforma").value;
+    const genero = document.getElementById("genero").value;
+    const tamanio = document.getElementById("tamanio").value;
+    const precio = document.getElementById("precio").value;
+    const descripcion = document.getElementById("descripcion").value;
+    const publicadoString = document.getElementById("publicado").value;
+    const publicado = publicadoString === "true";
+    const imagen1 = document.getElementById("imagen1").value;
+    const imagen2 = document.getElementById("imagen2").value;
+    const imagen3 = document.getElementById("imagen3").value;
 
-    if(titulo !== "" && desarrollador !== "" && anio !== "" &&
+    if (titulo !== "" && desarrollador !== "" && anio !== "" &&
         plataforma !== "" && genero !== "" && descripcion !== "" &&
-        publicado !== "" && tamanio !== "" && precio !=="" &&
-        imagen1 !== "" && imagen2 !== "" && imagen3 !== ""){
+        publicado !== "" && tamanio !== "" && precio !== "" &&
+        imagen1 !== "" && imagen2 !== "" && imagen3 !== "") {
 
         const nuevoJuego = {
             titulo: titulo,
@@ -32,22 +33,44 @@ async function createJuego(){
             imagen1: imagen1,
             imagen2: imagen2,
             imagen3: imagen3
-        }
+        };
 
         try {
-            const res = await axios.post("http://localhost:3000/juegos" , nuevoJuego);
-            alert("Se registró un juego nuevo");
-            return;
+            await axios.post("http://localhost:3000/juegos", nuevoJuego);
+            Swal.fire({
+                title: '¡Éxito!',
+                text: 'Se registró un juego nuevo',
+                icon: 'success',
+                timer: 3000, // Duración en milisegundos (3 segundos en este caso)
+                timerProgressBar: true, // Barra de progreso
+                showConfirmButton: false // No mostrar el botón de confirmación
+            });
         } catch (error) {
-            alert("No se pudo registrar el juego");
-            return;
+            Swal.fire({
+                title: '¡Error!',
+                text: 'No se pudo registrar el juego',
+                icon: 'error',
+                timer: 3000,
+                timerProgressBar: true,
+                showConfirmButton: false
+            });
         }
-    }else{
-        alert("Se deben ingresar todos los campos");
+    } else {
+        Swal.fire({
+            title: '¡Advertencia!',
+            text: 'Se deben ingresar todos los campos',
+            icon: 'warning',
+            timer: 3000,
+            timerProgressBar: true,
+            showConfirmButton: false
+        });
     }
 }
 
 //metodo get
+// Variables para paginación
+let paginaActual = 1;
+const resultadosPorPagina = 10;
 
 async function getJuegos() {
     try {
@@ -59,12 +82,16 @@ async function getJuegos() {
     }
 }
 
-
 function mostrarJuegosEnTabla(juegos) {
+    // Obtener el índice inicial y final de los juegos para la página actual
+    const indiceInicio = (paginaActual - 1) * resultadosPorPagina;
+    const indiceFin = paginaActual * resultadosPorPagina;
+    const juegosPaginados = juegos.slice(indiceInicio, indiceFin);
+
     const tablaJuegos = document.getElementById("tablaJuegos");
-    tablaJuegos.innerHTML = "";    
-    tablaJuegos.innerHTML
-    juegos.forEach(juego => {
+    tablaJuegos.innerHTML = "";
+
+    juegosPaginados.forEach(juego => {
         const iconoTrue = '<i class="bi bi-check-square-fill"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="green" class="bi bi-check-square-fill" viewBox="0 0 16 16"><path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm10.03 4.97a.75.75 0 0 1 .011 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.75.75 0 0 1 1.08-.022z"/></svg></i>';
         const iconoFalse = '<i class="bi bi-x-square-fill"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#DE0202" class="bi bi-x-square-fill" viewBox="0 0 16 16"><path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708"/></svg></i>';
         
@@ -77,14 +104,14 @@ function mostrarJuegosEnTabla(juegos) {
                 <td class="text-center">${juego.id}</td>
                 <td>${juego.titulo}</td>
                 <td>${juego.genero}</td>
-                <td>${juego.descripcion}</td>
+                <td class="descripcion-celda">${juego.descripcion}</td>
                 <td class="text-center">${iconoPublicado}</td>
                 <td class = "funciones">
-                    <button class="btn btn-sm editar" onclick="editarJuego(${juego.id})"><i class="bi bi-pencil-square"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#fff" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                    <button class="btn btn-sm editar" onclick="editarJuego(${juego.id})"><i class="bi- bi-pencil-square"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#fff" class="bi bi-pencil-square" viewBox="0 0 16 16">
                     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                     <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
                     </svg></i></button>
-                    <button class="btn btn-sm eliminar" onclick="eliminarJuego(${juego.id})"><i class="bi bi-trash3-fill"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#fff" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                    <button class="btn btn-sm eliminar" onclick="eliminarJuego(${juego.id})"><i class="bi- bi-trash3-fill"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#fff" class="bi bi-trash3-fill" viewBox="0 0 16 16">
                     <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
                     </svg></i></button>
                     <button class="btn btn-sm destacar" onclick="destacarJuego(${juego.id})"><i class="bi bi-star-fill"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#fff" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -96,53 +123,58 @@ function mostrarJuegosEnTabla(juegos) {
     });
 }
 
-/*function mostrarJuegosEnTabla(juegos) {
-    const tablaJuegos = document.getElementById("tablaJuegos");
-    tablaJuegos.innerHTML = "";
-    const encabezados = "<tr><th>Codigo</th><th>Título</th><th>Género</th><th>Descripción</th><th>Publicación</th><th>Funciones</th></tr>";
-    tablaJuegos.innerHTML += encabezados;
-    juegos.forEach(juego => {
-        const fila = `
-            <tr>
-                <td>${juego.id}</td>
-                <td>${juego.titulo}</td>
-                <td>${juego.genero}</td>
-                <td>${juego.descripcion}</td>
-                <td>${juego.publicado}</td>
-                <td>
-                    <button class="btn btn-info btn-sm" onclick="editarJuego(${juego.id})"><i class="bi bi-pencil-square"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-                  </svg></i></button>
-                    <button class="btn btn-danger btn-sm" onclick="eliminarJuego(${juego.id})"><i class="bi bi-trash3-fill"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                    <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
-                  </svg></i></button>
-                    <button class="btn btn-info btn-sm" onclick="DestacarJuego(${juego.id})"><i class="bi bi-star"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
-                    <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"/>
-                  </svg></i></button>
-                </td>
-            </tr>`;
-        tablaJuegos.innerHTML += fila;
-    });
-}*/
+// Función para ir a la página anterior
+function irPaginaAnterior() {
+    if (paginaActual > 1) {
+        paginaActual--;
+        getJuegos();
+    }
+}
 
+// Función para ir a la página siguiente
+function irPaginaSiguiente() {
+    paginaActual++;
+    getJuegos();
+}
 
-window.onload = function() {
+// Cargar juegos al cargar la página
+window.onload = function () {
     getJuegos();
 };
 
 async function eliminarJuego(id) {
     try {
-        if (confirm("¿Estás seguro de que quieres eliminar este juego?")) {
+        const result = await Swal.fire({
+            title: '¿Estás seguro?',
+            text: "No podrás revertir esto",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminarlo'
+        });
+
+        if (result.isConfirmed) {
             const response = await axios.delete(`http://localhost:3000/juegos/${id}`);
             console.log("Juego eliminado correctamente:", response.data);
             // Actualizar la tabla de juegos después de eliminar el juego
             getJuegos();
+            Swal.fire(
+                '¡Eliminado!',
+                'El juego ha sido eliminado.',
+                'success'
+            );
         }
     } catch (error) {
         console.error("Error al eliminar el juego:", error);
+        Swal.fire(
+            '¡Error!',
+            'No se pudo eliminar el juego.',
+            'error'
+        );
     }
 }
+
 
 async function editarJuego(id) {
     try {
@@ -182,8 +214,9 @@ async function editarJuego(id) {
                 const imagen3 = document.getElementById("editImagen3").value;
                 const tamanio = document.getElementById("editTamanio").value;
                 const precio = document.getElementById("editPrecio").value;
-                const publicado = document.getElementById("editPublicado").value;
-
+                const publicadoString = document.getElementById("editPublicado").value;
+                const publicado = publicadoString === "true";
+                
                 // Crear objeto con los datos actualizados
                 const datosActualizados = {
                     titulo,
@@ -200,22 +233,51 @@ async function editarJuego(id) {
                     publicado
                 };
 
-                // Enviar solicitud PATCH para actualizar los datos del juego
-                await axios.patch(`http://localhost:3000/juegos/${id}`, datosActualizados);
+                const result = await Swal.fire({
+                    title: '¿Estás seguro?',
+                    text: "Se actualizarán los datos del juego",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sí, actualizar'
+                });
 
-                // Cerrar el modal después de la actualización
-                modal.hide();
+                if (result.isConfirmed) {
+                    // Enviar solicitud PATCH para actualizar los datos del juego
+                    await axios.patch(`http://localhost:3000/juegos/${id}`, datosActualizados);
 
-                // Actualizar la tabla de juegos
-                getJuegos();
+                    // Cerrar el modal después de la actualización
+                    modal.hide();
+
+                    // Actualizar la tabla de juegos
+                    getJuegos();
+
+                    Swal.fire(
+                        '¡Actualizado!',
+                        'Los datos del juego han sido actualizados.',
+                        'success'
+                    );
+                }
             } catch (error) {
                 console.error("Error al actualizar el juego:", error);
+                Swal.fire(
+                    '¡Error!',
+                    'No se pudo actualizar el juego.',
+                    'error'
+                );
             }
         });
     } catch (error) {
         console.error("Error al obtener el juego para editar:", error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Ha ocurrido un error al obtener el juego para editar',
+        });
     }
 }
+
 
 
 async function obtenerDatosJuego(id) {
@@ -241,7 +303,7 @@ async function destacarJuego(id) {
         // Datos del juego seleccionado
         const juegoSeleccionado = {
             titulo: datosJuego.titulo,
-            desarrolladora: datosJuego.desarrolladora,
+            desarrollador: datosJuego.desarrollador,
             imagen2: datosJuego.imagen2
         };
 
@@ -249,15 +311,29 @@ async function destacarJuego(id) {
             // Realizar la solicitud PATCH al servidor JSON utilizando Axios y esperar la respuesta
             const response = await axios.patch(url, juegoSeleccionado);
             console.log('Juego destacado actualizado exitosamente:', response.data);
-            alert("Se actualizó el juego destacado exitosamente");
+            Swal.fire({
+                icon: 'success',
+                title: '¡Éxito!',
+                text: 'Se actualizó el juego destacado exitosamente',
+            });
         } catch (error) {
             console.error('Error al actualizar el juego destacado:', error);
-            alert("No se pudo actualizar el juego destacado");
+            Swal.fire({
+                icon: 'error',
+                title: '¡Error!',
+                text: 'No se pudo actualizar el juego destacado',
+            });
         }
     } else {
         console.error('No se pudieron obtener los datos del juego.');
+        Swal.fire({
+            icon: 'error',
+            title: '¡Error!',
+            text: 'No se pudieron obtener los datos del juego',
+        });
     }
 }
+
 
 
 
