@@ -1,0 +1,235 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Nav bar */
+
+.navbar{
+	transition: all 0.5s;
+	padding: 10px 25px;
+}
+.navbar-scrolled{
+	background-color: rgb(139, 37, 37,0.9);
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+}
+
+
+.titulo-pagina{
+	color: red;
+	font-weight: bold;
+}
+
+.navbar-brand{
+	font-size: 1.6rem;
+}
+
+
+.navbar-scrolled {
+	padding-top: 5px;
+	padding-bottom: 5px;
+  }
+
+.navbar{
+	transition: all 0.5s;
+	padding: 10px 25px;
+}
+
+.logueado{
+	display: none;
+}
+
+.administrar-navbar{
+	display: none;
+}
+
+@media screen and (max-width: 800px){
+	.nav-link{
+		font-size: 0.8rem !important;
+		padding: 5px 3.5px !important;
+		transition: 0.3s ease all;
+	}
+	.navbar-brand{
+		font-size: 1.5rem;
+		transition: 0.3s ease all;
+	}
+}
+
+@media screen and (max-width: 575px){
+
+	.navbar-expand-sm{
+		background-color: rgb(139, 37, 37,0.9);
+		box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+		padding: 5px 15px !important;
+	}
+	
+	.navbar-expand-sm a{
+		font-size: 1rem;
+	}
+	
+	.nav-link{
+		padding: 5px 0;
+		font-size: 0.8rem !important;
+	}
+	
+	.navbar-toggler button{
+		height: 20%;
+	}
+	.navbar-toggler-icon{
+		font-size: 0.75rem;
+	}
+}
+
+
+
+.hero{
+    background-image: url(/frontend/assets/img/imgNosotros/mandoXbox.jpg);
+    width: 100%;
+    height: calc(108vh - 50px);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.hero__overlay{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.contenido{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.title__banner h2{
+    color: #fff;
+    font-size: 80px;
+    margin-bottom: 15px;
+}
+.redes{
+    width: 300px;
+    display: flex;
+    justify-content: center;
+}
+.bi{
+    transition: fill 0.2s ease;
+}
+.bi:hover{
+    fill: rgb(171, 171, 171);
+}
+.redes a{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.descripcion{
+    width: 80%;
+}
+.descripcion p{
+    text-align: justify;
+    font-size: 18px;
+    color: #fff;
+}
+.participantes , .quienesSomos{
+    background-color: black;
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.participantes{
+    padding-bottom: 50px;
+}
+.participantes__title , .quienesSomos__title{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    margin: 25px auto;
+}
+.participantes__title h3 , .quienesSomos__title h3{
+    font-size: 40px;
+    color:#fff;
+    margin-bottom: 10px;
+    position: relative;
+}
+.quienesSomos__title h3::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    display: block;
+    margin: 0 auto;
+    background-color: red;
+}
+.participantes__title h3::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    display: block;
+    margin: 0 auto;
+    background-color: red;
+}
+.participantes__image{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.image{
+    position: relative;
+    max-width: 400px;
+    margin: 2px;
+}
+.image__img{
+    display: block;
+    width: 100%;
+}
+.image__overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+.image__overlay__blur{
+    backdrop-filter: blur(5px);
+}
+.image__overlay > * {
+    transform: translateY(20px);
+    transition: transform 0.25s;
+}
+.image__overlay:hover{
+    opacity: 1;
+}
+.image__overlay:hover > * {
+    transform: translateY(0);
+}
+.image__title{
+    font-size: 2em;
+    font-weight: bold;
+}
+.image__description{
+    font-size: 1.25em;
+    margin-top: 0.25em;
+}

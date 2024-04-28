@@ -1,0 +1,181 @@
+body{
+	background-color: #212121;
+	color: white;
+}
+
+.bg-image{
+	height: 100vh;
+	background-size: cover;
+	background-repeat: no-repeat;
+    background-position: center;
+}
+.mask{
+	background-color: rgba(0, 0, 0, 0.8);
+	height: 100vh;
+	
+}
+*{
+    font-family: "Poppins", sans-serif;
+}
+
+/* Nav bar */
+
+.navbar{
+	transition: all 0.5s;
+	padding: 10px 25px;
+}
+.navbar-scrolled{
+	background-color: rgb(139, 37, 37,0.9);
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+}
+
+
+.titulo-pagina{
+	color: red;
+	font-weight: bold;
+}
+
+.navbar-brand{
+	font-size: 1.6rem;
+}
+
+
+.navbar-scrolled {
+	padding-top: 5px;
+	padding-bottom: 5px;
+  }
+
+.navbar{
+	transition: all 0.5s;
+	padding: 10px 25px;
+}
+
+.logueado{
+	display: none;
+}
+
+.administrar-navbar{
+	display: none;
+}
+
+@media screen and (max-width: 800px){
+	.nav-link{
+		font-size: 0.8rem !important;
+		padding: 5px 3.5px !important;
+		transition: 0.3s ease all;
+	}
+	.navbar-brand{
+		font-size: 1.5rem;
+		transition: 0.3s ease all;
+	}
+}
+
+@media screen and (max-width: 575px){
+
+	.navbar-expand-sm{
+		background-color: rgb(139, 37, 37,0.9);
+		box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+		padding: 5px 15px !important;
+	}
+	
+	.navbar-expand-sm a{
+		font-size: 1rem;
+	}
+	
+	.nav-link{
+		padding: 5px 0;
+		font-size: 0.8rem !important;
+	}
+	
+	.navbar-toggler button{
+		height: 20%;
+	}
+	.navbar-toggler-icon{
+		font-size: 0.75rem;
+	}
+}
+
+/* Detalle y boton de vuelta */
+
+
+.boton-catalogo{
+	background-color: rgb(221, 70, 70);
+	border-radius: 10px;
+	text-align: center;
+	padding: 10px 20px;
+	margin-top: 1rem;
+	border: none;
+	width: 70%;
+}
+.txt-boton-catalogo{	
+	text-decoration: none;
+	color: rgb(255, 255, 255);
+	font-size: 18px;
+}
+.txt-boton-catalogo i{
+	font-size: 22px;
+	vertical-align: middle;
+	color: rgb(255, 255, 255);
+}
+
+.boton-catalogo:hover{
+	background-color: rgb(250, 66, 66);
+	box-shadow: 0 0 20px rgb(224, 102, 71);
+}
+
+.boton-catalogo:hover .txt-boton-catalogo,.boton-catalogo:hover .txt-boton-catalogo i{
+	color: white;
+	text-shadow: 0 0 30px #fff;
+}
+
+
+/*Footer*/
+
+.footer {
+	position: absolute;
+	background-color: rgb(20, 20, 20);
+  }
+  
+  .paginas {
+	border: none;
+	border-right: 1px solid wheat;
+  }
+  
+  .container-redes h2 {
+	font-size: 1rem;
+  }
+  
+  .container-about p {
+	color: #fff;
+	font-family: "Poppins";
+	font-size: 0.9rem;
+	text-align: center;
+  }
+  
+  .container-redes {
+	color: #fff;
+	font-size: 0.9rem;
+	font-family: "Poppins";
+  }
+  
+  .container-redes-sociales {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	flex-direction: row;
+  }
+  
+  .links {
+	color: #fff;
+	font-size: 1rem;
+	font-family: "Poppins", sans-serif;
+	line-height: 50px;
+	text-decoration: none;
+	justify-content: center;
+	margin-right: 24px;
+  }
+  
+  .container-redes-sociales .icon {
+	font-size: 1.6rem;
+	margin-right: 8px;
+  }

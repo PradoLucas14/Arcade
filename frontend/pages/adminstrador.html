@@ -12,7 +12,7 @@
 </head>
 
 <body>
-<!--
+  <!--
   <header>
     <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
         <a class="navbar-brand" href="#">Navbar</a>
@@ -50,7 +50,6 @@
         </div>
     </nav>
 </header> -->
-
     <main class="main">
 
       <section class="hero">
@@ -179,10 +178,13 @@
           </div>
         </div>
       </div>
-    <!---->
+    </div>
+  </div>
+  <!---->
 
-    <!-- Modal de Edición de Juego -->
-<div class="modal fade" id="modalEditarJuego" tabindex="-1" aria-labelledby="modalEditarJuegoLabel" aria-hidden="true">
+  <!-- Modal de Edición de Juego -->
+  <div class="modal fade" id="modalEditarJuego" tabindex="-1" aria-labelledby="modalEditarJuegoLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -194,62 +196,61 @@
           <form id="formEditarJuego">
             <label for="editTitulo">Título:</label>
             <input id="editTitulo" type="text" class="form-control"><br>
-  
+
             <label for="editDesarrollador">Desarrollador:</label>
             <input id="editDesarrollador" type="text" class="form-control"><br>
-  
+
             <label for="editAnio">Año:</label>
             <input id="editAnio" type="number" class="form-control"><br>
-  
+
             <label for="editPlataforma">Plataforma:</label>
             <input id="editPlataforma" type="text" class="form-control"><br>
-  
+
             <label for="editGenero">Género:</label>
             <select id="editGenero" class="form-control">
-                <option value="Aventura">Aventura</option>
-                <option value="Acción">Acción</option>
-                <option value="Estrategia">Estrategia</option>
-                <option value="RPG">RPG</option>
-                <option value="Deporte">Deporte</option>
-            </select><br> 
+              <option value="Aventura">Aventura</option>
+              <option value="Acción">Acción</option>
+              <option value="Estrategia">Estrategia</option>
+              <option value="RPG">RPG</option>
+              <option value="Deporte">Deporte</option>
+            </select><br>
 
             <label for="editTamanio">Tamaño:</label>
             <input id="editTamanio" type="text" class="form-control"><br>
-  
+
             <label for="editPrecio">Precio:</label>
             <input id="editPrecio" type="number" class="form-control"><br>
-  
+
             <label for="editDescripcion">Descripción:</label>
             <input id="editDescripcion" type="text" class="form-control"><br>
 
             <label for="">Publicado en la pagina:</label>
-                <select id="editPublicado" class="form-control">
-                    <option value= true >Si</option>
-                    <option value= false >No</option>
-                </select><br>
-  
+            <select id="editPublicado" class="form-control">
+              <option value=true>Si</option>
+              <option value=false>No</option>
+            </select><br>
+
             <label for="editImagen1">URL Imagen 1:</label>
             <input id="editImagen1" type="text" class="form-control"><br>
-  
+
             <label for="editImagen2">URL Imagen 2:</label>
             <input id="editImagen2" type="text" class="form-control"><br>
-  
+
             <label for="editImagen3">URL Imagen 3:</label>
             <input id="editImagen3" type="text" class="form-control"><br>
-  
+
             <button type="button" id="btnGuardarEdicion" class="btn btn-primary">Guardar Cambios</button>
           </form>
         </div>
       </div>
     </div>
   </div>
-  
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="/frontend/js/administrador.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="../js/administrador.js"></script>
 </body>
 
 </html>
