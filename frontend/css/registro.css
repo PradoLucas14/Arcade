@@ -131,6 +131,18 @@ a {
   color: white;
 }
 
+.password-container {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-password {
+  cursor: pointer;
+  margin-left: -25px;
+  /* Ajusta el espacio entre el input y el ícono */
+  color: black;
+}
+
 .check {
   width: 20px;
   height: 20px;

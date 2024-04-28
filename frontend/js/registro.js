@@ -61,3 +61,20 @@ fetch('http://localhost:3000/usuarios', {
       }
     });
   });
+
+const passwordField = document.getElementById("password");
+
+function togglePasswordVisibility() {
+  const togglePasswordButton = document.getElementById("togglePassword");
+
+  if (passwordField.type === "password") {
+    passwordField.type = "text";
+    togglePasswordButton.innerHTML = '<i class="fa fa-eye-slash" aria-hidden="true"></i>';
+  } else {
+    passwordField.type = "password";
+    togglePasswordButton.innerHTML = '<i class="fa fa-eye" aria-hidden="true"></i>';
+  }
+}
+const togglePasswordButton = document.getElementById("togglePassword");
+
+togglePasswordButton.addEventListener('click', togglePasswordVisibility);

@@ -120,6 +120,7 @@ a {
   background-color: #212121;
   border: none;
   border-radius: 4px;
+  color: white;
 }
 
 .check {
@@ -130,9 +131,20 @@ a {
   background-color: #212121;
 }
 
-
 .label {
   text-transform: uppercase;
+}
+
+.password-container {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-password {
+  cursor: pointer;
+  margin-left: -25px;
+  /* Ajusta el espacio entre el input y el ícono */
+  color: black;
 }
 
 .links:hover {
