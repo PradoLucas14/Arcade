@@ -2,50 +2,53 @@ const nombreUsuarioIngresado = document.querySelector('#user');
 const contraseñaIngresada = document.querySelector('#password');
 const iniciarSesion = document.querySelector('#init');
 const todoForm = document.querySelector('#todo-form');
-let a = 0;
+
+function togglePasswordVisibility() {
+  const passwordField = document.getElementById("password");
+  const togglePasswordButton = document.getElementById("togglePassword");
+
+  if (passwordField.type === "password") {
+    passwordField.type = "text";
+    togglePasswordButton.innerHTML = '<i class="fa fa-eye-slash" aria-hidden="true"></i>';
+  } else {
+    passwordField.type = "password";
+    togglePasswordButton.innerHTML = '<i class="fa fa-eye" aria-hidden="true"></i>';
+  }
+}
+const togglePasswordButton = document.getElementById("togglePassword");
+togglePasswordButton.addEventListener('click', togglePasswordVisibility);
 
 fetch('http://localhost:3000/usuarios', {
   method: 'GET',
 }).then(response => response.json()).then(data => {
-  const nombreuruario = data[0].nombre;
-  const contrasenausuario = data[0].contraseña;
   todoForm.addEventListener('submit', (event) => {
     event.preventDefault();
-  })
+  });
   iniciarSesion.addEventListener('click', () => {
     const inputLogin = document.querySelector('#user');
     const contraseñaLogin = document.querySelector('#password');
-    data.forEach(element => {
-      a = 0;
-      const nombreUsuarioIngresado = document.querySelector('#user');
-      const contraseñaIngresada = document.querySelector('#password');
-      if (element.nombre === nombreUsuarioIngresado.value && element.contraseña === contraseñaIngresada.value) {
-        if (nombreuruario === nombreUsuarioIngresado.value && contrasenausuario === contraseñaIngresada.value) {
-          window.location.href = '../pages/adminstrador.html';
-
-          inputLogin.value = '';
-          contraseñaLogin.value = '';
-        }
-        else {
-          window.location.href = '../pages/principal.html';
-
-          inputLogin.value = '';
-          contraseñaLogin.value = '';
-        }
-      }
-      if (nombreUsuarioIngresado.value === '' && contraseñaIngresada.value === '') {
-        a = 0;
+    const busquedaUsuario = data.find(user => user.nombre === inputLogin.value && user.contraseña === contraseñaLogin.value)
+    if (busquedaUsuario) {
+      if (busquedaUsuario.admin) {
+        logueado(busquedaUsuario.id);
+        inputLogin.value = '';
+        contraseñaLogin.value = '';
+        window.location.href = '../pages/adminstrador.html';
       }
       else {
-        a = 1;
+        logueado(busquedaUsuario.id);
+        inputLogin.value = '';
+        contraseñaLogin.value = '';
+        window.location.href = '../index.html';
       }
-    });
-    if (a === 1) {
-      alert('El usuario o contraseña ingresados no existen');
-      const inputLogin = document.querySelector('#user');
-      const contraseñaLogin = document.querySelector('#password');
-      inputLogin.value = '';
-      contraseñaLogin.value = '';
+    }
+    else {
+      if (inputLogin.value === '' && contraseñaLogin.value === '') { let a = 1 }
+      else {
+        alert('El usuario o contraseña ingresados no existen');
+        inputLogin.value = '';
+        contraseñaLogin.value = '';
+      }
     }
   })
 });
@@ -182,3 +185,16 @@ btnRec3.addEventListener('click', () => {
     aviso2.style.display = "block";
   }
 })
+
+//Funcion logueado
+async function logueado(id) {
+  fetch(`http://localhost:3000/usuarios/${id}`, {
+    method: 'PATCH',
+    body: JSON.stringify({
+      logueado: true,
+    }),
+    headers: {
+      'Content-type': 'application/json'
+    }
+  })
+}
