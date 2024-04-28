@@ -2,46 +2,66 @@ const nombreUsuarioIngresado = document.querySelector('#user');
 const contraseñaIngresada = document.querySelector('#password');
 const iniciarSesion = document.querySelector('#init');
 const todoForm = document.querySelector('#todo-form');
+
+function togglePasswordVisibility() {
+  const passwordField = document.getElementById("password");
+  const togglePasswordButton = document.getElementById("togglePassword");
+
+  if (passwordField.type === "password") {
+    passwordField.type = "text";
+    togglePasswordButton.innerHTML = '<i class="fa fa-eye-slash" aria-hidden="true"></i>';
+  } else {
+    passwordField.type = "password";
+    togglePasswordButton.innerHTML = '<i class="fa fa-eye" aria-hidden="true"></i>';
+  }
+}
+const togglePasswordButton = document.getElementById("togglePassword");
+togglePasswordButton.addEventListener('click', togglePasswordVisibility);
+
 fetch('http://localhost:3000/usuarios', {
   method: 'GET',
 }).then(response => response.json()).then(data => {
-  const nombreuruario = data[0].nombre;
-  const contrasenausuario = data[0].contraseña;
   todoForm.addEventListener('submit', (event) => {
     event.preventDefault();
-  })
+  });
   iniciarSesion.addEventListener('click', () => {
     const inputLogin = document.querySelector('#user');
     const contraseñaLogin = document.querySelector('#password');
-    data.forEach(element => {
-      const nombreUsuarioIngresado = document.querySelector('#user');
-      const contraseñaIngresada = document.querySelector('#password');
-      if (element.nombre === nombreUsuarioIngresado.value && element.contraseña === contraseñaIngresada.value) {
-        if (nombreuruario === nombreUsuarioIngresado.value && contrasenausuario === contraseñaIngresada.value) {
-          window.location.href = '../pages/adminstrador.html';
-
-          inputLogin.value = '';
-          contraseñaLogin.value = '';
-        }
+    const busquedaUsuario = data.find(user => user.nombre === inputLogin.value && user.contraseña === contraseñaLogin.value)
+    if (busquedaUsuario) {
+      if (busquedaUsuario.admin) {
+        logueado(busquedaUsuario.id);
+        inputLogin.value = '';
+        contraseñaLogin.value = '';
+        window.location.href = '../pages/adminstrador.html';
       }
+      else {
+        logueado(busquedaUsuario.id);
+        inputLogin.value = '';
+        contraseñaLogin.value = '';
+        window.location.href = '../index.html';
+      }
+    }
+    else {
+      if (inputLogin.value === '' && contraseñaLogin.value === '') { let a = 1 }
       else {
         alert('El usuario o contraseña ingresados no existen');
         inputLogin.value = '';
         contraseñaLogin.value = '';
       }
-    });
+    }
   })
 });
 
 
 const navElement = document.querySelector('.navbar');
-window.addEventListener('scroll', () =>{
-    if(window.scrollY>50){
-        navElement.classList.add('navbar-scrolled')
-    }
-    else{
-        navElement.classList.remove('navbar-scrolled')
-    }
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    navElement.classList.add('navbar-scrolled')
+  }
+  else {
+    navElement.classList.remove('navbar-scrolled')
+  }
 });
 
 const passRec1 = document.querySelector('#part1');
@@ -87,32 +107,70 @@ function verificacion() {
 
   }
 }
+
 form.addEventListener('submit', (event) => {
   event.preventDefault();
 })
-const codigo1 = document.querySelector('#codigo1');
-const codigo2 = document.querySelector('#codigo2');
-const codigo3 = document.querySelector('#codigo3');
-const codigo4 = document.querySelector('#codigo4');
+
 btnRec1.addEventListener('click', verificacion);
+
+// Obtener todos los inputs
+const codeBoxes = document.querySelectorAll('.codeBoxes');
+
+// Función para manejar el evento input en los inputs
+function handleInput(event, index) {
+  if (event.inputType === 'deleteContentBackward' && index > 0) {
+    codeBoxes[index - 1].focus();
+  } else if (index < codeBoxes.length - 1 && event.data !== null) {
+    codeBoxes[index + 1].focus();
+  }
+}
+
+// Agregar event listeners a los inputs
+codeBoxes.forEach((box, index) => {
+  box.addEventListener('input', (event) => {
+    handleInput(event, index);
+  });
+
+  box.addEventListener('keydown', (event) => {
+    if (event.key === 'Backspace' && index > 0 && box.value.length === 0) {
+      codeBoxes[index - 1].focus();
+    }
+  });
+
+  // Manejar el evento keydown para el último input
+  if (index === codeBoxes.length - 1) {
+    box.addEventListener('keydown', (event) => {
+      if (event.key === 'Backspace' && box.value.length === 0) {
+        codeBoxes[index - 1].focus();
+      }
+    });
+  }
+});
+
+aviso = document.querySelector('#aviso');
+aviso2 = document.querySelector('#aviso2');
+aviso.style.display = "none";
+aviso2.style.display = "none";
+
+// Mostrar el siguiente paso al hacer clic en el botón btnRec2
 btnRec2.addEventListener('click', () => {
-  let codigo = []
-  if (codigo1.value != '' && codigo2.value != '' && codigo3.value != '' && codigo4.value != '') {
-    codigo.push(codigo1);
-    codigo.push(codigo2);
-    codigo.push(codigo3);
-    codigo.push(codigo4);
-  }
-  else {
-    alert('Debe completar con el codigo enviado');
-  }
-  if (codigo.length === 4) {
+  const codigo1 = document.getElementById('codigo1').value;
+  const codigo2 = document.getElementById('codigo2').value;
+  const codigo3 = document.getElementById('codigo3').value;
+  const codigo4 = document.getElementById('codigo4').value;
+
+  // Verificar si todos los inputs tienen algún valor
+  if (codigo1 && codigo2 && codigo3 && codigo4) {
+    // Si todos los inputs están completos, mostrar el siguiente paso
     passRec3.style.display = "block";
     passRec2.style.display = "none";
     passRec1.style.display = "none";
+  } else {
+    aviso.style.display = "block";
   }
-
 });
+
 btnRec3.addEventListener('click', () => {
   let password1 = document.querySelector('#pass1').value;
   let password2 = document.querySelector('#pass2').value;
@@ -120,5 +178,23 @@ btnRec3.addEventListener('click', () => {
   const pass2 = String(password2);
   if (pass1 === pass2) {
     form.submit();
+    password1.value = '';
+    password2.value = '';
+  }
+  else {
+    aviso2.style.display = "block";
   }
 })
+
+//Funcion logueado
+async function logueado(id) {
+  fetch(`http://localhost:3000/usuarios/${id}`, {
+    method: 'PATCH',
+    body: JSON.stringify({
+      logueado: true,
+    }),
+    headers: {
+      'Content-type': 'application/json'
+    }
+  })
+}
