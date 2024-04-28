@@ -134,6 +134,21 @@
       "imagen2": "oooo",
       "imagen3": "pppp",
       "id": 9
+    },
+    {
+      "titulo": "Forza Motor Sport ",
+      "desarrollador": "EA sports",
+      "anio": "2022",
+      "plataforma": "PC",
+      "genero": "Deporte",
+      "tamanio": "100GB",
+      "precio": "87000",
+      "descripcion": "simulador de carreras pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp",
+      "publicado": true,
+      "imagen1": "jjjj",
+      "imagen2": "oooo",
+      "imagen3": "pppp",
+      "id": 10
     }
   ],
   "usuarios": [

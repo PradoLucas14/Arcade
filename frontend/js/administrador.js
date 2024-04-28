@@ -104,7 +104,7 @@ function mostrarJuegosEnTabla(juegos) {
                 <td class="text-center">${juego.id}</td>
                 <td>${juego.titulo}</td>
                 <td>${juego.genero}</td>
-                <td>${juego.descripcion}</td>
+                <td class="descripcion-celda">${juego.descripcion}</td>
                 <td class="text-center">${iconoPublicado}</td>
                 <td class = "funciones">
                     <button class="btn btn-sm editar" onclick="editarJuego(${juego.id})"><i class="bi- bi-pencil-square"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#fff" class="bi bi-pencil-square" viewBox="0 0 16 16">

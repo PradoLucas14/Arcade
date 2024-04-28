@@ -169,4 +169,10 @@ main{
 .numero-pagina{
     margin-left: 5px;
 }
+.descripcion-celda {
+    overflow: hidden; /* Oculta el texto que excede el tamaño de la celda */
+    text-overflow: ellipsis; /* Muestra puntos suspensivos (...) cuando el texto se trunca */
+    white-space: nowrap; /* Evita que el texto se envuelva a la siguiente línea */
+    max-width: 350px; /* Define el ancho máximo de la celda en píxeles */
+}
 
