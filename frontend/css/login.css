@@ -131,7 +131,7 @@
 }
 
 .image-wrapper>.image {
-  background-image: url("https://image-cdn.essentiallysports.com/wp-content/uploads/video-games-1-2.jpg?width=900");
+  background-image: url("https://fondosmil.co/fondo/30546.jpg");
   background-position: center;
   background-size: cover;
   height: 100%;
@@ -172,6 +172,7 @@ a {
   background-color: #212121;
   border: none;
   border-radius: 4px;
+  color: white;
 }
 
 .check {
@@ -182,9 +183,20 @@ a {
   background-color: #212121;
 }
 
-
 .label {
   text-transform: uppercase;
+}
+
+.password-container {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-password {
+  cursor: pointer;
+  margin-left: -25px;
+  /* Ajusta el espacio entre el input y el ícono */
+  color: black;
 }
 
 .links:hover {
@@ -285,8 +297,8 @@ a {
   border: none;
   border-left: 1px solid gray;
   text-align: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
   font-weight: 100;
 }
 
@@ -316,6 +328,14 @@ a {
   text-decoration: none;
   justify-content: space-between;
   margin-left: 24px;
+}
+
+@media (min-width:768px) {
+  .linea {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+
 }
 
 .links:hover {
