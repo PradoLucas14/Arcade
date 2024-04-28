@@ -1,3 +1,85 @@
+/* Nav bar */
+
+.navbar {
+  transition: all 0.5s;
+  padding: 10px 25px;
+}
+
+.navbar-scrolled {
+  background-color: rgb(139, 37, 37, 0.9);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+}
+
+
+.titulo-pagina {
+  color: red;
+  font-weight: bold;
+}
+
+.navbar-brand {
+  font-size: 1.6rem;
+}
+
+
+.navbar-scrolled {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.navbar {
+  transition: all 0.5s;
+  padding: 10px 25px;
+}
+
+.logueado {
+  display: none;
+}
+
+.administrar-navbar {
+  display: none;
+}
+
+@media screen and (max-width: 800px) {
+  .nav-link {
+    font-size: 0.8rem !important;
+    padding: 5px 3.5px !important;
+    transition: 0.3s ease all;
+  }
+
+  .navbar-brand {
+    font-size: 1.5rem;
+    transition: 0.3s ease all;
+  }
+}
+
+@media screen and (max-width: 575px) {
+
+  .navbar-expand-sm {
+    background-color: rgb(139, 37, 37, 0.9);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+    padding: 5px 15px !important;
+  }
+
+  .navbar-expand-sm a {
+    font-size: 1rem;
+  }
+
+  .nav-link {
+    padding: 5px 0;
+    font-size: 0.8rem !important;
+  }
+
+  .navbar-toggler button {
+    height: 20%;
+  }
+
+  .navbar-toggler-icon {
+    font-size: 0.75rem;
+  }
+}
+
+/* Cuerpo del registro*/
+
 .body-registro {
   font-family: "Poppins", sans-serif;
   font-size: 14px;
@@ -12,9 +94,11 @@
 
 .main-bar>.contenedor {
   position: absolute;
-  top: 0;
-  left: 0;
   padding: 32px 24px;
+  top: 5vw;
+  left: 0;
+  height: 100%;
+  width: 100%;
 }
 
 @media (min-width:768px) {
@@ -27,13 +111,11 @@
 .title {
   color: white;
   text-transform: uppercase;
-  width: 100%;
+  font-size: 20px;
 }
 
-.contenedor {
-  position: relative;
-  height: 100%;
-  width: 100%;
+.label {
+  font-size: small;
 }
 
 .row {
@@ -72,6 +154,16 @@
   }
 }
 
+@media (min-width:1200px) {
+  .label {
+    font-size: medium;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+}
+
 .image-wrapper {
   position: absolute;
   margin-top: 0;
@@ -95,7 +187,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  opacity: .5;
+  opacity: .6;
 }
 
 .content {
