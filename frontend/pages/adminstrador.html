@@ -11,10 +11,51 @@
 </head>
 
 <body>
+  <!--
+  <header>
+    <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a
+                        class="nav-link"
+                        href="./pages/auxiliar-catalogo.html"
+                        >Catalogo
+                        <span class="sr-only">(current)</span></a
+                    >
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header> -->
 
-  <header></header>
+  <main class="main">
 
-  <main>
+    <section class="banner">
+      <p>hola soy un banner</p>
+    </section>
+
     <section class="admin">
 
       <div class="titulo">
@@ -34,9 +75,16 @@
     <div class="container">
       <h1 class="my-4">Lista de Juegos</h1>
       <div class="table-responsive">
-        <table class="table table-striped table-bordered">
-          <thead class="table-dark">
-
+        <table class="table table-bordered table-bordered-custom">
+          <thead class="text-center ">
+            <tr class="encabezado">
+              <th>Codigo</th>
+              <th>Título</th>
+              <th>Género</th>
+              <th>Descripción</th>
+              <th>Publicación</th>
+              <th>Funciones</th>
+            </tr>
           </thead>
           <tbody id="tablaJuegos">
             <!-- Los juegos se generarán dinámicamente aquí -->
@@ -44,6 +92,7 @@
         </table>
       </div>
     </div>
+
 
   </main>
 
@@ -60,7 +109,7 @@
         <div class="modal-body">
           <!-- Formulario -->
           <form id="formularioJuego">
-            <label for="titulo">Título:</label>
+            <label for="titulo" class="text-dark">Título:</label>
             <input id="titulo" type="text" class="form-control"><br>
 
             <label for="desarrollador">Desarrollador:</label>
@@ -73,13 +122,18 @@
             <input id="plataforma" type="text" class="form-control"><br>
 
             <label for="genero">Género:</label>
-            <input id="genero" type="text" class="form-control"><br>
+            <select id="genero" class="form-control">
+              <option value="Aventura">Aventura</option>
+              <option value="Acción">Acción</option>
+              <option value="Estrategia">Estrategia</option>
+              <option value="RPG">RPG</option>
+              <option value="Deporte">Deporte</option>
+            </select><br>
 
+            <label for="tamanio">Tamaño:</label>
+            <input id="tamanio" name="tamanio" type="text" class="form-control"><br>
 
-            <label for="genero">Tamaño:</label>
-            <input id="tamanio" type="text" class="form-control"><br>
-
-            <label for="genero">Precio:</label>
+            <label for="precio">Precio:</label>
             <input id="precio" type="number" class="form-control"><br>
 
             <label for="descripcion">Descripción:</label>
@@ -87,8 +141,8 @@
 
             <label for="">Publicado en la pagina:</label>
             <select id="publicado" class="form-control">
-              <option value="true">Si</option>
-              <option value="false">No</option>
+              <option value=true>Si</option>
+              <option value=false>No</option>
             </select><br>
 
             <label for="imagen1">URL Imagen 1:</label>
@@ -100,7 +154,7 @@
             <label for="imagen3">URL Imagen 3:</label>
             <input id="imagen3" type="text" class="form-control"><br>
 
-            <button type="button" class="btn btn-primary" onclick="createJuego()">Enviar</button>
+            <button type="button" class="btn btn-primary" onclick="createJuego()">Guardar Juego</button>
           </form>
         </div>
       </div>
@@ -133,10 +187,28 @@
             <input id="editPlataforma" type="text" class="form-control"><br>
 
             <label for="editGenero">Género:</label>
-            <input id="editGenero" type="text" class="form-control"><br>
+            <select id="editGenero" class="form-control">
+              <option value="Aventura">Aventura</option>
+              <option value="Acción">Acción</option>
+              <option value="Estrategia">Estrategia</option>
+              <option value="RPG">RPG</option>
+              <option value="Deporte">Deporte</option>
+            </select><br>
+
+            <label for="editTamanio">Tamaño:</label>
+            <input id="editTamanio" type="text" class="form-control"><br>
+
+            <label for="editPrecio">Precio:</label>
+            <input id="editPrecio" type="number" class="form-control"><br>
 
             <label for="editDescripcion">Descripción:</label>
             <input id="editDescripcion" type="text" class="form-control"><br>
+
+            <label for="">Publicado en la pagina:</label>
+            <select id="editPublicado" class="form-control">
+              <option value=true>Si</option>
+              <option value=false>No</option>
+            </select><br>
 
             <label for="editImagen1">URL Imagen 1:</label>
             <input id="editImagen1" type="text" class="form-control"><br>
@@ -146,12 +218,6 @@
 
             <label for="editImagen3">URL Imagen 3:</label>
             <input id="editImagen3" type="text" class="form-control"><br>
-
-            <label for="editTamanio">Tamaño:</label>
-            <input id="editTamanio" type="text" class="form-control"><br>
-
-            <label for="editPrecio">Precio:</label>
-            <input id="editPrecio" type="number" class="form-control"><br>
 
             <button type="button" id="btnGuardarEdicion" class="btn btn-primary">Guardar Cambios</button>
           </form>
