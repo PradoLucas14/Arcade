@@ -6,12 +6,12 @@
       "desarrollador": "Nintendo",
       "anio": "2018",
       "plataforma": "Switch",
-      "publicado": "true",
+      "publicado": true,
       "tamanio": "39GB",
       "precio": "60000",
       "genero": "Aventura",
       "descripcion": "En este juego de aventuras de mundo abierto",
-      "imagen1": "https://example.com/zelda_breath_of_the_wild.jpg",
+      "imagen1": "https://zelda.nintendo.com/breath-of-the-wild/assets/media/header/Main-Day.jpg",
       "imagen2": "https://example.com/zelda_breath_of_the_wild.jpg",
       "imagen3": "https://example.com/zelda_breath_of_the_wild.jpg"
     },
@@ -44,6 +44,96 @@
       "imagen2": "jjjjj",
       "imagen3": "lllll",
       "id": 3
+    },
+    {
+      "titulo": "Forza Motor Sport ",
+      "desarrollador": "EA sports",
+      "anio": "2022",
+      "plataforma": "PC",
+      "genero": "Deporte",
+      "tamanio": "100GB",
+      "precio": "87000",
+      "descripcion": "simulador de carreras ",
+      "publicado": false,
+      "imagen1": "jjjj",
+      "imagen2": "oooo",
+      "imagen3": "pppp",
+      "id": 4
+    },
+    {
+      "titulo": "Forza Motor Sport ",
+      "desarrollador": "EA sports",
+      "anio": "2022",
+      "plataforma": "PC",
+      "genero": "Deporte",
+      "tamanio": "100GB",
+      "precio": "87000",
+      "descripcion": "simulador de carreras ",
+      "publicado": true,
+      "imagen1": "jjjj",
+      "imagen2": "oooo",
+      "imagen3": "pppp",
+      "id": 5
+    },
+    {
+      "titulo": "Forza Motor Sport ",
+      "desarrollador": "EA sports",
+      "anio": "2022",
+      "plataforma": "PC",
+      "genero": "Deporte",
+      "tamanio": "100GB",
+      "precio": "87000",
+      "descripcion": "simulador de carreras ",
+      "publicado": true,
+      "imagen1": "jjjj",
+      "imagen2": "oooo",
+      "imagen3": "pppp",
+      "id": 6
+    },
+    {
+      "titulo": "Forza Motor Sport ",
+      "desarrollador": "EA sports",
+      "anio": "2022",
+      "plataforma": "PC",
+      "genero": "Deporte",
+      "tamanio": "100GB",
+      "precio": "87000",
+      "descripcion": "simulador de carreras ",
+      "publicado": true,
+      "imagen1": "jjjj",
+      "imagen2": "oooo",
+      "imagen3": "pppp",
+      "id": 7
+    },
+    {
+      "titulo": "Forza Motor Sport ",
+      "desarrollador": "EA sports",
+      "anio": "2022",
+      "plataforma": "PC",
+      "genero": "Deporte",
+      "tamanio": "100GB",
+      "precio": "87000",
+      "descripcion": "simulador de carreras ",
+      "publicado": true,
+      "imagen1": "jjjj",
+      "imagen2": "oooo",
+      "imagen3": "pppp",
+      "id": 8
+    },
+    {
+      "titulo": "Forza Motor Sport ",
+      "desarrollador": "EA sports",
+      "anio": "2022",
+      "plataforma": "PC",
+      "genero": "Deporte",
+      "tamanio": "100GB",
+      "precio": "87000",
+      "descripcion": "simulador de carreras ",
+      "publicado": true,
+      "imagen1": "jjjj",
+      "imagen2": "oooo",
+      "imagen3": "pppp",
+      "id": 9
     }
   ],
   "usuarios": [
@@ -56,9 +146,9 @@
   "destacados": [
     {
       "id": 1,
-      "titulo": "The Legend of Zelda: Breath of the Wild",
-      "desarrolladora": "Nintendo",
-      "imagen2": "https://example.com/zelda_breath_of_the_wild.jpg"
+      "titulo": "FIFA2022",
+      "desarrollador": "EA sports",
+      "imagen2": "jjjjj"
     }
   ]
 }
