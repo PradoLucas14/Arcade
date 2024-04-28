@@ -4,9 +4,9 @@
       "id": "1",
       "titulo": "The Legend of Zelda: Breath of the Wild",
       "desarrollador": "Nintendo",
-      "anio": 2017,
+      "anio": "2017",
       "plataforma": "Switch",
-      "publicado": true,
+      "publicado": "false",
       "tamanio": "39GB",
       "precio": "60000",
       "genero": "Aventura",
@@ -289,7 +289,7 @@
       "id": "1",
       "nombre": "administracion@gmail.com",
       "contraseña": "caritafeliz",
-      "logueado": false,
+      "logueado": true,
       "admin": true
     },
     {
@@ -302,7 +302,7 @@
   ],
   "destacado": [
     {
-      "id": "2",
+      "id": "1",
       "titulo": "Need for Speed: Rivals",
       "desarrollador": "Electronics Arts",
       "anio": 2013,
@@ -313,8 +313,7 @@
       "precio": "30000",
       "descripcion": "El modo de jugabilidad es similar al de Need for Speed: Hot Pursuit (2010) ofreciendo la opción de escoger dos bandos: corredor u oficial de la ley. Ambos bandos ofrecerán distintos modos de juego así como recompensas, desafíos, entre otros. Todos los eventos, desafíos, etc; residen en un mundo abierto lleno de saltos, rampas y cámaras de velocidad llamado Redview County que tiene mucho que ver en tanto a la grandeza, atajos y lugares desconocidos como en Need for Speed: Most Wanted (2012) y la orografía de montañas, acantilados y colinas sumamente empinadas como las de Need for Speed: Hot Pursuit (2010).",
       "imagen1": "https://img2-levelup.buscafs.com/154803.jpg",
-      "imagen2": "https://cdn.akamai.steamstatic.com/steam/apps/1262600/header.jpg?t=1625518950",
-      "imagen3": "https://example.com/zelda_breath_of_the_wild.jpg"
+      "imagen2": "https://cdn.akamai.steamstatic.com/steam/apps/1262600/header.jpg?t=1625518950"
     }
   ]
 }

@@ -236,18 +236,20 @@ async function destacarJuego(id) {
 
     if (datosJuego) {
         // URL del servidor JSON para actualizar los datos del juego destacado con el ID 1
-        const url = 'http://localhost:3000/destacados/1';
+        const url = 'http://localhost:3000/destacados/';
 
         // Datos del juego seleccionado
         const juegoSeleccionado = {
             titulo: datosJuego.titulo,
             desarrolladora: datosJuego.desarrolladora,
-            imagen2: datosJuego.imagen2
+            anio: datosJuego.anio,
+            genero: datosJuego.genero,
+            imagen2: datosJuego.imagen2,
         };
 
         try {
             // Realizar la solicitud PATCH al servidor JSON utilizando Axios y esperar la respuesta
-            const response = await axios.patch(url, juegoSeleccionado);
+            const response = await axios.patch(url[0], juegoSeleccionado);
             console.log('Juego destacado actualizado exitosamente:', response.data);
             alert("Se actualizó el juego destacado exitosamente");
         } catch (error) {
@@ -262,7 +264,97 @@ async function destacarJuego(id) {
 
 
 
+//? Navbar y links
 
+const navElement = document.querySelector('.navbar');
+window.addEventListener('scroll', () =>{
+    if(window.scrollY>50){
+        navElement.classList.add('navbar-scrolled')
+    }
+    else{
+        navElement.classList.remove('navbar-scrolled')
+    }
+});
+
+//? Administrador, login, registro y cerrar sesión 
+
+const linkNoLog = document.querySelectorAll('.sin-loguear');
+const linkLog = document.querySelectorAll('.logueado');
+const linkAdmin = document.querySelectorAll('.administrar-navbar');
+
+
+//revisar usuarios y si hay alguno logueado
+
+fetch('http://localhost:3000/usuarios', {
+  method: 'GET',
+}).then(response => response.json()).then(data => {
+        const usuarioLogueado = data.find(usuario => usuario.logueado);
+        if(usuarioLogueado){
+            if(usuarioLogueado.admin){
+            console.log("esta logueado el admin");
+            linkAdmin.forEach(link =>{
+                link.style.display="block";
+            })
+            linkNoLog.forEach(link =>{
+                link.style.display="none";
+            })
+            linkLog.forEach(link =>{
+                link.style.display="block";
+            })
+        }else{
+            linkNoLog.forEach(link =>{
+                link.style.display="none";
+            })
+            console.log("esta logueado un random");
+            linkLog.forEach(link =>{
+                link.style.display="block";
+            })
+            linkAdmin.forEach(link =>{
+                link.style.display="none";
+            })
+        }
+        }
+        else{
+            console.log("no esta logueado nadie");
+            linkLog.forEach(link =>{
+                link.style.display="none";
+            })
+            linkAdmin.forEach(link =>{
+                link.style.display="none";
+            })
+            linkNoLog.forEach(link =>{
+                link.style.display="block";
+            })
+        }
+    }
+);
+
+//Cerrar sesion de usuario
+const linkSesion = document.getElementById('cerrar-sesion');
+
+async function cerrarSesion(event){
+     try {
+        event.preventDefault();
+        const response = await axios.get("http://localhost:3000/usuarios");
+        const usuarios = response.data;
+        const usuarioLogueado = usuarios.find(usuario => usuario.logueado);
+        if (usuarioLogueado) {
+            usuarioLogueado.logueado = false;
+
+            // Actualizar el estado del usuario en el servidor
+            await axios.patch(`http://localhost:3000/usuarios/${usuarioLogueado.id}`, { logueado: false });
+
+            console.log("Usuario deslogueado:", usuarioLogueado.nombre);
+            console.log("Estado de logueo actual:", usuarioLogueado.logueado);
+        } else {
+            console.log("No hay ningún usuario logueado.");
+        }
+    } catch (error) {
+        console.error("Error al cerrar sesión:", error);
+    }
+};
+
+linkSesion.addEventListener("click",cerrarSesion);
 
 
 
