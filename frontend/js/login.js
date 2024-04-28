@@ -3,21 +3,6 @@ const contraseñaIngresada = document.querySelector('#password');
 const iniciarSesion = document.querySelector('#init');
 const todoForm = document.querySelector('#todo-form');
 
-function togglePasswordVisibility() {
-  const passwordField = document.getElementById("password");
-  const togglePasswordButton = document.getElementById("togglePassword");
-
-  if (passwordField.type === "password") {
-    passwordField.type = "text";
-    togglePasswordButton.innerHTML = '<i class="fa fa-eye-slash" aria-hidden="true"></i>';
-  } else {
-    passwordField.type = "password";
-    togglePasswordButton.innerHTML = '<i class="fa fa-eye" aria-hidden="true"></i>';
-  }
-}
-const togglePasswordButton = document.getElementById("togglePassword");
-togglePasswordButton.addEventListener('click', togglePasswordVisibility);
-
 fetch('http://localhost:3000/usuarios', {
   method: 'GET',
 }).then(response => response.json()).then(data => {
@@ -198,3 +183,32 @@ async function logueado(id) {
     }
   })
 }
+
+const passwordField = document.getElementById("password");
+const passwordField2 = document.getElementById("pass1");
+const passwordField3 = document.getElementById("pass2");
+
+function togglePasswordVisibility(passwordField) {
+  const togglePasswordButton = document.getElementById("togglePassword");
+
+  if (passwordField.type === "password") {
+    passwordField.type = "text";
+    togglePasswordButton.innerHTML = '<i class="fa fa-eye-slash" aria-hidden="true"></i>';
+  } else {
+    passwordField.type = "password";
+    togglePasswordButton.innerHTML = '<i class="fa fa-eye" aria-hidden="true"></i>';
+  }
+}
+const togglePasswordButton = document.getElementById("togglePassword");
+const togglePasswordButton1 = document.getElementById("togglePassword1");
+const togglePasswordButton2 = document.getElementById("togglePassword2");
+
+togglePasswordButton.addEventListener('click', () => {
+  togglePasswordVisibility(passwordField)
+});
+togglePasswordButton1.addEventListener('click', () => {
+  togglePasswordVisibility(passwordField2)
+});
+togglePasswordButton2.addEventListener('click', () => {
+  togglePasswordVisibility(passwordField3)
+});

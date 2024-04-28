@@ -37,10 +37,10 @@
                         <a class="nav-link" href="./login.html">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./pages/login.html">Registro</a>
+                        <a class="nav-link" href="./registro.html">Registro</a>
                     </li>
                     <li class="nav-item administar-show administrar-noShow">
-                        <a class="nav-link" href="./pages/adminstrador.html">Administrar</a>
+                        <a class="nav-link" href="./adminstrador.html">Administrar</a>
                     </li>
                 </ul>
             </div>
@@ -60,10 +60,12 @@
                     </div>
                     <div class="content">
                         <label for="password" class="Label">Contraseña</label>
-                        <input id="password" class="input form-control" type="password" required />
-                        <span id="togglePassword" class="toggle-password">
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                        </span>
+                        <div class="password-container">
+                            <input id="password" class="input form-control" type="password" required />
+                            <span id="togglePassword" class="toggle-password">
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                            </span>
+                        </div>
                         <input type="checkbox" class="check" id="check" />
                         <label class="check-label" for="check">Recordar Usuario</label>
                     </div>
@@ -171,9 +173,19 @@
                         <div id="part3">
                             <p>Ingrese una nueva contraseña.</p>
                             <label for="pass" class="Label">Contraseña nueva</label>
-                            <input id="pass1" class="input form-control" type="password" />
+                            <div class="password-container">
+                                <input id="pass1" class="input form-control" type="password" required>
+                                <span id="togglePassword1" class="toggle-password">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                </span>
+                            </div>
                             <label for="pass" class="Label">Repita la contraseña</label>
-                            <input id="pass2" class="input form-control" type="password" />
+                            <div class="password-container">
+                                <input id="pass2" class="input form-control" type="password" required>
+                                <span id="togglePassword2" class="toggle-password">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                </span>
+                            </div>
                             <p class="text-danger" id="aviso2">Las contraseñas ingresadas no son iguales</p>
                             <div class="campo">
                                 <input type="submit" class="btn btn-dark" value="Guardar" id="btnPart3" />
