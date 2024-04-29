@@ -24,7 +24,7 @@ const users = JSON.parse(localStorage.getItem('users')) || []
 
 const btn = document.getElementById('crear');
 
-fetch('http://localhost:3000/usuarios', {
+fetch('https://json-server-proyecto2.onrender.com/usuarios', {
   method: 'GET',
 })
   .then(response => response.json())
@@ -48,7 +48,7 @@ fetch('http://localhost:3000/usuarios', {
       if (userExists) {
         aviso.style.display = "block";
       } else {
-        fetch('http://localhost:3000/usuarios', {
+        fetch('https://json-server-proyecto2.onrender.com/usuarios', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

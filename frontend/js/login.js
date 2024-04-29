@@ -22,7 +22,7 @@ fetch('https://json-server-proyecto2.onrender.com/usuarios', {
         // Esperar 10 milisegundos antes de redirigir
         setTimeout(function() {
             window.location.href = '../pages/adminstrador.html';
-        }, 800);
+        }, 200);
     }
       else {
         logueado(busquedaUsuario.id);

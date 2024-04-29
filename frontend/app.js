@@ -140,7 +140,7 @@ async function cerrarSesion(event){
             console.log("Estado de logueo actual:", usuarioLogueado.logueado);
             setTimeout(function() {
                 window.location.href = './index.html';
-            }, 800);
+            }, 200);
         } else {
             console.log("No hay ningún usuario logueado.");
         }

@@ -463,7 +463,9 @@ async function cerrarSesion(event){
 
             console.log("Usuario deslogueado:", usuarioLogueado.nombre);
             console.log("Estado de logueo actual:", usuarioLogueado.logueado);
-            window.location.href= '../index.html';
+            setTimeout(function() {
+                window.location.href = '../index.html';
+            }, 200);
         } else {
             console.log("No hay ningún usuario logueado.");
         }
