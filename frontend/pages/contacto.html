@@ -52,77 +52,76 @@
   </header>
   <main class="main-contacto">
     <section class="main-section">
-      <div class="columnMain-contacto text-contacto">
-        <h2>¿En qué podemos ayudarte?</h2>
-        <p>
-          ¡Comunicate con nosotros!
-          Brindamos atención en línea las 24hs o puedes acercarte a nuestras
-          oficinas.
-        </p>
+      <div class="image-wrapper">
+        <div class="image"></div>
+        <div class="overlay"></div>
       </div>
-      <div class="columnMain-contacto formMap-section">
-        <div class="divForm-contacto leftColumn-contacto">
-          <h3 class="titleForm-contacto">
-            Deja tu consulta. Nos contactaremos a la brevedad:
-          </h3>
-          <form onsubmit="window.location.href='../error-pages/error-contact.html'; return false;"
-            class="form-contacto">
-            <div>
-              <label for="nombreCompleto" class="labelContacto">Nombre</label> <br>
-              <input class="inputContacto" autocomplete="off" placeholder="Ingrese su nombre completo" type="text"
-                name="nombreCompleto" minlength="4" pattern="^[A-Za-z\s]+${4,32}" maxlength="32" required />
+      <div class="contenedor row">
+        <div class="rightSide col">
+          <div class="columnMain-contacto text-contacto">
+            <h2>¿En qué podemos ayudarte?</h2>
+            <p>
+              Deja tu consulta. Nos contactaremos a la brevedad:
+            </p>
+          </div>
+          <div class="columnMain-contacto">
+            <div class="divForm-contacto leftColumn-contacto">
+              <form class="form-contacto">
+                <div>
+                  <label for="nombreCompleto" class="labelContacto">Nombre</label> <br>
+                  <input class="inputContacto" autocomplete="off" placeholder="Ingrese su nombre completo" type="text"
+                    name="nombreCompleto" minlength="4" pattern="^[A-Za-z\s]+${4,32}" maxlength="32" required />
+                </div>
+                <div>
+                  <label for="correo-contact" class="labelContacto">Correo electronico</label>
+                  <input autocomplete="nope" placeholder="Ingrese su correo electronico" type="text"
+                    class="inputContacto" id="correo-contact" name="coreo" minlength="10" maxlength="50"
+                    oninput="validateEmail(this)" required>
+                </div>
+                <div>
+                  <label for="Telefono" class="labelContacto">Télefono</label> <br>
+                  <input class="inputContacto" placeholder="Ingrese su numero de telefono (ej: +543812345)" type="tel"
+                    minlength="12" maxlength="20" pattern="^\+\d{1,4}\d{1,10}$" id="Telefono" autocomplete="off"
+                    required />
+                </div>
+                <div class="consultaForm-contacto">
+                  <label class="labelContacto">Consulta (max. 350 caracteres)</label>
+                  <textarea class="inputContacto-consulta" autocomplete="off" placeholder="Escriba su consulta"
+                    name="Dejanos tu consulta" cols="40" rows="4" minlength="10" maxlength="350" required></textarea>
+                </div>
+                <div class="footerForm-contacto">
+                  <button type="submit" class="btnContacto btn-outline-danger btn">
+                    Enviar
+                  </button>
+                </div>
+              </form>
             </div>
-            <div>
-              <label for="correo-contact" class="labelContacto">Correo electronico</label>
-              <input autocomplete="nope" placeholder="Ingrese su correo electronico" type="text" class="inputContacto"
-                id="correo-contact" name="coreo" minlength="10" maxlength="50" oninput="validateEmail(this)" required>
-            </div>
-            <div>
-              <label for="Telefono" class="labelContacto">Télefono</label> <br>
-              <input class="inputContacto" placeholder="Ingrese su numero de telefono (ej: +543812345)" type="tel"
-                minlength="12" maxlength="20" pattern="^\+\d{1,4}\d{1,10}$" id="Telefono" autocomplete="off" required />
-            </div>
-            <div class="consultaForm-contacto">
-              <label class="labelContacto">Consulta (max. 350 caracteres)</label>
-              <textarea class="inputContacto-consulta" autocomplete="off" placeholder="Escriba su consulta"
-                name="Dejanos tu consulta" cols="40" rows="4" minlength="10" maxlength="350" required></textarea>
-            </div>
-            <div class="footerForm-contacto">
-              <button type="submit" class="btnContacto btn-outline-light btn">
-                Enviar
-              </button>
-            </div>
-          </form>
+          </div>
         </div>
-        <div class="rightColumn-contacto">
+        <div class="leftSide col">
+          <div class="element-contacto celnumber-contacto">
+            <div class="logo-infoContacto">
+              <i class="fa fa-phone"></i>
+            </div>
+            <div class="text-infoContacto">
+              <h3 class="elementTitle-contacto">Teléfono</h3>
+              <p>+54 9 381-5673959</p>
+            </div>
+          </div>
+          <div class="element-contacto email-contacto">
+            <div class="logo-infoContacto">
+              <i class="fa fa-envelope"></i>
+            </div>
+            <div class="text-infoContacto">
+              <a class="elementTitle-contacto" href="https://mail.google.com">
+                <h3>Email</h3>
+              </a>
+              <p>arcade_game@gmail.com</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
-    <aside class="contact-section">
-      <div class="column-contacto info-contacto">
-        <div class="element-contacto celnumber-contacto">
-          <div class="logo-infoContacto">
-            <i class="fa fa-phone"></i>
-          </div>
-          <div class="text-infoContacto">
-            <h3 class="elementTitle-contacto">Teléfono</h3>
-            <p>+54 9 381-5673959</p>
-          </div>
-        </div>
-        <div class="element-contacto email-contacto">
-          <div class="logo-infoContacto">
-            <i class="fa fa-envelope"></i>
-          </div>
-          <div class="text-infoContacto">
-
-            <a class="elementTitle-contacto" href="https://mail.google.com">
-              <h3>Email</h3>
-            </a>
-            <p>tuc_rismo@gmail.com</p>
-          </div>
-        </div>
-      </div>
-    </aside>
   </main>
   <footer class="footer text-center w-100">
     <div class="container text-light text-center">
@@ -158,7 +157,7 @@
           </div>
         </div>
         <div class="logo">
-          <a class="text-light" href="../index.html">AR<span class="titulo-pagina">CADE</span></a>
+          <a class="logo text-light" href="../index.html">AR<span class="titulo-pagina">CADE</span></a>
         </div>
       </div>
     </div>

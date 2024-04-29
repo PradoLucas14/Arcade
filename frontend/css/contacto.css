@@ -3,6 +3,7 @@
 .navbar {
   transition: all 0.5s;
   padding: 10px 25px;
+  background-color: none;
 }
 
 .navbar-scrolled {
@@ -78,62 +79,77 @@
   }
 }
 
-/* Cuerpo del registro*/
-.main-contacto {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 8vh;
+/* Cuerpo de Contactos */
+.body-contacto {
+  font-family: "Poppins", sans-serif;
 }
 
 .main-section {
+  position: relative;
+  height: 100vh;
+}
+
+.main-section>.contenedor {
+  position: absolute;
+  top: 6vw;
+  left: 0;
+  height: 100%;
   width: 100%;
+}
+
+.image-wrapper {
+  position: absolute;
+  margin-top: 0;
+  margin-left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.image-wrapper>.image {
+  background-image: url("https://fondosmil.co/fondo/30546.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.image-wrapper>.overlay {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: .7;
 }
 
 /*Seccion de formulario*/
 /*Texto de consulta*/
-.titleForm-contacto,
-.titleMaps-contacto,
-.text-contacto,
-.text-contacto h2 {
-  transition: font-size 0.5s ease;
-}
 
-.formMap-section,
-.maps-location-md,
-.maps-frame-md {
-  transition: height 0.5s ease;
-}
-
-.text-contacto {
+.text-contacto p {
   text-align: center;
   font-size: 1rem;
-  background-color: #55754ee8;
-  padding: 2rem 5% 0.5rem;
-  color: azure;
+  color: whitesmoke;
 }
 
 .text-contacto h2 {
-  font-size: 1.35rem;
-
-}
-
-.rightColumn-contacto {
-  display: none;
+  text-align: center;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  color: whitesmoke;
 }
 
 /*Formulario Titulo*/
+
 .titleForm-contacto {
   font-size: 1.2rem;
-  color: rgb(74, 82, 74);
+  color: whitesmoke;
   font-weight: 700;
 }
 
 /*Formulario contenedor*/
 .divForm-contacto {
-  background-color: #7fbb73a8;
-  padding: 7% 6.5% 5%;
-
+  padding: 1% 6.5% 5%;
 }
 
 .form-contacto {
@@ -143,8 +159,8 @@
 /*Formulario inputs y labels*/
 
 .labelContacto {
-  font-weight: 500;
-  color: rgb(74, 82, 74);
+  font-weight: 600;
+  color: whitesmoke;
   font-size: 1rem;
 }
 
@@ -153,19 +169,22 @@
   margin: 0.4rem 0 0.4rem 3%;
   width: 97%;
   padding: 0.2rem;
-  border-radius: 0.5rem;
+  background-color: #ccc;
   border: none;
+  border-radius: 4px;
+  color: white;
 }
 
 .inputContacto-consulta {
-  width: 95%;
-  margin-left: 5%;
-  margin-top: 0.4rem;
-  padding: 0.2rem;
+  width: 97%;
+  margin: 0.4rem 0 0.4rem 3%;
   border-radius: 0.5rem;
   height: 8rem;
   font-size: 1rem;
+  background-color: #ccc;
   border: none;
+  border-radius: 4px;
+  color: white;
 }
 
 .footerForm-contacto {
@@ -180,21 +199,34 @@
   border: none;
 }
 
-/*Aside de informacion de contacto*/
+/*Contacto celular y email*/
+.leftSide {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin-top: 5%;
+}
 
 .element-contacto {
+  background-color: #212121;
   display: flex;
+  width: 60%;
   align-items: center;
-  justify-content: space-around;
   text-align: center;
-  padding: 1rem;
-  border-bottom: #b2c7ae solid 2px;
+  margin-left: 30%;
+  padding: 2%;
+  margin-top: 5%;
+  justify-content: space-around;
+  border-radius: 8px;
+}
+
+.element-contacto:first-child {
+  margin-left: 0;
 }
 
 .element-contacto h3 {
-  margin: 0 0 0.5rem;
   font-size: 1rem;
-  color: black;
+  color: #ccc;
 }
 
 .element-contacto a {
@@ -202,13 +234,12 @@
 }
 
 .text-infoContacto {
-  width: 80%;
-  color: black;
+  width: 55%;
+  color: #ccc;
 }
 
 .text-infoContacto p {
-  color: black;
-  margin: 0;
+  color: #ccc;
 }
 
 .logo-infoContacto {
@@ -216,219 +247,8 @@
 }
 
 .fa {
-  color: #b2c7ae;
-  font-size: 3rem;
-}
-
-.location-contacto p {
-  text-align: left;
-  margin-left: 1rem;
-}
-
-/*Dispositivos Medianos*/
-
-
-@media (min-width: 768px) {
-  .main-contacto {
-    display: block;
-    height: 92%;
-    margin-top: 8vh;
-  }
-
-  .main-section {
-    width: 100%;
-    height: 88%;
-  }
-
-  .formMap-section {
-    display: flex;
-    height: 100%;
-    box-sizing: border-box;
-  }
-
-  /*Seccion de formulario*/
-  /*Texto de consulta*/
-  .text-contacto {
-    text-align: center;
-    font-size: 1.0rem;
-    background-color: #55754ee8;
-    padding: 1.5rem 4% 0.3rem;
-    color: azure;
-    height: 15%;
-  }
-
-  .text-contacto h2 {
-    font-size: 1.25rem;
-  }
-
-  /*Formulario Titulo*/
-  .titleForm-contacto,
-  .titleMaps-contacto {
-    font-size: 1.15rem;
-    color: rgb(74, 82, 74);
-    font-weight: 700;
-  }
-
-  .titleForm-contacto {
-    margin-bottom: 1rem;
-  }
-
-  .titleMaps-contacto {
-    text-align: center;
-    color: rgb(249, 253, 249);
-    margin: 0;
-  }
-
-  /*Formulario contenedor*/
-  .divForm-contacto {
-    background-color: #7fbb73a8;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0 5%;
-    height: 100%;
-  }
-
-  .leftColumn-contacto {
-    flex: 3;
-  }
-
-  .form-contacto {
-    padding-left: 1.5%;
-    width: 100%;
-  }
-
-  .rightColumn-contacto {
-    display: block;
-    flex: 2;
-    background-color: rgb(121, 167, 129);
-    padding-top: 3%;
-  }
-
-  .maps-area {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80%;
-  }
-
-  .maps-location-md {
-    display: flex;
-    position: relative;
-    height: 50%;
-    width: 80%;
-  }
-
-  .maps-frame-md {
-    width: 100%;
-    height: 100%;
-    border-radius: 1.5rem;
-  }
-
-  /*Formulario inputs y labels*/
-
-  .labelContacto {
-    font-weight: 500;
-    color: rgb(74, 82, 74);
-    font-size: 1rem;
-  }
-
-  .inputContacto {
-    width: 97%;
-    border-radius: 1rem;
-    border: none;
-    font-size: 1rem;
-    margin: 0.5rem 0 0.5rem 3%;
-  }
-
-  .inputContacto-consulta {
-    width: 97%;
-    margin-left: 3%;
-    border-radius: 0.5rem;
-    height: 10rem;
-    font-size: auto;
-    border: none;
-    margin-top: 0.5rem;
-  }
-
-  .footerForm-contacto {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 0.5rem;
-  }
-
-  .btnContacto {
-    width: 100%;
-    margin: 0 auto;
-    border: none;
-  }
-
-  /*Aside de informacion de contacto*/
-
-  .contact-section {
-    width: 100%;
-  }
-
-  .info-contacto {
-    height: 10vh;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-  }
-
-  .element-contacto {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    text-align: center;
-    padding: 0 0 0 3rem;
-    border-bottom: none;
-    border-left: #b2c7ae solid 2px;
-    width: 30%;
-  }
-
-  .element-contacto:first-child {
-    border-left: none;
-  }
-
-  .element-contacto h3 {
-    margin: 0 0 0.5rem;
-    font-size: 1rem;
-    color: black;
-  }
-
-  .element-contacto a {
-    text-decoration: none;
-  }
-
-  .text-infoContacto {
-    width: 80%;
-    color: black;
-  }
-
-  .text-infoContacto p {
-    color: black;
-    margin: 0;
-    font-size: 0.8rem;
-    margin: 0 auto;
-  }
-
-  .logo-infoContacto {
-    display: flex;
-  }
-
-  .fa {
-    color: #b2c7ae;
-    font-size: 3rem;
-  }
-
-  .location-contacto p {
-    text-align: left;
-    margin-left: 1rem;
-    font-size: 0.6rem;
-  }
+  color: white;
+  font-size: 2rem;
 }
 
 /*Footer*/
