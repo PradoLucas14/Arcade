@@ -113,7 +113,7 @@ function mostrarJuegosEnTabla(juegos) {
                     <button class="btn btn-sm eliminar" onclick="eliminarJuego(${juego.id})"><i class="bi bi-trash3-fill"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#fff" class="bi bi-trash3-fill" viewBox="0 0 16 16">
                     <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
                     </svg></i></button>
-                    <button class="btn btn-sm destacar" onclick="destacarJuego(${juego.id})"><i class="bi bi-star-fill"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#fff" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <button class="btn btn-sm destacar" onclick="destacarJuego('${juego.id}')"><i class="bi bi-star-fill"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#fff" class="bi bi-star-fill" viewBox="0 0 16 16">
                     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                   </svg></i></button>
                 </td>
@@ -316,7 +316,9 @@ async function obtenerDatosJuego(id) {
 
     try {
         const response = await axios.get(url);
+        console.log(response.data)
         return response.data;
+        
     } catch (error) {
         console.error('Error al obtener datos del juego:', error);
         return null;
@@ -329,18 +331,28 @@ async function destacarJuego(id) {
 
     if (datosJuego) {
         // URL del servidor JSON para actualizar los datos del juego destacado con el ID 1
-        const url = 'http://localhost:3000/destacados/1';
+        const url = 'http://localhost:3000/destacado/';
+        console.log(url);
+        const response = await axios.get(url);
+        console.log(response);
+        const primerDestacado = response.data[0];
+        console.log(primerDestacado);
 
         // Datos del juego seleccionado
         const juegoSeleccionado = {
+            id: datosJuego.id,
             titulo: datosJuego.titulo,
             desarrollador: datosJuego.desarrollador,
-            imagen2: datosJuego.imagen2
+            anio: datosJuego.anio,
+            genero: datosJuego.genero,
+            imagen1: datosJuego.imagen1,
         };
 
         try {
+            console.log(datosJuego.id);
+            console.log(juegoSeleccionado.id);
             // Realizar la solicitud PATCH al servidor JSON utilizando Axios y esperar la respuesta
-            const response = await axios.patch(url, juegoSeleccionado);
+            const response = await axios.patch(`${url}${primerDestacado.id}`, juegoSeleccionado);
             console.log('Juego destacado actualizado exitosamente:', response.data);
             Swal.fire({
                 icon: 'success',
@@ -369,7 +381,98 @@ async function destacarJuego(id) {
 
 
 
+//? Navbar y links
 
+const navElement = document.querySelector('.navbar');
+window.addEventListener('scroll', () =>{
+    if(window.scrollY>50){
+        navElement.classList.add('navbar-scrolled')
+    }
+    else{
+        navElement.classList.remove('navbar-scrolled')
+    }
+});
+
+//? Administrador, login, registro y cerrar sesión 
+
+const linkNoLog = document.querySelectorAll('.sin-loguear');
+const linkLog = document.querySelectorAll('.logueado');
+const linkAdmin = document.querySelectorAll('.administrar-navbar');
+
+
+//revisar usuarios y si hay alguno logueado
+
+fetch('http://localhost:3000/usuarios', {
+  method: 'GET',
+}).then(response => response.json()).then(data => {
+        const usuarioLogueado = data.find(usuario => usuario.logueado);
+        if(usuarioLogueado){
+            if(usuarioLogueado.admin){
+            console.log("esta logueado el admin");
+            linkAdmin.forEach(link =>{
+                link.style.display="block";
+            })
+            linkNoLog.forEach(link =>{
+                link.style.display="none";
+            })
+            linkLog.forEach(link =>{
+                link.style.display="block";
+            })
+        }else{
+            linkNoLog.forEach(link =>{
+                link.style.display="none";
+            })
+            console.log("esta logueado un random");
+            linkLog.forEach(link =>{
+                link.style.display="block";
+            })
+            linkAdmin.forEach(link =>{
+                link.style.display="none";
+            })
+        }
+        }
+        else{
+            console.log("no esta logueado nadie");
+            linkLog.forEach(link =>{
+                link.style.display="none";
+            })
+            linkAdmin.forEach(link =>{
+                link.style.display="none";
+            })
+            linkNoLog.forEach(link =>{
+                link.style.display="block";
+            })
+        }
+    }
+);
+
+//Cerrar sesion de usuario
+const linkSesion = document.getElementById('cerrar-sesion');
+
+async function cerrarSesion(event){
+     try {
+        event.preventDefault();
+        const response = await axios.get("http://localhost:3000/usuarios");
+        const usuarios = response.data;
+        const usuarioLogueado = usuarios.find(usuario => usuario.logueado);
+        if (usuarioLogueado) {
+            usuarioLogueado.logueado = false;
+
+            // Actualizar el estado del usuario en el servidor
+            await axios.patch(`http://localhost:3000/usuarios/${usuarioLogueado.id}`, { logueado: false });
+
+            console.log("Usuario deslogueado:", usuarioLogueado.nombre);
+            console.log("Estado de logueo actual:", usuarioLogueado.logueado);
+            window.location.href= '../index.html';
+        } else {
+            console.log("No hay ningún usuario logueado.");
+        }
+    } catch (error) {
+        console.error("Error al cerrar sesión:", error);
+    }
+};
+
+linkSesion.addEventListener("click",cerrarSesion);
 
 
 

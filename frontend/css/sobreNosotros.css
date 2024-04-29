@@ -233,3 +233,115 @@
     font-size: 1.25em;
     margin-top: 0.25em;
 }
+
+/*Footer*/
+.footer {
+	position: absolute;
+	background-color: rgb(20, 20, 20);
+
+  }
+  a {
+	text-decoration: none;
+	color: white;
+  }
+  
+  .container-redes-sociales {
+	text-align: center;
+	padding: 8px;
+  }
+  
+  .container-redes-sociales ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	position: relative;
+  }
+  
+  .container-redes-sociales ul li {
+	display: inline-block;
+	position: relative;
+  }
+  
+  .container-redes-sociales ul li:last-child {
+	margin-right: 0;
+  }
+  
+  .container-redes-sociales ul li a {
+	text-decoration: none;
+	color: #ccc;
+  }
+  
+  .logo {
+	font-size: 1.3rem;
+	padding: 8px;
+	padding-bottom: 16px;
+  }
+  
+  .titulo-pagina {
+	color: red;
+	font-weight: bold;
+  }
+  
+  .paginas {
+	color: #ccc;
+  }
+  
+  .paginas:hover {
+	text-decoration: underline;
+	color: gray;
+  }
+  
+  .linea {
+	border: none;
+	border-left: 1px solid gray;
+	text-align: center;
+	padding-right: 4px;
+	padding-left: 4px;
+    font-family: "Poppins";
+	font-weight: 100;
+  }
+  
+  .linea:first-child {
+	border: none;
+  }
+  
+  .container-redes-sociales ul li a i {
+	font-size: 20px;
+	margin-right: 10px;
+	padding: auto;
+  }
+  
+  .container-about {
+	color: #ccc;
+	text-align: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding-bottom: 8px;
+  }
+  
+  .links {
+	font-size: 0.9rem;
+	line-height: 50px;
+	text-decoration: none;
+	justify-content: space-between;
+	margin-left: 24px;
+	transition: 0.3s ease all;
+  }
+  
+  @media (min-width:768px) {
+	.linea {
+	  padding-right: 8px;
+	  padding-left: 8px;
+	}
+  
+  }
+  
+  .links:hover {
+	color: red;
+	transition: 0.3s ease all;
+  }
+  
+  .copy {
+	background-color: black;
+  }
