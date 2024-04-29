@@ -82,7 +82,6 @@
 
 .body-registro {
   font-family: "Poppins", sans-serif;
-  font-size: 14px;
   margin: 0;
   position: relative;
 }
@@ -200,8 +199,9 @@
   row-gap: 12px;
 }
 
-a {
+.terminos {
   text-decoration: none;
+  font-size: 14px;
   color: red;
 }
 
@@ -252,6 +252,7 @@ a {
 
 .check-l {
   width: 90%;
+  font-size: 14px;
   display: inline;
   color: white;
 }
@@ -259,7 +260,14 @@ a {
 /*Footer*/
 .footer {
   position: absolute;
+  font-size: 14px;
   background-color: rgb(20, 20, 20);
+}
+
+@media(min-width:768px) {
+  .footer {
+    font-size: 16px;
+  }
 }
 
 .container-redes-sociales {
@@ -292,6 +300,7 @@ a {
   font-size: 1.3rem;
   padding: 8px;
   padding-bottom: 16px;
+  text-decoration: none;
 }
 
 .titulo-pagina {
@@ -301,6 +310,7 @@ a {
 
 .paginas {
   color: #ccc;
+  text-decoration: none;
 }
 
 .paginas:hover {
