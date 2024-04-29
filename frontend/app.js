@@ -1,28 +1,43 @@
 //? Cargado de datos en banner
 //Metodo get
-const apiUrlDestacado = 'http://localhost:3000/destacado';
+const apiUrlDestacado = 'http://localhost:3000/destacado/2';
+const apiUrlJuegoDestacado = 'http://localhost:3000/juegos';
+
 function getDestacado() {
     try {
-        fetch(apiUrlDestacado, {
-        method: 'GET',
-        }).then(response => response.json()).then(data => {
-            const juegoDestacado = document.getElementById("destacado-imagen");
-            const tituloDestacado = document.getElementById("gameTitulo");
-            const descripcionDestacado = document.getElementById("categoriaDestacado");
-            idDestacadoGlobal =  data[0].id;
-            tituloDestacado.innerHTML = `${data[0].titulo.toUpperCase()}
-            `;
-            descripcionDestacado.innerHTML = `<p class="datos-destacado"> <span>Desarrolladora:</span> ${data[0].desarrollador}<br><br> <span>Genero:</span> ${data[0].genero}<br><br><span>Año:</span> ${data[0].anio }</p>`;
-            juegoDestacado.setAttribute("src",`${data[0].imagen1}`);
-            console.log(`Fondo establecido: ${juegoDestacado.style.backgroundImage}`);
-            
-        
-        })
+        // Obtener el juego destacado
+        fetch(apiUrlDestacado)
+            .then(response => response.json())
+            .then(destacado => {
+                // Obtener la lista de juegos
+                fetch(apiUrlJuegos)
+                    .then(response => response.json())
+                    .then(juegos => {
+                        // Buscar el juego destacado por su título en la lista de juegos
+                        const juegoDestacado = juegos.find(juego => juego.titulo === destacado.titulo);
 
+                        // Si se encuentra el juego destacado por su título
+                        if (juegoDestacado) {
+                            const juegoDestacadoElement = document.getElementById("destacado-imagen");
+                            const tituloDestacadoElement = document.getElementById("gameTitulo");
+                            const descripcionDestacadoElement = document.getElementById("categoriaDestacado");
+                            // Actualizar los elementos HTML con los datos del juego destacado
+                            tituloDestacadoElement.innerHTML = `${juegoDestacado.titulo.toUpperCase()}`;
+                            descripcionDestacadoElement.innerHTML = `<p class="datos-destacado"> <span>Desarrolladora:</span> ${juegoDestacado.desarrollador}<br><br> <span>Genero:</span> ${juegoDestacado.genero}<br><br><span>Año:</span> ${juegoDestacado.anio}</p>`;
+                            juegoDestacadoElement.setAttribute("src", juegoDestacado.imagen1);
+                            idDestacadoGlobal =  juegoDestacado.id;
+                        } else {
+                            console.error("El juego destacado no se encontró en la lista de juegos.");
+                        }
+                    })
+                    .catch(error => console.error("Error al obtener la lista de juegos:", error));
+            })
+            .catch(error => console.error("Error al obtener el juego destacado:", error));
     } catch (error) {
-        console.error("Error al obtener los juegos:", error);
+        console.error("Error en la solicitud:", error);
     }
 }
+
 
 window.onload = function() {
     getDestacado();
@@ -171,6 +186,8 @@ function sliderMaker(categoria,clases) {
 sliderMaker("Deporte","sport");
 sliderMaker("Aventura","adventure");
 sliderMaker("Acción","action");
+sliderMaker("RPG","rpg");
+sliderMaker("Estrategia","strategy");
 
 
 // ? Funcionamiento para categorias

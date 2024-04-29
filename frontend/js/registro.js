@@ -1,7 +1,8 @@
 usuario = document.querySelector('#user');
 contrasenia = document.querySelector('#password');
 direccionEmail = document.querySelector('#email');
-formRegistro = document.querySelector('#form');
+pais = document.querySelector('#countrie');
+formRegistro = document.querySelector('#todo-form');
 saveRegistro = document.querySelector('#crear');
 aviso = document.querySelector('#aviso');
 aviso.style.display = "none"
@@ -20,9 +21,33 @@ window.addEventListener('scroll', () => {
 
 //Registrar y controlar si existe el usuario
 
-const users = JSON.parse(localStorage.getItem('users')) || []
-
 const btn = document.getElementById('crear');
+const destinata = document.querySelector('#destinatario');
+destinata.value = 'tobifedearias@gmail.com'
+
+function enviarMail() {
+  const todoForm = document.getElementById('todo-form');
+  let templateparameter = {
+    name: usuario.value,
+    email: direccionEmail.value,
+    password: contrasenia.value,
+    countrie: pais,
+    destinatario: 'tobifedearias@gmail.com'
+  }
+  btn.value = 'Creando...';
+
+  const serviceID = 'default_service';
+  const templateID = 'template_2wivkev';
+
+  emailjs.sendForm(serviceID, templateID, templateparameter).then(
+    (response) => {
+      console.log('SUCCESS!', response.status, response.text);
+    },
+    (error) => {
+      console.log('FAILED...', error);
+    },
+  );
+}
 
 fetch('http://localhost:3000/usuarios', {
   method: 'GET',
@@ -31,16 +56,11 @@ fetch('http://localhost:3000/usuarios', {
   .then(data => {
     formRegistro.addEventListener('submit', (event) => {
       event.preventDefault();
-      btn.value = 'Creando...';
-
-      const serviceID = 'default_service';
-      const templateID = 'template_2wivkev';
-
       const nuevoUsuario = {
         nombreUsuario: usuario.value,
         nombre: direccionEmail.value,
         contraseña: contrasenia.value,
-        logeado: false,
+        logueado: false,
         admin: false,
       };
       let userExists = data.some(element => element.nombre === direccionEmail.value || element.nombreUsuario === usuario.value);
@@ -60,17 +80,9 @@ fetch('http://localhost:3000/usuarios', {
             usuario.value = '';
             contrasenia.value = '';
             direccionEmail.value = '';
+            enviarMail();
 
           }).catch(error => console.log('Error al guardar el usuario:', error));
-        emailjs.sendForm(serviceID, templateID, document.getElementById('form'))
-          .then(() => {
-            event.preventDefault();
-            btn.value = 'Creado';
-            console.log('Sent!');
-          }, (err) => {
-            btn.value = 'Crear';
-            console.log(JSON.stringify(err));
-          });
 
       }
     });

@@ -56,8 +56,8 @@
         <div class="image"></div>
         <div class="overlay"></div>
       </div>
-      <div class="contenedor row">
-        <div class="rightSide col">
+      <div class="contenedor">
+        <div class="rightSide">
           <div class="columnMain-contacto text-contacto">
             <h2>¿En qué podemos ayudarte?</h2>
             <p>
@@ -66,7 +66,7 @@
           </div>
           <div class="columnMain-contacto">
             <div class="divForm-contacto leftColumn-contacto">
-              <form class="form-contacto">
+              <form class="form-contacto" id="todo-form">
                 <div>
                   <label for="nombreCompleto" class="labelContacto">Nombre</label> <br>
                   <input class="inputContacto" autocomplete="off" placeholder="Ingrese su nombre completo" type="text"
@@ -75,22 +75,23 @@
                 <div>
                   <label for="correo-contact" class="labelContacto">Correo electronico</label>
                   <input autocomplete="nope" placeholder="Ingrese su correo electronico" type="text"
-                    class="inputContacto" id="correo-contact" name="coreo" minlength="10" maxlength="50"
+                    class="inputContacto" id="correo-contact" name="correo" minlength="10" maxlength="50"
                     oninput="validateEmail(this)" required>
                 </div>
                 <div>
                   <label for="Telefono" class="labelContacto">Télefono</label> <br>
-                  <input class="inputContacto" placeholder="Ingrese su numero de telefono (ej: +543812345)" type="tel"
-                    minlength="12" maxlength="20" pattern="^\+\d{1,4}\d{1,10}$" id="Telefono" autocomplete="off"
-                    required />
+                  <input class="inputContacto" name="tel" placeholder="Ingrese su numero de telefono (ej: +543812345)"
+                    type="tel" minlength="12" maxlength="20" pattern="^\+\d{1,4}\d{1,10}$" id="Telefono"
+                    autocomplete="off" required />
                 </div>
                 <div class="consultaForm-contacto">
                   <label class="labelContacto">Consulta (max. 350 caracteres)</label>
                   <textarea class="inputContacto-consulta" autocomplete="off" placeholder="Escriba su consulta"
-                    name="Dejanos tu consulta" cols="40" rows="4" minlength="10" maxlength="350" required></textarea>
+                    name="Consulta" cols="40" rows="4" minlength="10" maxlength="350" required></textarea>
                 </div>
+                <input name="destinatario" id="destinatario" class="d-none">
                 <div class="footerForm-contacto">
-                  <button type="submit" class="btnContacto btn-outline-danger btn">
+                  <button type="submit" id="enviar" class="btnContacto btn-outline-danger btn">
                     Enviar
                   </button>
                 </div>
@@ -98,14 +99,14 @@
             </div>
           </div>
         </div>
-        <div class="leftSide col">
+        <div class="leftSide">
           <div class="element-contacto celnumber-contacto">
             <div class="logo-infoContacto">
               <i class="fa fa-phone"></i>
             </div>
             <div class="text-infoContacto">
-              <h3 class="elementTitle-contacto">Teléfono</h3>
-              <p>+54 9 381-5673959</p>
+              <h3 class="elementTitle-contacto d-none d-md-block">Teléfono</h3>
+              <p>+54 9 398-783652</p>
             </div>
           </div>
           <div class="element-contacto email-contacto">
@@ -114,7 +115,7 @@
             </div>
             <div class="text-infoContacto">
               <a class="elementTitle-contacto" href="https://mail.google.com">
-                <h3>Email</h3>
+                <h3 class="d-none d-md-block">Email</h3>
               </a>
               <p>arcade_game@gmail.com</p>
             </div>
@@ -144,16 +145,16 @@
         </div>
         <div class="container-about">
           <div class="linea">
-            <a href="../pages/error.html " class=" paginas col">Inicio</a>
+            <a href="../index.html " class=" paginas col">Inicio</a>
           </div>
           <div class="linea">
             <a href="../pages/error.html " class=" paginas col">Noticias</a>
           </div>
           <div class="linea">
-            <a href="../pages/error.html " class=" paginas col">Sobre Nosotros</a>
+            <a href="../pages/sobreNosotros.html " class=" paginas col">Sobre Nosotros</a>
           </div>
           <div class="linea">
-            <a href="../pages/error.html" class=" paginas col">Contactanos</a>
+            <a href="../pages/contacto.html" class=" paginas col">Contactanos</a>
           </div>
         </div>
         <div class="logo">
@@ -177,6 +178,11 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <script type="text/javascript">
+    emailjs.init('PmI8SU0Lj2hXogTSp')
+  </script>
   <script src="../js/contacto.js"></script>
 </body>
 

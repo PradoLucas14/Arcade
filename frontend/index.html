@@ -10,8 +10,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
     <title>Arcade Game Shop</title>
@@ -148,44 +149,96 @@
                 </button>
             </div>
         </div>
+        <!-- slider -->
+
+        <div class="juegos-destacados sport-contenedor contenedor">
+            <div class="contenedor-titulo-controles">
+                <h4 class="display-4">RPG</h4>
+                <div class="indicadores indicadores-rpg"></div>
+            </div>
+
+            <div class="contenedor-principal">
+                <button role="button" id="flecha-izquierda-rpg" class="flecha-izquierda">
+                    <i class="bi bi-caret-left-fill"></i>
+                </button>
+                <div class="contenedor-carousel rpg-carousel">
+                    <div class="slider-one" id="rpg-slider"></div>
+                </div>
+                <button role="button" id="flecha-derecha-rpg" class="flecha-derecha">
+                    <i class="bi bi-caret-right-fill"></i>
+                </button>
+            </div>
+        </div>
+        <!-- slider -->
+
+        <div class="juegos-destacados sport-contenedor contenedor">
+            <div class="contenedor-titulo-controles">
+                <h4 class="display-4">Estrategía</h4>
+                <div class="indicadores indicadores-strategy"></div>
+            </div>
+
+            <div class="contenedor-principal">
+                <button role="button" id="flecha-izquierda-strategy" class="flecha-izquierda">
+                    <i class="bi bi-caret-left-fill"></i>
+                </button>
+                <div class="contenedor-carousel strategy-carousel">
+                    <div class="slider-one" id="strategy-slider"></div>
+                </div>
+                <button role="button" id="flecha-derecha-strategy" class="flecha-derecha">
+                    <i class="bi bi-caret-right-fill"></i>
+                </button>
+            </div>
+        </div>
     </main>
     <footer class="footer text-center w-100">
         <div class="container text-light text-center">
             <div class="content-footer w-100 align-items-start">
-                <div class="container-about row">
-                    <div class="paginas col">
-                        <a href="../pages/error.html" class="text-light">Acerca de</a>
-                    </div>
-                    <div class="paginas col">
-                        <a href="../pages/login.html" class="text-light">Iniciar Sesion</a>
-                    </div>
-                    <div class="paginas col">
-                        <a href="../pages/error.html" class="text-light">Contacto</a>
-                    </div>
-                    <a href="../pages/auxiliar-catalogo.html" class="col text-light">Catalogo</a>
-                </div>
-                <hr />
                 <div class="container-redes">
                     <div class="container-redes-sociales">
-                        <a class="links" href="https://www.facebook.com/RollingCodeSchool/"><i
-                                class="fa-brands fa-square-facebook fa-bounce icon"></i>RollingCode
-                        </a>
-                        <a class="links" href="../pages/error 404.html"><i
-                                class="fa-brands fa-instagram fa-bounce icon"></i>@rollingcodeschool</a>
-                        <a class="links" href="https://twitter.com/rollingcodeok?lang=es"><i
-                                class="fa-brands fa-square-x-twitter fa-bounce icon"></i>@rollingcodeok</a>
+                        <ul>
+                            <li>
+                                <a class="links" href="https://twitter.com/rollingcodeok?lang=es"><i
+                                        class="fa-brands fa-square-facebook icon"></i><span
+                                        class="d-none d-md-inline">RollingCode</span></a>
+                            </li>
+                            <li>
+                                <a class="links" href="../pages/error 404.html"><i
+                                        class="fa-brands fa-instagram icon"></i><span
+                                        class="d-none d-md-inline">@rollingcodeschool</span></a>
+                            </li>
+                            <li>
+                                <a class="links" href="https://twitter.com/rollingcodeok?lang=es"><i
+                                        class="fa-brands fa-square-x-twitter icon"></i><span
+                                        class="d-none d-md-inline">@rollingcodeok</span></a>
+                            </li>
+                        </ul>
                     </div>
+
                     <script src="https://kit.fontawesome.com/204623838c.js" crossorigin="anonymous"></script>
                 </div>
+                <div class="container-about">
+                    <div class="linea">
+                        <a href="../pages/error.html " class="paginas col">Inicio</a>
+                    </div>
+                    <div class="linea">
+                        <a href="../pages/error.html " class="paginas col">Noticias</a>
+                    </div>
+                    <div class="linea">
+                        <a href="../pages/error.html " class="paginas col">Sobre Nosotros</a>
+                    </div>
+                    <div class="linea">
+                        <a href="../pages/error.html" class="paginas col">Contactanos</a>
+                    </div>
+                </div>
+                <div class="logo">
+                    <a class="text-light" href="../index.html">AR<span class="titulo-pagina">CADE</span></a>
+                </div>
             </div>
-            <p class="m-0 text-light">
-                <small>By
-                    <a href="../pages/error.html" class="text-light">Games SA</a>
-                    -
-                    <a href="https://rollingcodeschool.com/" class="text-light">Rolling Code</a></small>
-            </p>
-            <p class="m-0 text-light">
-                <small>&copy; Todos los derechos reservados</small>
+        </div>
+        <div class="copy">
+            <p class="m-0 text-secondary">
+                <small>&copy; 2024</small>
+                <small> Todos los derechos reservados</small>
             </p>
         </div>
     </footer>

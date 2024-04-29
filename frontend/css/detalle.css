@@ -1,6 +1,7 @@
 body {
 	background-color: #212121;
 	color: white;
+	font-family: 'Poppins';
 }
 
 .bg-image {
@@ -137,17 +138,22 @@ body {
 }
 
 
+.cajita-detalle {
+	max-width: 100%;
+}
+
+/*Footer*/
 /*Footer*/
 .footer {
 	position: absolute;
 	font-size: 14px;
 	background-color: rgb(20, 20, 20);
+
 }
 
-@media(min-width:768px) {
-	.footer {
-		font-size: 16px;
-	}
+a {
+	text-decoration: none;
+	color: white;
 }
 
 .container-redes-sociales {
@@ -180,7 +186,6 @@ body {
 	font-size: 1.3rem;
 	padding: 8px;
 	padding-bottom: 16px;
-	text-decoration: none;
 }
 
 .titulo-pagina {
@@ -190,7 +195,6 @@ body {
 
 .paginas {
 	color: #ccc;
-	text-decoration: none;
 }
 
 .paginas:hover {
@@ -202,8 +206,9 @@ body {
 	border: none;
 	border-left: 1px solid gray;
 	text-align: center;
-	padding-right: 8px;
-	padding-left: 8px;
+	padding-right: 4px;
+	padding-left: 4px;
+	font-family: "Poppins";
 	font-weight: 100;
 }
 
@@ -228,21 +233,26 @@ body {
 
 .links {
 	font-size: 0.9rem;
-	font-family: "Poppins";
 	line-height: 50px;
 	text-decoration: none;
 	justify-content: space-between;
 	margin-left: 24px;
+	transition: 0.3s ease all;
+}
+
+@media (min-width:768px) {
+	.linea {
+		padding-right: 8px;
+		padding-left: 8px;
+	}
+
 }
 
 .links:hover {
 	color: red;
+	transition: 0.3s ease all;
 }
 
 .copy {
 	background-color: black;
-}
-
-.cajita-detalle {
-	width: 100%;
 }

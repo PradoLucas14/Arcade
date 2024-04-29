@@ -1,12 +1,112 @@
 body{
-    background-color: black;
-    color: red;
+	background-color:black;
+    font-family: "Poppins";
+}
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+.hero{
+    background-image: url(/frontend/assets/imgAndmin/pexels-karolina-grabowska-4219883.jpg);
+    width: 100%;
+    height: calc(108vh - 50px);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.hero__overlay{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.contenido{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.title__banner h2{
+    color: #fff;
+    font-size: 80px;
+    margin-bottom: 15px;
+}
+.redes{
+    width: 300px;
+    display: flex;
+    justify-content: center;
+}
+.redes .bi{
+    transition: fill 0.2s ease;
+}
+ .redes .bi:hover{
+    fill: rgb(171, 171, 171);
+}
+.redes a{
+    margin-left: 10px;
+    margin-right: 10px;
 }
 .admin{
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding-top: 50px;
+    padding-top: 10px;
+    padding-bottom: 0px;
+    width: 90%;
+    margin-top: 40px;
+    margin-bottom: 0px;
+}
+.titulo h3{
+    font-size: 45px;
+    color: #fff;
+    padding-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+.btn-nuevo{
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    font-weight: bold;
+    background-color: blue;
+    color: #fff;
+    transition: 0.2s;
+    border: none;
+}
+.btn-nuevo:hover{
+    background-color: rgb(14, 14, 134) ; 
+}
+.titulo-boton{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 0;
+}
+.titulo-lista , .btn-nuevo{
+    margin: 10px;
+}
+.titulo-lista{
+    font-size: 35px;
+    color: #fff;
+}
+@media (max-width: 992px) {
+    .titulo-boton{
+        flex-direction: column;
+    }
+    .hero{
+        height:calc(80vh - 50px);
+    }
+  }
+
+.table-responsive{
+    overflow-x: auto;
 }
 .table-bordered-custom {
     border-color: black;
@@ -36,15 +136,235 @@ body{
     transition: 0.2s;
 }
 .eliminar:hover{
-    background-color: #961414;
+    background-color: #bd1616;
 }
 .destacar{
-    background-color: #FFD900;
+    background-color: #1a8fb6;
     transform: 0.2s;
 }
 .destacar:hover{
-    background-color:#cfb20f ;
+    background-color:#187898;
 }
-.destacado {
-    background-color: yellow; /* Puedes cambiar el color según tus preferencias */
+.funciones{
+    text-align: center;
 }
+.anterior , .siguiente{
+    background-color: #DE0202;
+    color: #fff;
+    font-weight: bold;
+    transition: 0.2s;
+}
+.anterior:hover{
+    background-color:#bd1616;
+    color: #fff;
+}
+.siguiente:hover{
+    background-color: #bd1616;
+    color:#fff;
+}
+.pagina{
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 5px;
+}
+.numero-pagina{
+    margin-left: 5px;
+}
+.descripcion-celda {
+    overflow: hidden; /* Oculta el texto que excede el tamaño de la celda */
+    text-overflow: ellipsis; /* Muestra puntos suspensivos (...) cuando el texto se trunca */
+    white-space: nowrap; /* Evita que el texto se envuelva a la siguiente línea */
+    max-width: 350px; /* Define el ancho máximo de la celda en píxeles */
+}
+
+
+/* Nav bar */
+
+.navbar{
+	transition: all 0.5s;
+	padding: 10px 25px;
+}
+.navbar-scrolled{
+	background-color: rgb(139, 37, 37,0.9);
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+}
+
+
+.titulo-pagina{
+	color: red;
+	font-weight: bold;
+}
+
+.navbar-brand{
+	font-size: 1.6rem;
+}
+
+
+.navbar-scrolled {
+	padding-top: 5px;
+	padding-bottom: 5px;
+  }
+
+.navbar{
+	transition: all 0.5s;
+	padding: 10px 25px;
+}
+
+.logueado{
+	display: none;
+}
+
+.administrar-navbar{
+	display: none;
+}
+
+@media screen and (max-width: 800px){
+	.nav-link{
+		font-size: 0.8rem !important;
+		padding: 5px 3.5px !important;
+		transition: 0.3s ease all;
+	}
+	.navbar-brand{
+		font-size: 1.5rem;
+		transition: 0.3s ease all;
+	}
+}
+
+@media screen and (max-width: 575px){
+
+	.navbar-expand-sm{
+		background-color: rgb(139, 37, 37,0.9);
+		box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+		padding: 5px 15px !important;
+	}
+	
+	.navbar-expand-sm a{
+		font-size: 1rem;
+	}
+	
+	.nav-link{
+		padding: 5px 0;
+		font-size: 0.8rem !important;
+	}
+	
+	.navbar-toggler button{
+		height: 20%;
+	}
+	.navbar-toggler-icon{
+		font-size: 0.75rem;
+	}
+}
+
+
+/*Footer*/
+.footer {
+	position: absolute;
+	background-color: rgb(20, 20, 20);
+
+  }
+  a {
+	text-decoration: none;
+	color: white;
+  }
+  
+  .container-redes-sociales {
+	text-align: center;
+	padding: 8px;
+  }
+  
+  .container-redes-sociales ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	position: relative;
+  }
+  
+  .container-redes-sociales ul li {
+	display: inline-block;
+	position: relative;
+  }
+  
+  .container-redes-sociales ul li:last-child {
+	margin-right: 0;
+  }
+  
+  .container-redes-sociales ul li a {
+	text-decoration: none;
+	color: #ccc;
+  }
+  
+  .logo {
+	font-size: 1.3rem;
+	padding: 8px;
+	padding-bottom: 16px;
+  }
+  
+  .titulo-pagina {
+	color: red;
+	font-weight: bold;
+  }
+  
+  .paginas {
+	color: #ccc;
+  }
+  
+  .paginas:hover {
+	text-decoration: underline;
+	color: gray;
+  }
+  
+  .linea {
+	border: none;
+	border-left: 1px solid gray;
+	text-align: center;
+	padding-right: 4px;
+	padding-left: 4px;
+    font-family: "Poppins";
+	font-weight: 100;
+  }
+  
+  .linea:first-child {
+	border: none;
+  }
+  
+  .container-redes-sociales ul li a i {
+	font-size: 20px;
+	margin-right: 10px;
+	padding: auto;
+  }
+  
+  .container-about {
+	color: #ccc;
+	text-align: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding-bottom: 8px;
+  }
+  
+  .links {
+	font-size: 0.9rem;
+	line-height: 50px;
+	text-decoration: none;
+	justify-content: space-between;
+	margin-left: 24px;
+	transition: 0.3s ease all;
+  }
+  
+  @media (min-width:768px) {
+	.linea {
+	  padding-right: 8px;
+	  padding-left: 8px;
+	}
+  
+  }
+  
+  .links:hover {
+	color: red;
+	transition: 0.3s ease all;
+  }
+  
+  .copy {
+	background-color: black;
+  }
