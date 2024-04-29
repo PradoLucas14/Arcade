@@ -1,4 +1,4 @@
-//METODO POST
+/* --------------- Registrar Juegos --------------- */
 
 async function createJuego() {
     const titulo = document.getElementById("titulo").value;
@@ -67,8 +67,7 @@ async function createJuego() {
     }
 }
 
-//metodo get
-// Variables para paginación
+/* --------------- Visualizar Juegos --------------- */
 let paginaActual = 1;
 const resultadosPorPagina = 10;
 
@@ -77,6 +76,7 @@ async function getJuegos() {
         const response = await axios.get("https://json-server-proyecto2.onrender.com/juegos");
         const juegos = response.data;
         mostrarJuegosEnTabla(juegos);
+        actualizarSliderPaginas(juegos); // Llama a la función para actualizar el slider de páginas
     } catch (error) {
         console.error("Error al obtener los juegos:", error);
     }
@@ -93,25 +93,24 @@ function mostrarJuegosEnTabla(juegos) {
 
     juegosPaginados.forEach(juego => {
         const iconoTrue = '<i class="bi bi-check-square-fill"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="green" class="bi bi-check-square-fill" viewBox="0 0 16 16"><path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm10.03 4.97a.75.75 0 0 1 .011 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.75.75 0 0 1 1.08-.022z"/></svg></i>';
-        const iconoFalse = '<i class="bi bi-x-square-fill"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#DE0202" class="bi bi-x-square-fill" viewBox="0 0 16 16"><path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708"/></svg></i>';
+        const iconoFalse = '<i class="bi bi-x-square-fill"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#DE0202" class="bi bi-x-square-fill" viewBox="0 0 16 16"><path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708"/></svg></i>';
         
         const esPublicado = juego.publicado;
-        console.log("Valor de juego.publicado:", juego.publicado);
-        const iconoPublicado = esPublicado ? iconoTrue : iconoFalse
+        const iconoPublicado = esPublicado ? iconoTrue : iconoFalse;
         
         const fila = `
-            <tr class = "fila">
+            <tr class="fila">
                 <td class="text-center">${juego.id}</td>
                 <td>${juego.titulo}</td>
                 <td>${juego.genero}</td>
                 <td class="descripcion-celda">${juego.descripcion}</td>
                 <td class="text-center">${iconoPublicado}</td>
-                <td class = "funciones">
-                    <button class="btn btn-sm editar" onclick="editarJuego('${juego.id}')"><i class="bi- bi-pencil-square"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#fff" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <td class="funciones">
+                    <button class="btn btn-sm editar" onclick="editarJuego(${juego.id})"><i class="bi bi-pencil-square"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#fff" class="bi bi-pencil-square" viewBox="0 0 16 16">
                     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                     <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
                     </svg></i></button>
-                    <button class="btn btn-sm eliminar" onclick="eliminarJuego('${juego.id}')"><i class="bi- bi-trash3-fill"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#fff" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                    <button class="btn btn-sm eliminar" onclick="eliminarJuego(${juego.id})"><i class="bi bi-trash3-fill"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#fff" class="bi bi-trash3-fill" viewBox="0 0 16 16">
                     <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
                     </svg></i></button>
                     <button class="btn btn-sm destacar" onclick="destacarJuego('${juego.id}')"><i class="bi bi-star-fill"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#fff" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -121,6 +120,9 @@ function mostrarJuegosEnTabla(juegos) {
             </tr>`;
         tablaJuegos.innerHTML += fila;
     });
+    
+    // Actualizar el slider de páginas después de mostrar los juegos en la tabla
+    actualizarSliderPaginas(juegos);
 }
 
 // Función para ir a la página anterior
@@ -137,10 +139,38 @@ function irPaginaSiguiente() {
     getJuegos();
 }
 
+function actualizarSliderPaginas(juegos) {
+    const cantidadPaginas = Math.ceil(juegos.length / resultadosPorPagina);
+    const paginaActualElemento = document.getElementById("paginaActual");
+
+    // Verificar que la página actual no sea mayor que la cantidad total de páginas
+    if (paginaActual > cantidadPaginas) {
+        paginaActual = cantidadPaginas;
+    }
+
+    // Actualizar el contenido del elemento de página actual
+    if (paginaActualElemento) {
+        paginaActualElemento.textContent = paginaActual;
+    }
+
+    // Deshabilitar o habilitar botones de navegación según la página actual
+    const botonAnterior = document.querySelector(".anterior");
+    const botonSiguiente = document.querySelector(".siguiente");
+    
+    if (botonAnterior && botonSiguiente) {
+        botonAnterior.disabled = paginaActual === 1;
+        botonSiguiente.disabled = paginaActual === cantidadPaginas;
+    }
+}
+
 // Cargar juegos al cargar la página
 window.onload = function () {
     getJuegos();
 };
+
+
+
+/* --------------- Eliminar Juegos --------------- */
 
 async function eliminarJuego(id) {
     try {
@@ -175,6 +205,7 @@ async function eliminarJuego(id) {
     }
 }
 
+/* --------------- Editar Juegos --------------- */
 
 async function editarJuego(id) {
     try {
@@ -207,7 +238,7 @@ async function editarJuego(id) {
                 const desarrollador = document.getElementById("editDesarrollador").value;
                 const anio = document.getElementById("editAnio").value;
                 const plataforma = document.getElementById("editPlataforma").value;
-                const genero = document.getElementById("genero").value;
+                const genero = document.getElementById("editGenero").value;
                 const descripcion = document.getElementById("editDescripcion").value;
                 const imagen1 = document.getElementById("editImagen1").value;
                 const imagen2 = document.getElementById("editImagen2").value;
@@ -278,7 +309,7 @@ async function editarJuego(id) {
     }
 }
 
-
+/* --------------- Destacar Juegos --------------- */
 
 async function obtenerDatosJuego(id) {
     const url = `https://json-server-proyecto2.onrender.com/juegos/${id}`;
