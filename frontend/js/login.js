@@ -3,7 +3,7 @@ const contraseñaIngresada = document.querySelector('#password');
 const iniciarSesion = document.querySelector('#init');
 const todoForm = document.querySelector('#todo-form');
 
-fetch('http://localhost:3000/usuarios', {
+fetch('https://json-server-proyecto2.onrender.com/usuarios', {
   method: 'GET',
 }).then(response => response.json()).then(data => {
   todoForm.addEventListener('submit', (event) => {
@@ -18,13 +18,19 @@ fetch('http://localhost:3000/usuarios', {
         logueado(busquedaUsuario.id);
         inputLogin.value = '';
         contraseñaLogin.value = '';
-        window.location.href = '../pages/adminstrador.html';
-      }
+    
+        // Esperar 10 milisegundos antes de redirigir
+        setTimeout(function() {
+            window.location.href = '../pages/adminstrador.html';
+        }, 800);
+    }
       else {
         logueado(busquedaUsuario.id);
         inputLogin.value = '';
         contraseñaLogin.value = '';
-        window.location.href = '../index.html';
+        setTimeout(function() {
+          window.location.href = '../index.html';
+      }, 800);
       }
     }
     else {
@@ -164,15 +170,7 @@ btnRec3.addEventListener('click', () => {
 
 //Funcion logueado
 async function logueado(id) {
-  fetch(`http://localhost:3000/usuarios/${id}`, {
-    method: 'PATCH',
-    body: JSON.stringify({
-      logueado: true,
-    }),
-    headers: {
-      'Content-type': 'application/json'
-    }
-  })
+  await axios.patch(`https://json-server-proyecto2.onrender.com/usuarios/${id}`, { logueado: true });fetch(`https://json-server-proyecto2.onrender.com/usuarios/${id}`)
 }
 
 const passwordField = document.getElementById("password");
@@ -205,7 +203,7 @@ togglePasswordButton2.addEventListener('click', () => {
 });
 //Funcion logueado
 async function logueado(id) {
-  fetch(`http://localhost:3000/usuarios/${id}`, {
+  fetch(`https://json-server-proyecto2.onrender.com/usuarios/${id}`, {
     method: 'PATCH',
     body: JSON.stringify({
       logueado: true,
@@ -238,7 +236,7 @@ const linkAdmin = document.querySelectorAll('.administrar-navbar');
 
 //revisar usuarios y si hay alguno logueado
 
-fetch('http://localhost:3000/usuarios', {
+fetch('https://json-server-proyecto2.onrender.com/usuarios', {
   method: 'GET',
 }).then(response => response.json()).then(data => {
         const usuarioLogueado = data.find(usuario => usuario.logueado);
@@ -288,14 +286,14 @@ const linkSesion = document.getElementById('cerrar-sesion');
 async function cerrarSesion(event){
      try {
         event.preventDefault();
-        const response = await axios.get("http://localhost:3000/usuarios");
+        const response = await axios.get("https://json-server-proyecto2.onrender.com/usuarios");
         const usuarios = response.data;
         const usuarioLogueado = usuarios.find(usuario => usuario.logueado);
         if (usuarioLogueado) {
             usuarioLogueado.logueado = false;
 
             // Actualizar el estado del usuario en el servidor
-            await axios.patch(`http://localhost:3000/usuarios/${usuarioLogueado.id}`, { logueado: false });
+            await axios.patch(`https://json-server-proyecto2.onrender.com/usuarios/${usuarioLogueado.id}`, { logueado: false });
 
             console.log("Usuario deslogueado:", usuarioLogueado.nombre);
             console.log("Estado de logueo actual:", usuarioLogueado.logueado);
