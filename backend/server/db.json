@@ -426,12 +426,20 @@
       "id": "1",
       "nombre": "administracion@gmail.com",
       "contraseña": "caritafeliz",
-      "logueado": true,
+      "logueado": false,
       "admin": true
     },
     {
       "id": "2",
       "nombre": "zapato@pie.com",
+      "contraseña": "zapato",
+      "logueado": false,
+      "admin": false
+    },
+    {
+      "id": "bd30",
+      "nombreUsuario": "mama",
+      "nombre": "lala@gmail.com",
       "contraseña": "zapato",
       "logueado": false,
       "admin": false

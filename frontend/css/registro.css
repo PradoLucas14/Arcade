@@ -82,7 +82,6 @@
 
 .body-registro {
   font-family: "Poppins", sans-serif;
-  font-size: 14px;
   margin: 0;
   position: relative;
 }
@@ -132,38 +131,6 @@
   justify-content: center;
 }
 
-@media (min-width:768px) {
-  .box {
-    justify-content: start;
-  }
-
-  .row {
-    padding: auto;
-    width: 60%;
-    margin-top: 0;
-  }
-
-  .label {
-    text-align: start;
-    text-transform: uppercase;
-  }
-
-  .content-btn {
-    width: 90%;
-    justify-content: center;
-  }
-}
-
-@media (min-width:1200px) {
-  .label {
-    font-size: medium;
-  }
-
-  .title {
-    font-size: 32px;
-  }
-}
-
 .image-wrapper {
   position: absolute;
   margin-top: 0;
@@ -200,8 +167,9 @@
   row-gap: 12px;
 }
 
-a {
+.terminos {
   text-decoration: none;
+  font-size: 14px;
   color: red;
 }
 
@@ -211,6 +179,7 @@ a {
   border: 2px solid white;
   color: white;
   border-radius: 8px;
+  font-size: 0.7rem;
   width: 200px;
   text-transform: uppercase;
 }
@@ -252,6 +221,7 @@ a {
 
 .check-l {
   width: 90%;
+  font-size: 1rem;
   display: inline;
   color: white;
 }
@@ -259,7 +229,14 @@ a {
 /*Footer*/
 .footer {
   position: absolute;
+  font-size: 14px;
   background-color: rgb(20, 20, 20);
+}
+
+@media(min-width:768px) {
+  .footer {
+    font-size: 16px;
+  }
 }
 
 .container-redes-sociales {
@@ -292,6 +269,7 @@ a {
   font-size: 1.3rem;
   padding: 8px;
   padding-bottom: 16px;
+  text-decoration: none;
 }
 
 .titulo-pagina {
@@ -301,6 +279,7 @@ a {
 
 .paginas {
   color: #ccc;
+  text-decoration: none;
 }
 
 .paginas:hover {
@@ -351,4 +330,56 @@ a {
 
 .copy {
   background-color: black;
+}
+
+/*Avisos de error*/
+.aviso {
+  font-size: 80%;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width:768px) {
+  .box {
+    justify-content: start;
+  }
+
+  .row {
+    padding: auto;
+    width: 60%;
+    margin-top: 0;
+  }
+
+  .label {
+    text-align: start;
+    text-transform: uppercase;
+  }
+
+  .content-btn {
+    width: 90%;
+    justify-content: center;
+  }
+
+  .check-l {
+    font-size: 0.7rem;
+  }
+}
+
+@media (min-width:1200px) {
+  .label {
+    font-size: medium;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .btn,
+  .btn:hover {
+    font-size: 1rem;
+  }
+
+  .check-l {
+    font-size: 0.9rem;
+  }
 }
