@@ -34,8 +34,8 @@ document.getElementById('todo-form').addEventListener('submit', function (event)
 
 const btn = document.getElementById('crear');
 const destinatario = document.querySelector('#destinatario');
-destinatario.value = 'tobifedearias@gmail.com'
-
+// destinatario.value = 'tobifedearias@gmail.com'
+destinatario.value = 'lucasnahuelprado0@gmail.com'
 
 fetch('https://json-server-proyecto2.onrender.com/usuarios', {
   method: 'GET',
