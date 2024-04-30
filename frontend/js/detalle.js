@@ -1,4 +1,4 @@
-const apiUrl = 'https://json-server-proyecto2.onrender.com/juegos';
+const apiUrl = 'http://localhost:3000/juegos';
 const urlParams = new URLSearchParams(window.location.search);
 const gameId = urlParams.get('id');
 
@@ -23,7 +23,7 @@ const linkAdmin = document.querySelectorAll('.administrar-navbar');
 
 //revisar usuarios y si hay alguno logueado
 
-fetch('https://json-server-proyecto2.onrender.com/usuarios', {
+fetch('http://localhost:3000/usuarios', {
   method: 'GET',
 }).then(response => response.json()).then(data => {
         const usuarioLogueado = data.find(usuario => usuario.logueado);
@@ -73,20 +73,18 @@ const linkSesion = document.getElementById('cerrar-sesion');
 async function cerrarSesion(event){
      try {
         event.preventDefault();
-        const response = await axios.get("https://json-server-proyecto2.onrender.com/usuarios");
+        const response = await axios.get("http://localhost:3000/usuarios");
         const usuarios = response.data;
         const usuarioLogueado = usuarios.find(usuario => usuario.logueado);
         if (usuarioLogueado) {
             usuarioLogueado.logueado = false;
 
             // Actualizar el estado del usuario en el servidor
-            await axios.patch(`https://json-server-proyecto2.onrender.com/usuarios/${usuarioLogueado.id}`, { logueado: false });
+            await axios.patch(`http://localhost:3000/usuarios/${usuarioLogueado.id}`, { logueado: false });
             
             console.log("Usuario deslogueado:", usuarioLogueado.nombre);
             console.log("Estado de logueo actual:", usuarioLogueado.logueado);
-            setTimeout(function() {
-                window.location.reload();
-            }, 200);
+            window.location.reload();
         } else {
             console.log("No hay ningún usuario logueado.");
         }
