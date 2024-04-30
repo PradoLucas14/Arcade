@@ -1,10 +1,11 @@
-usuario = document.querySelector('#user');
-contrasenia = document.querySelector('#password');
-direccionEmail = document.querySelector('#email');
-formRegistro = document.querySelector('#form');
-saveRegistro = document.querySelector('#crear');
-aviso = document.querySelector('#aviso');
-aviso.style.display = "none"
+const usuario = document.querySelector('#user');
+const contrasenia = document.querySelector('#password');
+const direccionEmail = document.querySelector('#email');
+const pais = document.querySelector('#countrie');
+const formRegistro = document.querySelector('#todo-form');
+const aviso = document.querySelector('#aviso');
+const checkbox = document.getElementById('check');
+aviso.style.display = 'none';
 
 //? Navbar y links
 
@@ -18,61 +19,70 @@ window.addEventListener('scroll', () => {
   }
 });
 
+//Controlar el checkboxs
+
+document.getElementById('todo-form').addEventListener('submit', function (event) {
+  const checkbox = document.getElementById('check');
+
+  if (!checkbox.checked) {
+    alert('Debes aceptar los términos y condiciones para continuar.');
+    event.preventDefault();
+  }
+});
+
 //Registrar y controlar si existe el usuario
 
-const users = JSON.parse(localStorage.getItem('users')) || []
-
 const btn = document.getElementById('crear');
+const destinatario = document.querySelector('#destinatario');
+destinatario.value = 'tobifedearias@gmail.com'
 
-fetch('http://localhost:3000/usuarios', {
+
+fetch('https://json-server-proyecto2.onrender.com/usuarios', {
   method: 'GET',
 })
   .then(response => response.json())
   .then(data => {
-    formRegistro.addEventListener('submit', (event) => {
-      event.preventDefault();
-      btn.value = 'Creando...';
+    btn.addEventListener('click', () => {
+      formRegistro.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const nuevoUsuario = {
+          nombreUsuario: usuario.value,
+          nombre: direccionEmail.value,
+          contraseña: contrasenia.value,
+          logueado: false,
+          admin: false,
+        };
+        let userExists = data.some(element => element.nombre === direccionEmail.value || element.nombreUsuario === usuario.value);
 
-      const serviceID = 'default_service';
-      const templateID = 'template_2wivkev';
+        if (userExists) {
+          aviso.style.display = "block";
+        } else {
+          const serviceID = 'default_service';
 
-      const nuevoUsuario = {
-        nombreUsuario: usuario.value,
-        nombre: direccionEmail.value,
-        contraseña: contrasenia.value,
-        logeado: false,
-        admin: false,
-      };
-      let userExists = data.some(element => element.nombre === direccionEmail.value || element.nombreUsuario === usuario.value);
+          // Define el ID del template de Email.js
+          const templateID = 'template_2wivkev';
+          btn.value = 'Creando...';
 
-      if (userExists) {
-        aviso.style.display = "block";
-      } else {
-        fetch('http://localhost:3000/usuarios', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(nuevoUsuario),
-        })
-          .then(response => response.json())
-          .then(data => {
-            usuario.value = '';
-            contrasenia.value = '';
-            direccionEmail.value = '';
+          // Envía el formulario utilizando Email.js
+          emailjs.sendForm(serviceID, templateID, formRegistro)
+            .then(function (response) {
+              console.log('CREADO!', response.status, response.text);
+              usuario.value = '';
+              contrasenia.value = '';
+              direccionEmail.value = '';
+              checkbox.checked = false; // Desmarcar el checkbox
+              fetch('https://json-server-proyecto2.onrender.com/usuarios', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(nuevoUsuario),
+              });
 
-          }).catch(error => console.log('Error al guardar el usuario:', error));
-        emailjs.sendForm(serviceID, templateID, document.getElementById('form'))
-          .then(() => {
-            event.preventDefault();
-            btn.value = 'Creado';
-            console.log('Sent!');
-          }, (err) => {
-            btn.value = 'Crear';
-            console.log(JSON.stringify(err));
-          });
+            }).catch(error => console.log('Error al guardar el usuario:', error));
 
-      }
+        }
+      });
     });
   });
 

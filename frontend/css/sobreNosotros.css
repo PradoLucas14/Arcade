@@ -85,7 +85,7 @@
 
 
 .hero{
-    background-image: url(/frontend/assets/img/imgNosotros/mandoXbox.jpg);
+    background-image: url(../assets/img/imgNosotros/mandoXbox.jpg);
     width: 100%;
     height: calc(108vh - 50px);
     background-size: cover;

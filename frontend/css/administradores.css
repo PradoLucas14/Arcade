@@ -10,7 +10,7 @@ main{
     margin-bottom: 40px;
 }
 .hero{
-    background-image: url(/frontend/assets/imgAndmin/pexels-karolina-grabowska-4219883.jpg);
+    background-image: url(../assets/imgAndmin/pexels-karolina-grabowska-4219883.jpg);
     width: 100%;
     height: calc(108vh - 50px);
     background-size: cover;

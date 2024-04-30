@@ -1,6 +1,31 @@
-const apiUrl = 'https://json-server-proyecto2.onrender.com/juegos';
-const urlParams = new URLSearchParams(window.location.search);
-const gameId = urlParams.get('id');
+//Enviar mail al administrador
+const destinatario = document.querySelector('#destinatario');
+destinatario.value = 'lucasnahuelprado0@gmail.com'
+
+const btn = document.getElementById('enviar');
+function enviarMail() {
+
+  document.getElementById('todo-form')
+    .addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      btn.value = 'Enviando...';
+
+      const serviceID = 'default_service';
+      const templateID = 'template_w9ehzob';
+
+      emailjs.sendForm(serviceID, templateID, this)
+        .then(() => {
+          btn.value = 'Enviado';
+          alert('Enviado!');
+        }, (err) => {
+          btn.value = 'Enviar';
+          console.log(JSON.stringify(err));
+        });
+    });
+}
+
+btn.addEventListener('click', enviarMail);
 
 //? Navbar y links
 
@@ -96,68 +121,3 @@ async function cerrarSesion(event){
 };
 
 linkSesion.addEventListener("click",cerrarSesion);
-
-function cargarDetalle() {
-    fetch(`${apiUrl}/${gameId}`)
-    .then(response => response.json())
-    .then(game => {
-		console.log(game)
-        const gameBanner = document.getElementById('gameBanner');
-		const gameDetail = document.getElementById('gameDetalle');
-        const gameTitulo = document.getElementById('gameTitulo');
-        const gameEspec = document.getElementById('gameEspect');
-		const body = document.getElementById('body-detalle');
-		document.getElementById('pageTitulo').textContent = game.titulo;
-		gameTitulo.innerHTML = `
-		${game.titulo.toUpperCase()}
-        `;
-		gameBanner.innerHTML = `
-            <p class="fs-5">Desarrolladora: ${game.desarrollador} <br> Año: ${game.anio}</p>
-        `;
-		gameDetail.innerHTML = `
-			<p>${game.descripcion}</p>
-        `;
-		body.style.backgroundImage = `url(${game.imagen1})`;
-        console.log(`Fondo establecido: ${body.style.backgroundImage}`);
-        gameEspec.innerHTML = `
-        <div class="row flex-wrap">
-                        <div class="col-12">
-                            <p class="my-2">
-                                <strong>Desarrolladora:</strong> ${game.desarrollador}
-                            </p>
-                            <p class="my-2"><strong>Año:</strong> ${game.anio}</p>
-                        </div>
-                        <div class="col-12">
-                            <p class="my-2"><strong>Genero:</strong>  ${game.genero}</p>
-                            <p class="my-2">
-                                <strong>Plataforma:</strong> ${game.plataforma}
-                            </p>
-                        </div>  
-                        <div class="col-12  d-flex justify-content-center">
-                            <button
-                                onclick="volverCatalogo()"
-                                class="btn boton-catalogo px-1" 
-                            >
-                                <p class="txt-boton-catalogo fs-6 my-1 ">
-                                    <i
-                                        class="fas fa-angle-left"
-                                        aria-hidden="true"
-                                    ></i>
-                                    Volver a Inicio
-                                </p>
-                            </button>
-                   `;
-    });
-}
-
-// Cargar detalle al inicio
-cargarDetalle();
-
-
-function volverCatalogo() {
-	window.location.href = "../index.html";
-}
-
-function paginaError() {
-	window.location.href = "./error.html";
-}
