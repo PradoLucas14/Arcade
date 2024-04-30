@@ -19,32 +19,25 @@ window.addEventListener('scroll', () => {
   }
 });
 
-//Controlar el checkboxs
-
-document.getElementById('todo-form').addEventListener('submit', function (event) {
-  const checkbox = document.getElementById('check');
-
-  if (!checkbox.checked) {
-    alert('Debes aceptar los términos y condiciones para continuar.');
-    event.preventDefault();
-  }
-});
-
 //Registrar y controlar si existe el usuario
 
 const btn = document.getElementById('crear');
 const destinatario = document.querySelector('#destinatario');
-destinatario.value = 'lucasnahuelprado0@gmail.com'
+// destinatario.value = 'lucasnahuelprado0@gmail.com'
+destinatario.value = 'labian2013@gmail.com'
 
 
-fetch('http://localhost:3000/usuarios', {
-  method: 'GET',
-})
-  .then(response => response.json())
-  .then(data => {
-    btn.addEventListener('click', () => {
+document.addEventListener('DOMContentLoaded', function () {
+
+  fetch('http://localhost:3000/usuarios', {
+    method: 'GET',
+  })
+    .then(response => response.json())
+    .then(data => {
       formRegistro.addEventListener('submit', (event) => {
+
         event.preventDefault();
+
         const nuevoUsuario = {
           nombreUsuario: usuario.value,
           nombre: direccionEmail.value,
@@ -54,37 +47,46 @@ fetch('http://localhost:3000/usuarios', {
         };
         let userExists = data.some(element => element.nombre === direccionEmail.value || element.nombreUsuario === usuario.value);
 
-        if (userExists) {
-          aviso.style.display = "block";
+        if (userExists || !checkbox.checked) {
+          if (userExists) {
+            aviso.style.display = "block";
+          } else {
+            alert('Debes aceptar los términos y condiciones para continuar.');
+          }
         } else {
           const serviceID = 'default_service';
-
-          // Define el ID del template de Email.js
           const templateID = 'template_2wivkev';
           btn.value = 'Creando...';
 
-          // Envía el formulario utilizando Email.js
           emailjs.sendForm(serviceID, templateID, formRegistro)
             .then(function (response) {
-              console.log('CREADO!', response.status, response.text);
+              console.log('Correo enviado!', response.status, response.text);
               usuario.value = '';
               contrasenia.value = '';
               direccionEmail.value = '';
               checkbox.checked = false; // Desmarcar el checkbox
+
+              // Guardar el nuevo usuario en la base de datos
               fetch('http://localhost:3000/usuarios', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(nuevoUsuario),
-              });
-
-            }).catch(error => console.log('Error al guardar el usuario:', error));
-
+              })
+                .then(response => response.json())
+                .then(data => {
+                  console.log('Usuario creado:', data);
+                })
+                .catch(error => console.error('Error al guardar el usuario:', error));
+            })
+            .catch(error => console.error('Error al enviar el correo:', error));
         }
       });
-    });
-  });
+    })
+    .catch(error => console.error('Error al obtener los usuarios:', error));
+});
+
 
 const passwordField = document.getElementById("password");
 
