@@ -34,10 +34,10 @@ document.getElementById('todo-form').addEventListener('submit', function (event)
 
 const btn = document.getElementById('crear');
 const destinatario = document.querySelector('#destinatario');
-destinatario.value = 'tobifedearias@gmail.com'
+destinatario.value = 'lucasnahuelprado0@gmail.com'
 
 
-fetch('https://json-server-proyecto2.onrender.com/usuarios', {
+fetch('http://localhost:3000/usuarios', {
   method: 'GET',
 })
   .then(response => response.json())
@@ -71,7 +71,7 @@ fetch('https://json-server-proyecto2.onrender.com/usuarios', {
               contrasenia.value = '';
               direccionEmail.value = '';
               checkbox.checked = false; // Desmarcar el checkbox
-              fetch('https://json-server-proyecto2.onrender.com/usuarios', {
+              fetch('http://localhost:3000/usuarios', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
