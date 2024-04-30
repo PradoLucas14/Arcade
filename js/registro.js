@@ -29,15 +29,23 @@ destinatario.value = 'tobifedearias@gmail.com'
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  fetch('https://json-server-proyecto2.onrender.com/usuarios', {
-    method: 'GET',
-  })
-    .then(response => response.json())
-    .then(data => {
-      formRegistro.addEventListener('submit', (event) => {
-
+  async function obtenerUsuarios() {
+    try {
+      const response = await axios.get('https://json-server-proyecto2.onrender.com/usuarios');
+      return response.data;
+    } catch (error) {
+      console.error('Error al obtener los usuarios:', error);
+      throw error;
+    }
+  }
+  
+  async function enviarCorreoYGuardarUsuario() {
+    try {
+      const data = await obtenerUsuarios();
+  
+      formRegistro.addEventListener('submit', async (event) => {
         event.preventDefault();
-
+  
         const nuevoUsuario = {
           nombreUsuario: usuario.value,
           nombre: direccionEmail.value,
@@ -45,8 +53,9 @@ document.addEventListener('DOMContentLoaded', function () {
           logueado: false,
           admin: false,
         };
+  
         let userExists = data.some(element => element.nombre === direccionEmail.value || element.nombreUsuario === usuario.value);
-
+  
         if (userExists || !checkbox.checked) {
           if (userExists) {
             aviso.style.display = "block";
@@ -57,34 +66,36 @@ document.addEventListener('DOMContentLoaded', function () {
           const serviceID = 'default_service';
           const templateID = 'template_2wivkev';
           btn.value = 'Creando...';
-
-          emailjs.sendForm(serviceID, templateID, formRegistro)
-            .then(function (response) {
-              console.log('Correo enviado!', response.status, response.text);
-              usuario.value = '';
-              contrasenia.value = '';
-              direccionEmail.value = '';
-              checkbox.checked = false; // Desmarcar el checkbox
-
-              // Guardar el nuevo usuario en la base de datos
-              fetch('https://json-server-proyecto2.onrender.com/usuarios', {
-                method: 'POST',
+  
+          try {
+            const response = await emailjs.sendForm(serviceID, templateID, formRegistro);
+            console.log('Correo enviado!', response.status, response.text);
+            usuario.value = '';
+            contrasenia.value = '';
+            direccionEmail.value = '';
+            checkbox.checked = false; // Desmarcar el checkbox
+  
+            try {
+              const response = await axios.post('https://json-server-proyecto2.onrender.com/usuarios', nuevoUsuario, {
                 headers: {
                   'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(nuevoUsuario),
-              })
-                .then(response => response.json())
-                .then(data => {
-                  console.log('Usuario creado:', data);
-                })
-                .catch(error => console.error('Error al guardar el usuario:', error));
-            })
-            .catch(error => console.error('Error al enviar el correo:', error));
+              });
+              console.log('Usuario creado:', response.data);
+            } catch (error) {
+              console.error('Error al guardar el usuario:', error);
+            }
+          } catch (error) {
+            console.error('Error al enviar el correo:', error);
+          }
         }
       });
-    })
-    .catch(error => console.error('Error al obtener los usuarios:', error));
+    } catch (error) {
+      console.error('Error al obtener los usuarios:', error);
+    }
+  }
+  
+  enviarCorreoYGuardarUsuario();
 });
 
 
