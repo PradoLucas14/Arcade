@@ -36,7 +36,7 @@ async function createJuego() {
         };
 
         try {
-            await axios.post("http://localhost:3000/juegos", nuevoJuego);
+            await axios.post("https://json-server-proyecto2.onrender.com/juegos", nuevoJuego);
             Swal.fire({
                 title: '¡Éxito!',
                 text: 'Se registró un juego nuevo',
@@ -90,7 +90,7 @@ const resultadosPorPagina = 10;
 
 async function getJuegos() {
     try {
-        const response = await axios.get("http://localhost:3000/juegos");
+        const response = await axios.get("https://json-server-proyecto2.onrender.com/juegos");
         const juegos = response.data;
         mostrarJuegosEnTabla(juegos);
         actualizarSliderPaginas(juegos); // Llama a la función para actualizar el slider de páginas
@@ -202,7 +202,7 @@ async function eliminarJuego(id) {
         });
 
         if (result.isConfirmed) {
-            const response = await axios.delete(`http://localhost:3000/juegos/${id}`);
+            const response = await axios.delete(`https://json-server-proyecto2.onrender.com/juegos/${id}`);
             console.log("Juego eliminado correctamente:", response.data);
             // Actualizar la tabla de juegos después de eliminar el juego
             getJuegos();
@@ -227,7 +227,7 @@ async function eliminarJuego(id) {
 async function editarJuego(id) {
     try {
         // Obtener el juego correspondiente al ID
-        const response = await axios.get(`http://localhost:3000/juegos/${id}`);
+        const response = await axios.get(`https://json-server-proyecto2.onrender.com/juegos/${id}`);
         const juego = response.data;
 
         // Rellenar el formulario del modal con los datos del juego
@@ -293,7 +293,7 @@ async function editarJuego(id) {
 
                 if (result.isConfirmed) {
                     // Enviar solicitud PATCH para actualizar los datos del juego
-                    await axios.patch(`http://localhost:3000/juegos/${id}`, datosActualizados);
+                    await axios.patch(`https://json-server-proyecto2.onrender.com/juegos/${id}`, datosActualizados);
 
                     // Cerrar el modal después de la actualización
                     modal.hide();
@@ -329,7 +329,7 @@ async function editarJuego(id) {
 /* --------------- Destacar Juegos --------------- */
 
 async function obtenerDatosJuego(id) {
-    const url = `http://localhost:3000/juegos/${id}`;
+    const url = `https://json-server-proyecto2.onrender.com/juegos/${id}`;
 
     try {
         const response = await axios.get(url);
@@ -348,7 +348,7 @@ async function destacarJuego(id) {
 
     if (datosJuego) {
         // URL del servidor JSON para actualizar los datos del juego destacado con el ID 1
-        const url = 'http://localhost:3000/destacado/';
+        const url = 'https://json-server-proyecto2.onrender.com/destacado/';
         console.log(url);
         const response = await axios.get(url);
         console.log(response);
@@ -415,7 +415,7 @@ const linkAdmin = document.querySelectorAll('.administrar-navbar');
 
 //revisar usuarios y si hay alguno logueado
 
-fetch('http://localhost:3000/usuarios', {
+fetch('https://json-server-proyecto2.onrender.com/usuarios', {
   method: 'GET',
 }).then(response => response.json()).then(data => {
         const usuarioLogueado = data.find(usuario => usuario.logueado);
@@ -465,18 +465,20 @@ const linkSesion = document.getElementById('cerrar-sesion');
 async function cerrarSesion(event){
      try {
         event.preventDefault();
-        const response = await axios.get("http://localhost:3000/usuarios");
+        const response = await axios.get("https://json-server-proyecto2.onrender.com/usuarios");
         const usuarios = response.data;
         const usuarioLogueado = usuarios.find(usuario => usuario.logueado);
         if (usuarioLogueado) {
             usuarioLogueado.logueado = false;
 
             // Actualizar el estado del usuario en el servidor
-            await axios.patch(`http://localhost:3000/usuarios/${usuarioLogueado.id}`, { logueado: false });
-
+            await axios.patch(`https://json-server-proyecto2.onrender.com/usuarios/${usuarioLogueado.id}`, { logueado: false });
+            
             console.log("Usuario deslogueado:", usuarioLogueado.nombre);
             console.log("Estado de logueo actual:", usuarioLogueado.logueado);
-            window.location.href= '../index.html';
+            setTimeout(function() {
+                window.location.href = '../index.html';
+            }, 200);
         } else {
             console.log("No hay ningún usuario logueado.");
         }
@@ -486,6 +488,3 @@ async function cerrarSesion(event){
 };
 
 linkSesion.addEventListener("click",cerrarSesion);
-
-
-

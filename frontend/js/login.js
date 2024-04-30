@@ -18,13 +18,19 @@ fetch('http://localhost:3000/usuarios', {
         logueado(busquedaUsuario.id);
         inputLogin.value = '';
         contraseñaLogin.value = '';
-        window.location.href = '../pages/adminstrador.html';
-      }
+    
+        // Esperar 10 milisegundos antes de redirigir
+        setTimeout(function() {
+            window.location.href = '../pages/adminstrador.html';
+        }, 200);
+    }
       else {
         logueado(busquedaUsuario.id);
         inputLogin.value = '';
         contraseñaLogin.value = '';
-        window.location.href = '../index.html';
+        setTimeout(function() {
+          window.location.href = '../index.html';
+      }, 800);
       }
     }
     else {
@@ -164,7 +170,7 @@ btnRec3.addEventListener('click', () => {
 
 //Funcion logueado
 async function logueado(id) {
-  fetch(`http://localhost:3000/usuarios/${id}`, {
+    fetch(`http://localhost:3000/usuarios/${id}`, {
     method: 'PATCH',
     body: JSON.stringify({
       logueado: true,
@@ -284,6 +290,7 @@ fetch('http://localhost:3000/usuarios', {
 
 //Cerrar sesion de usuario
 const linkSesion = document.getElementById('cerrar-sesion');
+
 
 async function cerrarSesion(event) {
   try {
