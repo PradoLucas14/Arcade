@@ -45,6 +45,7 @@ async function createJuego() {
                 timerProgressBar: true, // Barra de progreso
                 showConfirmButton: false // No mostrar el botón de confirmación
             });
+            limpiarCamposModal();
         } catch (error) {
             Swal.fire({
                 title: '¡Error!',
@@ -66,6 +67,22 @@ async function createJuego() {
         });
     }
 }
+
+function limpiarCamposModal() {
+    document.getElementById("titulo").value = "";
+    document.getElementById("desarrollador").value = "";
+    document.getElementById("anio").value = "";
+    document.getElementById("plataforma").value = "";
+    document.getElementById("genero").value = "Aventura"; // Restablecer a la opción por defecto
+    document.getElementById("tamanio").value = "";
+    document.getElementById("precio").value = "";
+    document.getElementById("descripcion").value = "";
+    document.getElementById("publicado").value = "true"; // Restablecer a la opción por defecto
+    document.getElementById("imagen1").value = "";
+    document.getElementById("imagen2").value = "";
+    document.getElementById("imagen3").value = "";
+}
+
 
 /* --------------- Visualizar Juegos --------------- */
 let paginaActual = 1;
@@ -376,10 +393,6 @@ async function destacarJuego(id) {
         });
     }
 }
-
-
-
-
 
 //? Navbar y links
 
