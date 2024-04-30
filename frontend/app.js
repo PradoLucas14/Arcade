@@ -1,7 +1,7 @@
 //? Cargado de datos en banner
 //Metodo get
-const apiUrlDestacado = 'https://json-server-proyecto2.onrender.com/destacado/2';
-const apiUrlJuegoDestacado = 'https://json-server-proyecto2.onrender.com/juegos';
+const apiUrlDestacado = 'http://localhost:3000/destacado/2';
+const apiUrlJuegoDestacado = 'http://localhost:3000/juegos';
 
 function getDestacado() {
     try {
@@ -77,7 +77,7 @@ const linkAdmin = document.querySelectorAll('.administrar-navbar');
 
 //revisar usuarios y si hay alguno logueado
 
-fetch('https://json-server-proyecto2.onrender.com/usuarios', {
+fetch('http://localhost:3000/usuarios', {
   method: 'GET',
 }).then(response => response.json()).then(data => {
         const usuarioLogueado = data.find(usuario => usuario.logueado);
@@ -127,20 +127,18 @@ const linkSesion = document.getElementById('cerrar-sesion');
 async function cerrarSesion(event){
      try {
         event.preventDefault();
-        const response = await axios.get("https://json-server-proyecto2.onrender.com/usuarios");
+        const response = await axios.get("http://localhost:3000/usuarios");
         const usuarios = response.data;
         const usuarioLogueado = usuarios.find(usuario => usuario.logueado);
         if (usuarioLogueado) {
             usuarioLogueado.logueado = false;
 
             // Actualizar el estado del usuario en el servidor
-            await axios.patch(`https://json-server-proyecto2.onrender.com/usuarios/${usuarioLogueado.id}`, { logueado: false });
+            await axios.patch(`http://localhost:3000/usuarios/${usuarioLogueado.id}`, { logueado: false });
             
             console.log("Usuario deslogueado:", usuarioLogueado.nombre);
             console.log("Estado de logueo actual:", usuarioLogueado.logueado);
-            setTimeout(function() {
-                window.location.href = './index.html';
-            }, 200);
+	    window.location.href = './index.html';
         } else {
             console.log("No hay ningún usuario logueado.");
         }
@@ -153,7 +151,7 @@ linkSesion.addEventListener("click",cerrarSesion);
 
 
 // ? Generación categorías
-const apiUrlJuegos = 'https://json-server-proyecto2.onrender.com/juegos';
+const apiUrlJuegos = 'http://localhost:3000/juegos';
 function sliderMaker(categoria,clases) {
     try {
         fetch(apiUrlJuegos, {
