@@ -435,14 +435,6 @@
       "contraseña": "zapato",
       "logueado": false,
       "admin": false
-    },
-    {
-      "id": "bd30",
-      "nombreUsuario": "mama",
-      "nombre": "lala@gmail.com",
-      "contraseña": "zapato",
-      "logueado": false,
-      "admin": false
     }
   ],
   "destacado": [
