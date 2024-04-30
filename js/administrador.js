@@ -473,10 +473,12 @@ async function cerrarSesion(event){
 
             // Actualizar el estado del usuario en el servidor
             await axios.patch(`https://json-server-proyecto2.onrender.com/usuarios/${usuarioLogueado.id}`, { logueado: false });
-
+            
             console.log("Usuario deslogueado:", usuarioLogueado.nombre);
             console.log("Estado de logueo actual:", usuarioLogueado.logueado);
-            window.location.href= '../index.html';
+            setTimeout(function() {
+                window.location.href = '../index.html';
+            }, 200);
         } else {
             console.log("No hay ningún usuario logueado.");
         }

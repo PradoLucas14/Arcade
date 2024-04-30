@@ -15,8 +15,15 @@
             integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
             crossorigin="anonymous"
         />
-        <link rel="shortcut icon" href="../assets/logo.png" />
         <link rel="stylesheet" href="../css/registro.css" />
+        <script
+            type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+        ></script>
+
+        <script type="text/javascript">
+            emailjs.init("PmI8SU0Lj2hXogTSp");
+        </script>
         <title>Pagina de Registro</title>
     </head>
 
@@ -55,7 +62,7 @@
                                 >Acerca de Nosotros</a
                             >
                         </li>
-                        <li class="nav-item logueado">
+                        <li class="nav-item">
                             <a class="nav-link" href="./contacto.html"
                                 >Contacto</a
                             >
@@ -81,7 +88,7 @@
             </div>
             <div class="contenedor">
                 <div class="box">
-                    <form class="row" id="form">
+                    <form class="row" id="todo-form">
                         <h2 class="title">Crear tu cuenta</h2>
                         <div class="content">
                             <label for="user" class="label"
@@ -91,6 +98,9 @@
                                 id="user"
                                 class="input form-control"
                                 type="text"
+                                minlength="4"
+                                pattern="^[A-Za-z\s]+${4,32}"
+                                maxlength="32"
                                 name="name"
                                 required
                             />
@@ -116,6 +126,9 @@
                                     id="password"
                                     class="input form-control"
                                     name="password"
+                                    minlength="4"
+                                    pattern="^[A-Za-z\s]+${4,32}"
+                                    maxlength="32"
                                     type="password"
                                     required
                                 />
@@ -139,7 +152,6 @@
                                 </option>
                                 <option value="Argentina">Argentina</option>
                                 <option value="Brasil">Brasil</option>
-                                <option value="Brasil">Brasil</option>
                                 <option value="Venezuela">Venezuela</option>
                                 <option value="Peru">Peru</option>
                                 <option value="Chile">Chile</option>
@@ -149,24 +161,25 @@
                                 </option>
                                 <option value="Mexico">Mexico</option>
                             </select>
-                            <p class="text-danger" id="aviso">
+                            <p class="aviso text-danger" id="aviso">
                                 La direccion de email o nombre de usuario
                                 ingresados ya existen
                             </p>
                         </div>
                         <div class="content-check">
                             <input type="checkbox" class="check" id="check" />
-                            <label
-                                class="check-l"
-                                class="check-label"
-                                for="check"
-                                required
+                            <label class="check-l" for="check" required
                                 >Tengo 13 años o más y acepto los
-                                <a href="../pages/error.html"
+                                <a href="../pages/error.html" class="terminos"
                                     >Términos y Condiciones de la Política de
                                     Privacidad.</a
                                 ></label
                             >
+                            <input
+                                name="destinatario"
+                                id="destinatario"
+                                class="d-none"
+                            />
                         </div>
                         <div class="content-btn">
                             <input
@@ -232,7 +245,7 @@
                     </div>
                     <div class="container-about">
                         <div class="linea">
-                            <a href="../pages/error.html " class="paginas col"
+                            <a href="../index.html " class="paginas col"
                                 >Inicio</a
                             >
                         </div>
@@ -242,18 +255,20 @@
                             >
                         </div>
                         <div class="linea">
-                            <a href="../pages/error.html " class="paginas col"
+                            <a
+                                href="../pages/sobreNosotros.html "
+                                class="paginas col"
                                 >Sobre Nosotros</a
                             >
                         </div>
                         <div class="linea">
-                            <a href="../pages/error.html" class="paginas col"
+                            <a href="../pages/contacto.html" class="paginas col"
                                 >Contactanos</a
                             >
                         </div>
                     </div>
                     <div class="logo">
-                        <a class="text-light" href="../index.html"
+                        <a class="logo text-light" href="../index.html"
                             >AR<span class="titulo-pagina">CADE</span></a
                         >
                     </div>
@@ -266,14 +281,7 @@
                 </p>
             </div>
         </footer>
-        <script
-            type="text/javascript"
-            src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
-        ></script>
-
-        <script type="text/javascript">
-            emailjs.init("PmI8SU0Lj2hXogTSp");
-        </script>
+        <script src="../js/registro.js"></script>
         <script
             src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -284,11 +292,11 @@
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
             crossorigin="anonymous"
         ></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"
         ></script>
-        <script src="../js/registro.js"></script>
     </body>
 </html>
