@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
           try {
             const response = await emailjs.sendForm(serviceID, templateID, formRegistro);
             console.log('Correo enviado!', response.status, response.text);
+            btn.value = 'Creado';
             usuario.value = '';
             contrasenia.value = '';
             direccionEmail.value = '';
@@ -86,6 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
               console.error('Error al guardar el usuario:', error);
             }
           } catch (error) {
+            btn.value = 'Creado';
             console.error('Error al enviar el correo:', error);
           }
         }
