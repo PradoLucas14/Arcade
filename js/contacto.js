@@ -1,6 +1,8 @@
 //Enviar mail al administrador
 const destinatario = document.querySelector('#destinatario');
-destinatario.value = 'lucasnahuelprado0@gmail.com'
+// destinatario.value = 'lucasnahuelprado0@gmail.com'
+destinatario.value = 'tobifedearias@gmail.com'
+
 
 const btn = document.getElementById('enviar');
 function enviarMail() {
