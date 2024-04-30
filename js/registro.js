@@ -19,7 +19,7 @@ window.addEventListener('scroll', () => {
   }
 });
 
-//Controlar el checkboxs
+//Registrar y controlar si existe el usuario
 
 document.getElementById('todo-form').addEventListener('submit', function (event) {
   const checkbox = document.getElementById('check');
@@ -30,12 +30,10 @@ document.getElementById('todo-form').addEventListener('submit', function (event)
   }
 });
 
-//Registrar y controlar si existe el usuario
-
 const btn = document.getElementById('crear');
 const destinatario = document.querySelector('#destinatario');
-// destinatario.value = 'tobifedearias@gmail.com'
-destinatario.value = 'lucasnahuelprado0@gmail.com'
+// destinatario.value = 'lucasnahuelprado0@gmail.com'
+destinatario.value = 'tobifedearias@gmail.com';
 
 fetch('https://json-server-proyecto2.onrender.com/usuarios', {
   method: 'GET',
@@ -56,6 +54,10 @@ fetch('https://json-server-proyecto2.onrender.com/usuarios', {
 
         if (userExists) {
           aviso.style.display = "block";
+          usuario.value = '';
+          contrasenia.value = '';
+          direccionEmail.value = '';
+          checkbox.checked = false; // Desmarcar el checkbox
         } else {
           const serviceID = 'default_service';
 
